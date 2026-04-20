@@ -1,0 +1,11 @@
+{
+  "id": "kb-2026-04-20-langchain",
+  "title": "LangChain",
+  "source_url": "https://github.com/langchain-ai/langchain",
+  "summary": "Agent工程平台，构建LLM应用最流行的开源框架，提供丰富的工具和记忆组件",
+  "tags": ["langchain", "llm", "agent-framework"],
+  "relevance_score": 0.88,
+  "status": "active",
+  "collected_at": "2026-04-20T08:00:00Z",
+  "organized_at": "2026-04-20T10:30:00Z"
+}

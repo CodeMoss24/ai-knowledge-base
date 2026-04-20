@@ -1,0 +1,21 @@
+{
+  "id": "kb-2026-04-18-001",
+  "title": "Superpowers",
+  "source": "github-trending",
+  "source_id": "obra/superpowers",
+  "url": "https://github.com/obra/superpowers",
+  "summary": "Superpowers 是一个智能体技能框架和软件开发方法论，它让 AI agent 能够像人类开发者一样协作完成复杂项目。",
+  "tags": ["agent-framework", "software-development", "collaboration", "methodology"],
+  "relevance_score": 0.95,
+  "category": "AI Agent Framework",
+  "highlights": [
+    "智能体技能框架，支持多 agent 协作",
+    "模拟人类开发者的工作方式",
+    "Stars 高达 157,796"
+  ],
+  "stars": 157796,
+  "collected_at": "2026-04-18T08:00:00Z",
+  "analyzed_at": "2026-04-18T09:00:00Z",
+  "organized_at": "2026-04-18T11:00:00Z",
+  "status": "published"
+}

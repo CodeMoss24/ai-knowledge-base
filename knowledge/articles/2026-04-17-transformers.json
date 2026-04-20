@@ -1,0 +1,11 @@
+{
+  "id": "550e8400-e29b-41d4-a716-446655440007",
+  "title": "Transformers",
+  "source": "github-trending",
+  "url": "https://github.com/huggingface/transformers",
+  "collected_at": "2026-04-17T08:22:27Z",
+  "summary": "Hugging Face核心库，提供SOTA预训练模型，支持文本、视觉、音频多模态",
+  "highlights": ["业界最全面的预训练模型库", "支持多模态（文本/视觉/音频）", "开源可商用"],
+  "score": 9,
+  "reason": "LLM和AI模型领域的核心基础设施，模型生态最完善"
+}

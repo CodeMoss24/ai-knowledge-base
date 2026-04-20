@@ -1,0 +1,11 @@
+{
+  "id": "550e8400-e29b-41d4-a716-446655440006",
+  "title": "prompts.chat",
+  "source": "github-trending",
+  "url": "https://github.com/f/prompts.chat",
+  "collected_at": "2026-04-17T08:22:27Z",
+  "summary": "ChatGPT提示词社区，可发现和收集优质AI提示词，支持自托管保护隐私",
+  "highlights": ["丰富的社区提示词资源", "可自托管保护隐私", "多模型支持（GPT/Claude/Gemini）"],
+  "score": 7,
+  "reason": "提示词资源有参考价值，但技术门槛相对较低"
+}

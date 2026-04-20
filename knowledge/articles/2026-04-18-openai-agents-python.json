@@ -1,0 +1,21 @@
+{
+  "id": "kb-2026-04-18-004",
+  "title": "OpenAI Agents Python",
+  "source": "github-trending",
+  "source_id": "openai/openai-agents-python",
+  "url": "https://github.com/openai/openai-agents-python",
+  "summary": "OpenAI Agents Python 是一个轻量但强大的多智能体工作流框架，适合构建复杂的 AI agent 协作系统。",
+  "tags": ["multi-agent", "workflow", "python", "openai", "agent-framework"],
+  "relevance_score": 0.88,
+  "category": "AI Agent Framework",
+  "highlights": [
+    "OpenAI 官方发布的 Python Agent 框架",
+    "轻量级但功能强大",
+    "支持多智能体工作流"
+  ],
+  "stars": 21831,
+  "collected_at": "2026-04-18T08:00:00Z",
+  "analyzed_at": "2026-04-18T09:00:00Z",
+  "organized_at": "2026-04-18T11:00:00Z",
+  "status": "published"
+}

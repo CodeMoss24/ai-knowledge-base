@@ -1,0 +1,21 @@
+{
+  "id": "kb-2026-04-18-011",
+  "title": "DFlash",
+  "source": "github-trending",
+  "source_id": "z-lab/dflash",
+  "url": "https://github.com/z-lab/dflash",
+  "summary": "DFlash 是一种块扩散方法，用于加速 LLM 的推测解码，显著提升生成速度。",
+  "tags": ["llm-acceleration", "speculative-decoding", "diffusion", "performance"],
+  "relevance_score": 0.65,
+  "category": "LLM Optimization",
+  "highlights": [
+    "块扩散方法",
+    "加速 LLM 推测解码",
+    "显著提升生成速度"
+  ],
+  "stars": 1809,
+  "collected_at": "2026-04-18T08:00:00Z",
+  "analyzed_at": "2026-04-18T09:00:00Z",
+  "organized_at": "2026-04-18T11:00:00Z",
+  "status": "published"
+}

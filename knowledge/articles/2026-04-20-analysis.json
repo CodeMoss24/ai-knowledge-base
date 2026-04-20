@@ -1,0 +1,201 @@
+{
+  "source": "tech-summary",
+  "analyzed_at": "2026-04-20T10:00:00Z",
+  "input_file": "knowledge/raw/github-trending-2026-04-20.json",
+  "items": [
+    {
+      "name": "openclaw/openclaw",
+      "summary": "跨平台个人AI助手，支持任意操作系统和数据自托管，让用户完全掌控自己的AI数据",
+      "highlights": [
+        "支持任意操作系统和平台，真正实现跨平台",
+        "数据完全自托管，强调用户隐私和数据主权",
+        "36万星，7.3万fork，社区活跃度极高"
+      ],
+      "score": 9,
+      "reason": "开创了个人AI助手的新范式，36万星证明其影响力。数据自主理念契合当前AI隐私需求",
+      "tags": ["ai", "assistant", "personal-ai", "self-hosted"]
+    },
+    {
+      "name": "tensorflow/tensorflow",
+      "summary": "Google开源的机器学习框架，为所有人提供易用的深度学习工具",
+      "highlights": [
+        "19.4万星，7.5万fork，行业标准地位稳固",
+        "支持分布式训练和生产级部署",
+        "生态完善，Keras集成，TensorFlow Lite移动端支持"
+      ],
+      "score": 8,
+      "reason": "虽面临PyTorch竞争仍是最大ML框架，生态积累深厚，适合大规模生产部署",
+      "tags": ["machine-learning", "deep-learning", "tensorflow"]
+    },
+    {
+      "name": "n8n-io/n8n",
+      "summary": "公平代码工作流自动化平台，原生集成AI能力，支持400+集成",
+      "highlights": [
+        "18.4万星，可视化与代码结合的独特定位",
+        "支持MCP协议，AI工作流编排能力",
+        "可自托管或云端使用，灵活部署"
+      ],
+      "score": 7,
+      "reason": "AI工作流自动化领域的领先者，可视化降低了使用门槛",
+      "tags": ["workflow-automation", "ai", "mcp", "no-code"]
+    },
+    {
+      "name": "Significant-Gravitas/AutoGPT",
+      "summary": "让每个人都能使用和构建AI的自主Agent框架",
+      "highlights": [
+        "18.3万星，最具影响力的自主AI Agent项目",
+        "支持多模型（Claude、GPT等），4.6万fork",
+        "开源协议清晰，社区贡献活跃"
+      ],
+      "score": 8,
+      "reason": "AutoGPT是Agentic AI的开创者项目，18万星表明其在AI Agent领域的标杆地位",
+      "tags": ["agentic-ai", "autonomous-agent", "ai"]
+    },
+    {
+      "name": "ollama/ollama",
+      "summary": "本地运行大语言模型的工具，支持DeepSeek、Qwen、Gemma等多种开源模型",
+      "highlights": [
+        "16.9万星，Go语言开发，性能优异",
+        "支持Kimi-K2.5、GLM、DeepSeek、Qwen等主流开源LLM",
+        "一条命令即可本地部署模型"
+      ],
+      "score": 9,
+      "reason": "降低了LLM本地部署门槛，16.9万星显示其在开源LLM生态中的核心地位",
+      "tags": ["llm", "local-llm", "ollama", "deepseek"]
+    },
+    {
+      "name": "AUTOMATIC1111/stable-diffusion-webui",
+      "summary": "Stable Diffusion的Web用户界面，让AI图像生成变得简单易用",
+      "highlights": [
+        "16.2万星，AI艺术生成领域最流行的开源UI",
+        "支持多种模型和插件扩展",
+        "降低了AI绘画的使用门槛"
+      ],
+      "score": 7,
+      "reason": "AI绘画民主化的重要推手，但DALL-E 3、Midjourney等竞品也在发展中",
+      "tags": ["ai-art", "stable-diffusion", "generative-ai"]
+    },
+    {
+      "name": "obra/superpowers",
+      "summary": "Agentic Skills框架和软件开发方法论，提出AI Agent开发新范式",
+      "highlights": [
+        "16万星，纯Shell实现，轻量级",
+        "提出Agentic Skills概念，聚焦技能而非任务",
+        "新颖的软件开发方法论视角"
+      ],
+      "score": 6,
+      "reason": "概念创新但成熟度待验证，Shell实现虽轻量但限制了应用场景",
+      "tags": ["agentic", "skills-framework", "methodology"]
+    },
+    {
+      "name": "huggingface/transformers",
+      "summary": "Hugging Face的核心库，提供最前沿的ML模型定义框架",
+      "highlights": [
+        "15.9万星，NLP和 Multimodal 模型的核心库",
+        "支持文本、视觉、音频多模态模型",
+        "开源模型生态最丰富的平台"
+      ],
+      "score": 9,
+      "reason": "开源模型生态的核心基础设施，15.9万星证明了其行业地位",
+      "tags": ["huggingface", "transformers", "machine-learning", "nlp"]
+    },
+    {
+      "name": "langflow-ai/langflow",
+      "summary": "强大的AI Agent和工作流可视化构建工具",
+      "highlights": [
+        "14.7万星，可视化LangChain界面",
+        "支持拖拽式工作流设计",
+        "可部署AI应用到生产环境"
+      ],
+      "score": 7,
+      "reason": "LangChain的可视化封装，降低了LLM应用开发门槛",
+      "tags": ["langchain", "visual-workflow", "ai-agents"]
+    },
+    {
+      "name": "anomalyco/opencode",
+      "summary": "开源编码Agent，为开发者提供AI辅助编程完整解决方案",
+      "highlights": [
+        "14.6万星，Cursor、Claude Code竞品",
+        "支持代码搜索、编辑、多文件操作",
+        "开源协议透明"
+      ],
+      "score": 8,
+      "reason": "AI编程助手领域的重要开源选择，14.6万星表明开发者社区广泛认可",
+      "tags": ["ai-coding", "developer-tools", "agent"]
+    },
+    {
+      "name": "langgenius/dify",
+      "summary": "生产级Agentic工作流开发平台，简化AI应用开发到部署",
+      "highlights": [
+        "13.8万星，TypeScript开发",
+        "专注Agentic Workflow概念",
+        "提供从开发到部署的完整解决方案"
+      ],
+      "score": 7,
+      "reason": "生产级AI应用开发平台，13.8万星显示其在企业级AI应用中的受欢迎程度",
+      "tags": ["agentic-workflow", "dify", "llm-application"]
+    },
+    {
+      "name": "langchain-ai/langchain",
+      "summary": "Agent工程平台，构建LLM应用最流行的开源框架",
+      "highlights": [
+        "13.4万星，Python生态最广泛的LLM框架",
+        "提供丰富的工具和记忆组件",
+        "大量第三方集成和社区贡献"
+      ],
+      "score": 8,
+      "reason": "LLM应用开发的事实标准，13万星和成熟生态证明其可靠性",
+      "tags": ["langchain", "llm", "agent-framework"]
+    },
+    {
+      "name": "open-webui/open-webui",
+      "summary": "用户友好的本地LLM界面，支持Ollama和OpenAI API",
+      "highlights": [
+        "13.2万星，为Ollama量身打造的UI",
+        "支持多模型切换和API管理",
+        "开源可自托管"
+      ],
+      "score": 6,
+      "reason": "Ollama的配套UI有固定用户群，但功能相对单一，定位在工具而非平台",
+      "tags": ["llm-ui", "ollama", "self-hosted"]
+    },
+    {
+      "name": "anthropics/claude-code",
+      "summary": "终端中的AI编程助手，能理解代码库并执行开发任务",
+      "highlights": [
+        "11.5万星，Anthropic官方Claude编程工具",
+        "深度理解代码库结构和上下文",
+        "通过自然语言命令执行Git等工作流"
+      ],
+      "score": 9,
+      "reason": "代表当前AI编程助手的最高水平，11.5万星且Anthropic官方支持",
+      "tags": ["claude", "ai-coding", "developer-tools"]
+    },
+    {
+      "name": "firecrawl/firecrawl",
+      "summary": "为AI应用提供的网页搜索、抓取和交互API",
+      "highlights": [
+        "11万星，解决AI应用获取网页数据的痛点",
+        "支持AI友好的网页抓取",
+        "提供搜索和交互能力"
+      ],
+      "score": 7,
+      "reason": "RAG和工作流自动化的关键基础设施，11万星表明其在AI数据获取中的重要性",
+      "tags": ["web-scraping", "ai-search", "rag"]
+    }
+  ],
+  "trends": {
+    "common_themes": [
+      "AI Agent (自主Agent) - 7个项目涉及",
+      "LLM应用开发框架 - 4个项目涉及",
+      "工作流自动化与AI结合",
+      "本地部署和数据主权"
+    ],
+    "new_concepts": [
+      "Agentic Skills - obra/superpowers 提出",
+      "Fair Code 工作流自动化 - n8n-io/n8n",
+      "Agentic Workflow - langgenius/dify 倡导",
+      "个人AI助手数据自主 - openclaw/openclaw"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "kb-2026-04-20-open-webui",
+  "title": "Open WebUI",
+  "source_url": "https://github.com/open-webui/open-webui",
+  "summary": "用户友好的本地LLM界面，支持Ollama和OpenAI API，为自托管LLM提供美观UI",
+  "tags": ["llm-ui", "ollama", "self-hosted"],
+  "relevance_score": 0.72,
+  "status": "active",
+  "collected_at": "2026-04-20T08:00:00Z",
+  "organized_at": "2026-04-20T10:30:00Z"
+}

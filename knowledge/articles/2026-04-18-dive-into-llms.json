@@ -1,0 +1,21 @@
+{
+  "id": "kb-2026-04-18-002",
+  "title": "Dive into LLMs",
+  "source": "github-trending",
+  "source_id": "Lordog/dive-into-llms",
+  "url": "https://github.com/Lordog/dive-into-llms",
+  "summary": "Dive into LLMs 是面向开发者的动手学大模型教程，通过编程实践帮助读者深入理解 LLM 原理与应用。",
+  "tags": ["llm", "tutorial", "programming", "education"],
+  "relevance_score": 0.90,
+  "category": "Learning Resource",
+  "highlights": [
+    "《动手学大模型》系列教程",
+    "注重编程实践",
+    "Stars 31,540"
+  ],
+  "stars": 31540,
+  "collected_at": "2026-04-18T08:00:00Z",
+  "analyzed_at": "2026-04-18T09:00:00Z",
+  "organized_at": "2026-04-18T11:00:00Z",
+  "status": "published"
+}

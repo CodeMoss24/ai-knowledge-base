@@ -1,0 +1,11 @@
+{
+  "id": "550e8400-e29b-41d4-a716-446655440005",
+  "title": "Stable Diffusion WebUI",
+  "source": "github-trending",
+  "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
+  "collected_at": "2026-04-17T08:22:27Z",
+  "summary": "Stable Diffusion图像生成Web界面，大幅降低AI绘图使用门槛",
+  "highlights": ["友好的Web图形界面", "丰富的图像生成功能", "降低AI绘图门槛"],
+  "score": 8,
+  "reason": "AI绘图领域最流行的开源工具，对生成式AI普及贡献巨大"
+}

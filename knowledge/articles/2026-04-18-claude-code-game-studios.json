@@ -1,0 +1,21 @@
+{
+  "id": "kb-2026-04-18-006",
+  "title": "Claude Code Game Studios",
+  "source": "github-trending",
+  "source_id": "Donchitos/Claude-Code-Game-Studios",
+  "url": "https://github.com/Donchitos/Claude-Code-Game-Studios",
+  "summary": "Claude Code Game Studios 将 Claude Code 变身为完整游戏开发工作室，包含 49 个 AI 智能体和 72 个工作流技能。",
+  "tags": ["game-development", "claude-code", "multi-agent", "workflow-automation"],
+  "relevance_score": 0.82,
+  "category": "AI Application",
+  "highlights": [
+    "49 个 AI 智能体协同工作",
+    "72 个工作流技能",
+    "完整游戏开发生命周期支持"
+  ],
+  "stars": 11812,
+  "collected_at": "2026-04-18T08:00:00Z",
+  "analyzed_at": "2026-04-18T09:00:00Z",
+  "organized_at": "2026-04-18T11:00:00Z",
+  "status": "published"
+}

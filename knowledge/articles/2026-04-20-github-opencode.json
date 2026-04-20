@@ -1,0 +1,11 @@
+{
+  "id": "kb-2026-04-20-opencode",
+  "title": "OpenCode",
+  "source_url": "https://github.com/anomalyco/opencode",
+  "summary": "开源编码Agent，为开发者提供AI辅助编程完整解决方案，支持代码搜索、编辑、多文件操作",
+  "tags": ["ai-coding", "developer-tools", "agent"],
+  "relevance_score": 0.85,
+  "status": "active",
+  "collected_at": "2026-04-20T08:00:00Z",
+  "organized_at": "2026-04-20T10:30:00Z"
+}

@@ -1,0 +1,21 @@
+{
+  "id": "kb-2026-04-18-008",
+  "title": "Evolver",
+  "source": "github-trending",
+  "source_id": "EvoMap/evolver",
+  "url": "https://github.com/EvoMap/evolver",
+  "summary": "Evolver 是 AI 智能体的自我进化引擎，采用基因组进化协议让 agent 能自主迭代优化。",
+  "tags": ["self-evolution", "genome-evolution", "ai-agent", "optimization"],
+  "relevance_score": 0.70,
+  "category": "AI Agent Framework",
+  "highlights": [
+    "基因组进化协议 (GEP)",
+    "AI 智能体自主迭代优化",
+    "自进化引擎"
+  ],
+  "stars": 4286,
+  "collected_at": "2026-04-18T08:00:00Z",
+  "analyzed_at": "2026-04-18T09:00:00Z",
+  "organized_at": "2026-04-18T11:00:00Z",
+  "status": "published"
+}

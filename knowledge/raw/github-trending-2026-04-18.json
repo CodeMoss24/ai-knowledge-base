@@ -1,0 +1,86 @@
+[
+  {
+    "name": "obra/superpowers",
+    "url": "https://github.com/obra/superpowers",
+    "stars": 157796,
+    "description": "An agentic skills framework & software development methodology that works.",
+    "summary": "Superpowers 是一个智能体技能框架和软件开发方法论，它让 AI agent 能够像人类开发者一样协作完成复杂项目。"
+  },
+  {
+    "name": "Lordog/dive-into-llms",
+    "url": "https://github.com/Lordog/dive-into-llms",
+    "stars": 31540,
+    "description": "《动手学大模型Dive into LLMs》系列编程实践教程",
+    "summary": "Dive into LLMs 是面向开发者的动手学大模型教程，通过编程实践帮助读者深入理解 LLM 原理与应用。"
+  },
+  {
+    "name": "ChromeDevTools/chrome-devtools-mcp",
+    "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
+    "stars": 35864,
+    "description": "Chrome DevTools for coding agents",
+    "summary": "Chrome DevTools MCP 让 AI 编程智能体能够直接使用 Chrome 开发者工具进行调试和开发。"
+  },
+  {
+    "name": "openai/openai-agents-python",
+    "url": "https://github.com/openai/openai-agents-python",
+    "stars": 21831,
+    "description": "A lightweight, powerful framework for multi-agent workflows",
+    "summary": "OpenAI Agents Python 是一个轻量但强大的多智能体工作流框架，适合构建复杂的 AI agent 协作系统。"
+  },
+  {
+    "name": "google/magika",
+    "url": "https://github.com/google/magika",
+    "stars": 15483,
+    "description": "Fast and accurate AI powered file content types detection",
+    "summary": "Magika 是 Google 推出的 AI 文件类型检测工具，能快速准确识别文件内容类型。"
+  },
+  {
+    "name": "Donchitos/Claude-Code-Game-Studios",
+    "url": "https://github.com/Donchitos/Claude-Code-Game-Studios",
+    "stars": 11812,
+    "description": "Turn Claude Code into a full game dev studio — 49 AI agents, 72 workflow skills, and a complete coordination system mirroring real studio hierarchy.",
+    "summary": "Claude Code Game Studios 将 Claude Code 变身为完整游戏开发工作室，包含 49 个 AI 智能体和 72 个工作流技能。"
+  },
+  {
+    "name": "BasedHardware/omi",
+    "url": "https://github.com/BasedHardware/omi",
+    "stars": 9861,
+    "description": "AI that sees your screen, listens to your conversations and tells you what to do",
+    "summary": "Omi 是一款能看屏幕、听对话并给出行动建议的 AI 助手，实时理解用户上下文并提供智能指引。"
+  },
+  {
+    "name": "EvoMap/evolver",
+    "url": "https://github.com/EvoMap/evolver",
+    "stars": 4286,
+    "description": "The GEP-Powered Self-Evolution Engine for AI Agents. Genome Evolution Protocol. | evomap.ai",
+    "summary": "Evolver 是 AI 智能体的自我进化引擎，采用基因组进化协议让 agent 能自主迭代优化。"
+  },
+  {
+    "name": "lukilabs/craft-agents-oss",
+    "url": "https://github.com/lukilabs/craft-agents-oss",
+    "stars": 4304,
+    "description": "",
+    "summary": "Craft Agents 是一个开源的 AI agent 协作框架，支持多智能体分工与任务编排。"
+  },
+  {
+    "name": "lsdefine/GenericAgent",
+    "url": "https://github.com/lsdefine/GenericAgent",
+    "stars": 3658,
+    "description": "Self-evolving agent: grows skill tree from 3.3K-line seed, achieving full system control with 6x less token consumption",
+    "summary": "GenericAgent 是自进化智能体，能从少量代码种子自主扩展技能树，以 1/6 的 token 消耗实现完整系统控制。"
+  },
+  {
+    "name": "z-lab/dflash",
+    "url": "https://github.com/z-lab/dflash",
+    "stars": 1809,
+    "description": "DFlash: Block Diffusion for Flash Speculative Decoding",
+    "summary": "DFlash 是一种块扩散方法，用于加速 LLM 的推测解码，显著提升生成速度。"
+  },
+  {
+    "name": "Tracer-Cloud/opensre",
+    "url": "https://github.com/Tracer-Cloud/opensre",
+    "stars": 1472,
+    "description": "Build your own AI SRE agents. The open source toolkit for the AI era ✨",
+    "summary": "OpenSRE 是 AI 时代的 SRE 智能体工具包，让你快速构建自己的智能运维 agent。"
+  }
+]

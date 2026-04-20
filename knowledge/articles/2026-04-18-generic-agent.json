@@ -1,0 +1,21 @@
+{
+  "id": "kb-2026-04-18-010",
+  "title": "GenericAgent",
+  "source": "github-trending",
+  "source_id": "lsdefine/GenericAgent",
+  "url": "https://github.com/lsdefine/GenericAgent",
+  "summary": "GenericAgent 是自进化智能体，能从少量代码种子自主扩展技能树，以 1/6 的 token 消耗实现完整系统控制。",
+  "tags": ["self-evolving", "skill-tree", "token-optimization", "ai-agent"],
+  "relevance_score": 0.68,
+  "category": "AI Agent Framework",
+  "highlights": [
+    "自进化智能体系统",
+    "从少量代码种子自主扩展",
+    "6倍 token 消耗优化"
+  ],
+  "stars": 3658,
+  "collected_at": "2026-04-18T08:00:00Z",
+  "analyzed_at": "2026-04-18T09:00:00Z",
+  "organized_at": "2026-04-18T11:00:00Z",
+  "status": "published"
+}

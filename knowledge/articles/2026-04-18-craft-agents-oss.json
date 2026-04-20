@@ -1,0 +1,21 @@
+{
+  "id": "kb-2026-04-18-009",
+  "title": "Craft Agents OSS",
+  "source": "github-trending",
+  "source_id": "lukilabs/craft-agents-oss",
+  "url": "https://github.com/lukilabs/craft-agents-oss",
+  "summary": "Craft Agents 是一个开源的 AI agent 协作框架，支持多智能体分工与任务编排。",
+  "tags": ["multi-agent", "task-orchestration", "collaboration", "open-source"],
+  "relevance_score": 0.68,
+  "category": "AI Agent Framework",
+  "highlights": [
+    "开源 AI agent 协作框架",
+    "多智能体任务编排",
+    "支持分工协作"
+  ],
+  "stars": 4304,
+  "collected_at": "2026-04-18T08:00:00Z",
+  "analyzed_at": "2026-04-18T09:00:00Z",
+  "organized_at": "2026-04-18T11:00:00Z",
+  "status": "published"
+}
