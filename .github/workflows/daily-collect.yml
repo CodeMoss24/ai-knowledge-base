@@ -35,10 +35,7 @@ jobs:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         working-directory: ./pipeline
-        run: python pipeline.py \
-            --sources github,rss \
-            --limit 20 \
-            --verbose
+        run: python pipeline.py --sources github,rss --limit 20 --verbose
 
       - name: Validate collected articles
         run: |
