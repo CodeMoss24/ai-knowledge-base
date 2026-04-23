@@ -33,7 +33,7 @@ OPTIONAL_FIELDS: dict[str, type] = {
 
 UUID_PATTERN = re.compile(r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", re.I)
 ID_PATTERN_KBN = re.compile(r"^kb-\d{4}-\d{2}-\d{2}-\d{3}$")
-ID_PATTERN_KBS = re.compile(r"^kb-\d{4}-\d{2}-\d{2}-[a-z-]+$")
+ID_PATTERN_KBS = re.compile(r"^kb-\d{4}-\d{2}-\d{2}-[a-z0-9-]+$")
 ID_PATTERN_OLD = re.compile(r"^[a-z]+-\d{8}-\d{3}$")
 URL_PATTERN = re.compile(r"^https?://")
 MIN_SUMMARY_LENGTH = 10
