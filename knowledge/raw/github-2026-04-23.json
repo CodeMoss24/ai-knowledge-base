@@ -1,6 +1,6 @@
 {
   "source": "github",
-  "collected_at": "2026-04-23T07:36:24.515592+00:00",
+  "collected_at": "2026-04-23T09:52:03.261982+00:00",
   "items": [
     {
       "id": "github-1103012935",
@@ -9,9 +9,9 @@
       "url": "https://github.com/openclaw/openclaw",
       "source": "github",
       "source_url": "https://github.com/openclaw/openclaw",
-      "stars": 362597,
+      "stars": 362672,
       "language": "TypeScript",
-      "collected_at": "2026-04-23T07:36:24.515289+00:00"
+      "collected_at": "2026-04-23T09:52:02.904615+00:00"
     },
     {
       "id": "github-45717250",
@@ -22,7 +22,7 @@
       "source_url": "https://github.com/tensorflow/tensorflow",
       "stars": 194838,
       "language": "C++",
-      "collected_at": "2026-04-23T07:36:24.515305+00:00"
+      "collected_at": "2026-04-23T09:52:02.904644+00:00"
     },
     {
       "id": "github-193215554",
@@ -31,9 +31,396 @@
       "url": "https://github.com/n8n-io/n8n",
       "source": "github",
       "source_url": "https://github.com/n8n-io/n8n",
-      "stars": 185217,
+      "stars": 185241,
       "language": "TypeScript",
-      "collected_at": "2026-04-23T07:36:24.515308+00:00"
+      "collected_at": "2026-04-23T09:52:02.904648+00:00"
+    },
+    {
+      "id": "github-614765452",
+      "title": "AutoGPT",
+      "description": "AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.",
+      "url": "https://github.com/Significant-Gravitas/AutoGPT",
+      "source": "github",
+      "source_url": "https://github.com/Significant-Gravitas/AutoGPT",
+      "stars": 183686,
+      "language": "Python",
+      "collected_at": "2026-04-23T09:52:02.904651+00:00"
+    },
+    {
+      "id": "github-658928958",
+      "title": "ollama",
+      "description": "Get up and running with Kimi-K2.5, GLM-5, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
+      "url": "https://github.com/ollama/ollama",
+      "source": "github",
+      "source_url": "https://github.com/ollama/ollama",
+      "stars": 169752,
+      "language": "Go",
+      "collected_at": "2026-04-23T09:52:02.904653+00:00"
+    },
+    {
+      "id": "github-1136590548",
+      "title": "everything-claude-code",
+      "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+      "url": "https://github.com/affaan-m/everything-claude-code",
+      "source": "github",
+      "source_url": "https://github.com/affaan-m/everything-claude-code",
+      "stars": 164761,
+      "language": "JavaScript",
+      "collected_at": "2026-04-23T09:52:02.904655+00:00"
+    },
+    {
+      "id": "github-527591471",
+      "title": "stable-diffusion-webui",
+      "description": "Stable Diffusion web UI",
+      "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
+      "source": "github",
+      "source_url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
+      "stars": 162557,
+      "language": "Python",
+      "collected_at": "2026-04-23T09:52:02.904657+00:00"
+    },
+    {
+      "id": "github-574523116",
+      "title": "prompts.chat",
+      "description": "f.k.a. Awesome ChatGPT Prompts. Share, discover, and collect prompts from the community. Free and open source — self-host for your organization with complete privacy.",
+      "url": "https://github.com/f/prompts.chat",
+      "source": "github",
+      "source_url": "https://github.com/f/prompts.chat",
+      "stars": 160459,
+      "language": "HTML",
+      "collected_at": "2026-04-23T09:52:02.904664+00:00"
+    },
+    {
+      "id": "github-155220641",
+      "title": "transformers",
+      "description": "🤗 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training. ",
+      "url": "https://github.com/huggingface/transformers",
+      "source": "github",
+      "source_url": "https://github.com/huggingface/transformers",
+      "stars": 159787,
+      "language": "Python",
+      "collected_at": "2026-04-23T09:52:02.904666+00:00"
+    },
+    {
+      "id": "github-132464395",
+      "title": "JavaGuide",
+      "description": "Java 面试 & 后端通用面试指南，覆盖计算机基础、数据库、分布式、高并发、系统设计与 AI 应用开发",
+      "url": "https://github.com/Snailclimb/JavaGuide",
+      "source": "github",
+      "source_url": "https://github.com/Snailclimb/JavaGuide",
+      "stars": 155166,
+      "language": "Java",
+      "collected_at": "2026-04-23T09:52:02.904669+00:00"
+    },
+    {
+      "id": "github-599320067",
+      "title": "langflow",
+      "description": "Langflow is a powerful tool for building and deploying AI-powered agents and workflows.",
+      "url": "https://github.com/langflow-ai/langflow",
+      "source": "github",
+      "source_url": "https://github.com/langflow-ai/langflow",
+      "stars": 147291,
+      "language": "Python",
+      "collected_at": "2026-04-23T09:52:02.904671+00:00"
+    },
+    {
+      "id": "github-626805178",
+      "title": "dify",
+      "description": "Production-ready platform for agentic workflow development.",
+      "url": "https://github.com/langgenius/dify",
+      "source": "github",
+      "source_url": "https://github.com/langgenius/dify",
+      "stars": 138868,
+      "language": "TypeScript",
+      "collected_at": "2026-04-23T09:52:02.904675+00:00"
+    },
+    {
+      "id": "github-943398999",
+      "title": "system-prompts-and-models-of-ai-tools",
+      "description": "FULL Augment Code, Claude Code, Cluely, CodeBuddy, Comet, Cursor, Devin AI, Junie, Kiro, Leap.new, Lovable, Manus, NotionAI, Orchids.app, Perplexity, Poke, Qoder, Replit, Same.dev, Trae, Traycer AI, VSCode Agent, Warp.dev, Windsurf, Xcode, Z.ai Code, Dia & v0. (And other Open Sourced) System Prompts, Internal Tools & AI Models",
+      "url": "https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools",
+      "source": "github",
+      "source_url": "https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools",
+      "stars": 135824,
+      "language": "unknown",
+      "collected_at": "2026-04-23T09:52:02.904678+00:00"
+    },
+    {
+      "id": "github-552661142",
+      "title": "langchain",
+      "description": "The agent engineering platform",
+      "url": "https://github.com/langchain-ai/langchain",
+      "source": "github",
+      "source_url": "https://github.com/langchain-ai/langchain",
+      "stars": 134597,
+      "language": "Python",
+      "collected_at": "2026-04-23T09:52:02.904680+00:00"
+    },
+    {
+      "id": "github-701547123",
+      "title": "open-webui",
+      "description": "User-friendly AI Interface (Supports Ollama, OpenAI API, ...)",
+      "url": "https://github.com/open-webui/open-webui",
+      "source": "github",
+      "source_url": "https://github.com/open-webui/open-webui",
+      "stars": 133555,
+      "language": "Python",
+      "collected_at": "2026-04-23T09:52:02.904682+00:00"
+    },
+    {
+      "id": "github-1024554267",
+      "title": "hermes-agent",
+      "description": "The agent that grows with you",
+      "url": "https://github.com/NousResearch/hermes-agent",
+      "source": "github",
+      "source_url": "https://github.com/NousResearch/hermes-agent",
+      "stars": 112003,
+      "language": "Python",
+      "collected_at": "2026-04-23T09:52:02.904684+00:00"
+    },
+    {
+      "id": "github-787076358",
+      "title": "firecrawl",
+      "description": "🔥 The API to search, scrape, and interact with the web for AI",
+      "url": "https://github.com/firecrawl/firecrawl",
+      "source": "github",
+      "source_url": "https://github.com/firecrawl/firecrawl",
+      "stars": 111700,
+      "language": "TypeScript",
+      "collected_at": "2026-04-23T09:52:02.904686+00:00"
+    },
+    {
+      "id": "github-589831718",
+      "title": "ComfyUI",
+      "description": "The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface.",
+      "url": "https://github.com/Comfy-Org/ComfyUI",
+      "source": "github",
+      "source_url": "https://github.com/Comfy-Org/ComfyUI",
+      "stars": 109742,
+      "language": "Python",
+      "collected_at": "2026-04-23T09:52:02.904688+00:00"
+    },
+    {
+      "id": "github-655806940",
+      "title": "generative-ai-for-beginners",
+      "description": "21 Lessons, Get Started Building with Generative AI ",
+      "url": "https://github.com/microsoft/generative-ai-for-beginners",
+      "source": "github",
+      "source_url": "https://github.com/microsoft/generative-ai-for-beginners",
+      "stars": 109713,
+      "language": "Jupyter Notebook",
+      "collected_at": "2026-04-23T09:52:02.904693+00:00"
+    },
+    {
+      "id": "github-793375104",
+      "title": "awesome-llm-apps",
+      "description": "100+ AI Agent & RAG apps you can actually run — clone, customize, ship.",
+      "url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
+      "source": "github",
+      "source_url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
+      "stars": 107075,
+      "language": "Python",
+      "collected_at": "2026-04-23T09:52:02.904696+00:00"
+    },
+    {
+      "id": "rss--1998505078796107301",
+      "title": "Our newsroom AI policy",
+      "description": "Article URL: https://arstechnica.com/staff/2026/04/our-newsroom-ai-policy/ Comments URL: https://news.ycombinator.com/item?id=47872452 Points: 49 # Comments: 31",
+      "url": "https://arstechnica.com/staff/2026/04/our-newsroom-ai-policy/",
+      "source": "rss",
+      "source_url": "https://arstechnica.com/staff/2026/04/our-newsroom-ai-policy/",
+      "published_at": "Thu, 23 Apr 2026 05:14:05 +0000",
+      "collected_at": "2026-04-23T09:52:03.136009+00:00"
+    },
+    {
+      "id": "rss-9217437243966279409",
+      "title": "I am building a cloud",
+      "description": "Article URL: https://crawshaw.io/blog/building-a-cloud Comments URL: https://news.ycombinator.com/item?id=47872324 Points: 336 # Comments: 159",
+      "url": "https://crawshaw.io/blog/building-a-cloud",
+      "source": "rss",
+      "source_url": "https://crawshaw.io/blog/building-a-cloud",
+      "published_at": "Thu, 23 Apr 2026 04:44:19 +0000",
+      "collected_at": "2026-04-23T09:52:03.136068+00:00"
+    },
+    {
+      "id": "rss-768386730399727439",
+      "title": "Borrow-checking without type-checking",
+      "description": "Article URL: https://www.scattered-thoughts.net/writing/borrow-checking-without-type-checking/ Comments URL: https://news.ycombinator.com/item?id=47871817 Points: 58 # Comments: 15",
+      "url": "https://www.scattered-thoughts.net/writing/borrow-checking-without-type-checking/",
+      "source": "rss",
+      "source_url": "https://www.scattered-thoughts.net/writing/borrow-checking-without-type-checking/",
+      "published_at": "Thu, 23 Apr 2026 02:55:17 +0000",
+      "collected_at": "2026-04-23T09:52:03.136117+00:00"
+    },
+    {
+      "id": "rss--5855583043302593094",
+      "title": "Arch Linux Now Has a Bit-for-Bit Reproducible Docker Image",
+      "description": "Article URL: https://antiz.fr/blog/archlinux-now-has-a-reproducible-docker-image/ Comments URL: https://news.ycombinator.com/item?id=47871519 Points: 55 # Comments: 10",
+      "url": "https://antiz.fr/blog/archlinux-now-has-a-reproducible-docker-image/",
+      "source": "rss",
+      "source_url": "https://antiz.fr/blog/archlinux-now-has-a-reproducible-docker-image/",
+      "published_at": "Thu, 23 Apr 2026 01:59:08 +0000",
+      "collected_at": "2026-04-23T09:52:03.136161+00:00"
+    },
+    {
+      "id": "rss-2723885717285603352",
+      "title": "Tempest vs. Tempest: The Making and Remaking of Atari's Iconic Video Game",
+      "description": "Article URL: https://tempest.homemade.systems Comments URL: https://news.ycombinator.com/item?id=47871195 Points: 74 # Comments: 24",
+      "url": "https://tempest.homemade.systems",
+      "source": "rss",
+      "source_url": "https://tempest.homemade.systems",
+      "published_at": "Thu, 23 Apr 2026 01:02:32 +0000",
+      "collected_at": "2026-04-23T09:52:03.136198+00:00"
+    },
+    {
+      "id": "rss--2538128173065931132",
+      "title": "Apple fixes bug that cops used to extract deleted chat messages from iPhones",
+      "description": "Article URL: https://techcrunch.com/2026/04/22/apple-fixes-bug-that-cops-used-to-extract-deleted-chat-messages-from-iphones/ Comments URL: https://news.ycombinator.com/item?id=47868867 Points: 595 # Comments: 147",
+      "url": "https://techcrunch.com/2026/04/22/apple-fixes-bug-that-cops-used-to-extract-deleted-chat-messages-from-iphones/",
+      "source": "rss",
+      "source_url": "https://techcrunch.com/2026/04/22/apple-fixes-bug-that-cops-used-to-extract-deleted-chat-messages-from-iphones/",
+      "published_at": "Wed, 22 Apr 2026 20:27:31 +0000",
+      "collected_at": "2026-04-23T09:52:03.136251+00:00"
+    },
+    {
+      "id": "rss--6732418212437601512",
+      "title": "Website streamed live directly from a model",
+      "description": "https://x.com/zan2434/status/2046982383430496444 (https://xcancel.com/zan2434/status/2046982383430496444) Comments URL: https://news.ycombinator.com/item?id=47867048 Points: 277 # Comments: 77",
+      "url": "https://flipbook.page/",
+      "source": "rss",
+      "source_url": "https://flipbook.page/",
+      "published_at": "Wed, 22 Apr 2026 18:01:18 +0000",
+      "collected_at": "2026-04-23T09:52:03.136303+00:00"
+    },
+    {
+      "id": "rss-1609110419695175804",
+      "title": "Over-editing refers to a model modifying code beyond what is necessary",
+      "description": "Article URL: https://nrehiew.github.io/blog/minimal_editing/ Comments URL: https://news.ycombinator.com/item?id=47866913 Points: 363 # Comments: 206",
+      "url": "https://nrehiew.github.io/blog/minimal_editing/",
+      "source": "rss",
+      "source_url": "https://nrehiew.github.io/blog/minimal_editing/",
+      "published_at": "Wed, 22 Apr 2026 17:51:17 +0000",
+      "collected_at": "2026-04-23T09:52:03.136348+00:00"
+    },
+    {
+      "id": "rss-9121582229604949845",
+      "title": "Workspace Agents in ChatGPT",
+      "description": "Article URL: https://openai.com/index/introducing-workspace-agents-in-chatgpt/ Comments URL: https://news.ycombinator.com/item?id=47866860 Points: 137 # Comments: 52",
+      "url": "https://openai.com/index/introducing-workspace-agents-in-chatgpt/",
+      "source": "rss",
+      "source_url": "https://openai.com/index/introducing-workspace-agents-in-chatgpt/",
+      "published_at": "Wed, 22 Apr 2026 17:47:07 +0000",
+      "collected_at": "2026-04-23T09:52:03.136389+00:00"
+    },
+    {
+      "id": "rss-8978770066033158366",
+      "title": "Parallel agents in Zed",
+      "description": "Article URL: https://zed.dev/blog/parallel-agents Comments URL: https://news.ycombinator.com/item?id=47866750 Points: 228 # Comments: 122",
+      "url": "https://zed.dev/blog/parallel-agents",
+      "source": "rss",
+      "source_url": "https://zed.dev/blog/parallel-agents",
+      "published_at": "Wed, 22 Apr 2026 17:38:57 +0000",
+      "collected_at": "2026-04-23T09:52:03.136424+00:00"
+    },
+    {
+      "id": "rss--3338389074843486485",
+      "title": "We found a stable Firefox identifier linking all your private Tor identities",
+      "description": "Article URL: https://fingerprint.com/blog/firefox-tor-indexeddb-privacy-vulnerability/ Comments URL: https://news.ycombinator.com/item?id=47866697 Points: 695 # Comments: 195",
+      "url": "https://fingerprint.com/blog/firefox-tor-indexeddb-privacy-vulnerability/",
+      "source": "rss",
+      "source_url": "https://fingerprint.com/blog/firefox-tor-indexeddb-privacy-vulnerability/",
+      "published_at": "Wed, 22 Apr 2026 17:35:03 +0000",
+      "collected_at": "2026-04-23T09:52:03.136491+00:00"
+    },
+    {
+      "id": "rss-4356953704735465689",
+      "title": "Alberta startup sells no-tech tractors for half price",
+      "description": "Article URL: https://wheelfront.com/this-alberta-startup-sells-no-tech-tractors-for-half-price/ Comments URL: https://news.ycombinator.com/item?id=47865868 Points: 1764 # Comments: 562",
+      "url": "https://wheelfront.com/this-alberta-startup-sells-no-tech-tractors-for-half-price/",
+      "source": "rss",
+      "source_url": "https://wheelfront.com/this-alberta-startup-sells-no-tech-tractors-for-half-price/",
+      "published_at": "Wed, 22 Apr 2026 16:29:25 +0000",
+      "collected_at": "2026-04-23T09:52:03.136540+00:00"
+    },
+    {
+      "id": "rss-1537942892294099736",
+      "title": "Technical, cognitive, and intent debt",
+      "description": "Article URL: https://martinfowler.com/fragments/2026-04-02.html Comments URL: https://news.ycombinator.com/item?id=47865661 Points: 264 # Comments: 68",
+      "url": "https://martinfowler.com/fragments/2026-04-02.html",
+      "source": "rss",
+      "source_url": "https://martinfowler.com/fragments/2026-04-02.html",
+      "published_at": "Wed, 22 Apr 2026 16:11:23 +0000",
+      "collected_at": "2026-04-23T09:52:03.136578+00:00"
+    },
+    {
+      "id": "rss--1813340005201300695",
+      "title": "Ping-pong robot beats top-level human players",
+      "description": "Article URL: https://www.reuters.com/sports/ping-pong-robot-ace-makes-history-by-beating-top-level-human-players-2026-04-22/ Comments URL: https://news.ycombinator.com/item?id=47864785 Points: 119 # Comments: 143",
+      "url": "https://www.reuters.com/sports/ping-pong-robot-ace-makes-history-by-beating-top-level-human-players-2026-04-22/",
+      "source": "rss",
+      "source_url": "https://www.reuters.com/sports/ping-pong-robot-ace-makes-history-by-beating-top-level-human-players-2026-04-22/",
+      "published_at": "Wed, 22 Apr 2026 15:13:48 +0000",
+      "collected_at": "2026-04-23T09:52:03.136626+00:00"
+    },
+    {
+      "id": "rss--8228268152861021950",
+      "title": "Scoring Show HN submissions for AI design patterns",
+      "description": "Article URL: https://www.adriankrebs.ch/blog/design-slop/ Comments URL: https://news.ycombinator.com/item?id=47864393 Points: 307 # Comments: 220",
+      "url": "https://www.adriankrebs.ch/blog/design-slop/",
+      "source": "rss",
+      "source_url": "https://www.adriankrebs.ch/blog/design-slop/",
+      "published_at": "Wed, 22 Apr 2026 14:44:32 +0000",
+      "collected_at": "2026-04-23T09:52:03.136666+00:00"
+    },
+    {
+      "id": "rss-9187586485553134387",
+      "title": "The handmade beauty of Machine Age data visualizations",
+      "description": "Article URL: https://resobscura.substack.com/p/the-handmade-beauty-of-machine-age Comments URL: https://news.ycombinator.com/item?id=47864011 Points: 38 # Comments: 2",
+      "url": "https://resobscura.substack.com/p/the-handmade-beauty-of-machine-age",
+      "source": "rss",
+      "source_url": "https://resobscura.substack.com/p/the-handmade-beauty-of-machine-age",
+      "published_at": "Wed, 22 Apr 2026 14:15:44 +0000",
+      "collected_at": "2026-04-23T09:52:03.136707+00:00"
+    },
+    {
+      "id": "rss--6707645607265162481",
+      "title": "Ultraviolet corona discharges on treetops during storms",
+      "description": "Article URL: https://www.psu.edu/news/earth-and-mineral-sciences/story/treetops-glowing-during-storms-captured-film-first-time Comments URL: https://news.ycombinator.com/item?id=47863324 Points: 232 # Comments: 65",
+      "url": "https://www.psu.edu/news/earth-and-mineral-sciences/story/treetops-glowing-during-storms-captured-film-first-time",
+      "source": "rss",
+      "source_url": "https://www.psu.edu/news/earth-and-mineral-sciences/story/treetops-glowing-during-storms-captured-film-first-time",
+      "published_at": "Wed, 22 Apr 2026 13:28:40 +0000",
+      "collected_at": "2026-04-23T09:52:03.136755+00:00"
+    },
+    {
+      "id": "rss-1857824515601090398",
+      "title": "Qwen3.6-27B: Flagship-Level Coding in a 27B Dense Model",
+      "description": "Article URL: https://qwen.ai/blog?id=qwen3.6-27b Comments URL: https://news.ycombinator.com/item?id=47863217 Points: 842 # Comments: 391",
+      "url": "https://qwen.ai/blog?id=qwen3.6-27b",
+      "source": "rss",
+      "source_url": "https://qwen.ai/blog?id=qwen3.6-27b",
+      "published_at": "Wed, 22 Apr 2026 13:19:58 +0000",
+      "collected_at": "2026-04-23T09:52:03.136791+00:00"
+    },
+    {
+      "id": "rss--8614441053250681932",
+      "title": "Windows 9x Subsystem for Linux",
+      "description": "Article URL: https://social.hails.org/@hailey/116446826733136456 Comments URL: https://news.ycombinator.com/item?id=47861270 Points: 955 # Comments: 226",
+      "url": "https://social.hails.org/@hailey/116446826733136456",
+      "source": "rss",
+      "source_url": "https://social.hails.org/@hailey/116446826733136456",
+      "published_at": "Wed, 22 Apr 2026 09:52:52 +0000",
+      "collected_at": "2026-04-23T09:52:03.136829+00:00"
+    },
+    {
+      "id": "rss--5894532137531389691",
+      "title": "Trellis AI (YC W24) Is hiring engineers to build self-improving agents",
+      "description": "Article URL: https://www.ycombinator.com/companies/trellis-ai/jobs/SvzJaTH-member-of-technical-staff-product-engineering-full-time Comments URL: https://news.ycombinator.com/item?id=47851456 Points: 0 # Comments: 0",
+      "url": "https://www.ycombinator.com/companies/trellis-ai/jobs/SvzJaTH-member-of-technical-staff-product-engineering-full-time",
+      "source": "rss",
+      "source_url": "https://www.ycombinator.com/companies/trellis-ai/jobs/SvzJaTH-member-of-technical-staff-product-engineering-full-time",
+      "published_at": "Tue, 21 Apr 2026 17:01:15 +0000",
+      "collected_at": "2026-04-23T09:52:03.136879+00:00"
     }
   ]
 }
