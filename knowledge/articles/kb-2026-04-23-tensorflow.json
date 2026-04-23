@@ -1,0 +1,23 @@
+{
+  "id": "kb-2026-04-23-tensorflow",
+  "title": "tensorflow",
+  "source": "github",
+  "source_url": "https://github.com/tensorflow/tensorflow",
+  "url": "https://github.com/tensorflow/tensorflow",
+  "summary": "TensorFlow是Google开源的机器学习框架，为所有人提供深度学习模型的构建、训练和部署能力。它是当前最流行的机器学习框架之一，支持Python、C++等多种编程语言，广泛应用于学术研究和工业生产环境。",
+  "tags": [
+    "tensorflow",
+    "machine-learning",
+    "deep-learning",
+    "open-source",
+    "google",
+    "framework",
+    "neural-networks",
+    "python"
+  ],
+  "relevance_score": 0.98,
+  "status": "active",
+  "collected_at": "2026-04-23T07:36:24.515305+00:00",
+  "analyzed_at": "2026-04-23T07:36:53.263865+00:00",
+  "organized_at": "2026-04-23T07:37:02.499856+00:00"
+}

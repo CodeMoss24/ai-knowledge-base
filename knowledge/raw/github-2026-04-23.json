@@ -1,0 +1,39 @@
+{
+  "source": "github",
+  "collected_at": "2026-04-23T07:36:24.515592+00:00",
+  "items": [
+    {
+      "id": "github-1103012935",
+      "title": "openclaw",
+      "description": "Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 ",
+      "url": "https://github.com/openclaw/openclaw",
+      "source": "github",
+      "source_url": "https://github.com/openclaw/openclaw",
+      "stars": 362597,
+      "language": "TypeScript",
+      "collected_at": "2026-04-23T07:36:24.515289+00:00"
+    },
+    {
+      "id": "github-45717250",
+      "title": "tensorflow",
+      "description": "An Open Source Machine Learning Framework for Everyone",
+      "url": "https://github.com/tensorflow/tensorflow",
+      "source": "github",
+      "source_url": "https://github.com/tensorflow/tensorflow",
+      "stars": 194838,
+      "language": "C++",
+      "collected_at": "2026-04-23T07:36:24.515305+00:00"
+    },
+    {
+      "id": "github-193215554",
+      "title": "n8n",
+      "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
+      "url": "https://github.com/n8n-io/n8n",
+      "source": "github",
+      "source_url": "https://github.com/n8n-io/n8n",
+      "stars": 185217,
+      "language": "TypeScript",
+      "collected_at": "2026-04-23T07:36:24.515308+00:00"
+    }
+  ]
+}

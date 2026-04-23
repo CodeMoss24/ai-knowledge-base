@@ -1,11 +1,26 @@
 [
   {
+    "id": "kb-2026-04-23-n8n",
+    "file": "kb-2026-04-23-n8n.json",
+    "saved_at": "2026-04-23T07:37:02.500290+00:00"
+  },
+  {
+    "id": "kb-2026-04-23-tensorflow",
+    "file": "kb-2026-04-23-tensorflow.json",
+    "saved_at": "2026-04-23T07:37:02.500282+00:00"
+  },
+  {
     "id": "kb-2026-04-18-001",
     "title": "Superpowers",
     "url": "https://github.com/obra/superpowers",
     "source": "github-trending",
     "file": "2026-04-18-superpowers.json",
-    "tags": ["agent-framework", "software-development", "collaboration", "methodology"],
+    "tags": [
+      "agent-framework",
+      "software-development",
+      "collaboration",
+      "methodology"
+    ],
     "relevance_score": 0.95,
     "collected_at": "2026-04-18T08:00:00Z",
     "organized_at": "2026-04-18T11:00:00Z"
@@ -16,8 +31,13 @@
     "url": "https://github.com/Lordog/dive-into-llms",
     "source": "github-trending",
     "file": "2026-04-18-dive-into-llms.json",
-    "tags": ["llm", "tutorial", "programming", "education"],
-    "relevance_score": 0.90,
+    "tags": [
+      "llm",
+      "tutorial",
+      "programming",
+      "education"
+    ],
+    "relevance_score": 0.9,
     "collected_at": "2026-04-18T08:00:00Z",
     "organized_at": "2026-04-18T11:00:00Z"
   },
@@ -27,8 +47,14 @@
     "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp",
     "source": "github-trending",
     "file": "2026-04-18-chrome-devtools-mcp.json",
-    "tags": ["developer-tools", "chrome", "debugging", "mcp", "ai-agent"],
-    "relevance_score": 0.90,
+    "tags": [
+      "developer-tools",
+      "chrome",
+      "debugging",
+      "mcp",
+      "ai-agent"
+    ],
+    "relevance_score": 0.9,
     "collected_at": "2026-04-18T08:00:00Z",
     "organized_at": "2026-04-18T11:00:00Z"
   },
@@ -38,7 +64,13 @@
     "url": "https://github.com/openai/openai-agents-python",
     "source": "github-trending",
     "file": "2026-04-18-openai-agents-python.json",
-    "tags": ["multi-agent", "workflow", "python", "openai", "agent-framework"],
+    "tags": [
+      "multi-agent",
+      "workflow",
+      "python",
+      "openai",
+      "agent-framework"
+    ],
     "relevance_score": 0.88,
     "collected_at": "2026-04-18T08:00:00Z",
     "organized_at": "2026-04-18T11:00:00Z"
@@ -49,7 +81,12 @@
     "url": "https://github.com/google/magika",
     "source": "github-trending",
     "file": "2026-04-18-magika.json",
-    "tags": ["file-type-detection", "google", "ai-tool", "content-analysis"],
+    "tags": [
+      "file-type-detection",
+      "google",
+      "ai-tool",
+      "content-analysis"
+    ],
     "relevance_score": 0.78,
     "collected_at": "2026-04-18T08:00:00Z",
     "organized_at": "2026-04-18T11:00:00Z"
@@ -60,7 +97,12 @@
     "url": "https://github.com/Donchitos/Claude-Code-Game-Studios",
     "source": "github-trending",
     "file": "2026-04-18-claude-code-game-studios.json",
-    "tags": ["game-development", "claude-code", "multi-agent", "workflow-automation"],
+    "tags": [
+      "game-development",
+      "claude-code",
+      "multi-agent",
+      "workflow-automation"
+    ],
     "relevance_score": 0.82,
     "collected_at": "2026-04-18T08:00:00Z",
     "organized_at": "2026-04-18T11:00:00Z"
@@ -71,7 +113,12 @@
     "url": "https://github.com/BasedHardware/omi",
     "source": "github-trending",
     "file": "2026-04-18-omi.json",
-    "tags": ["ai-assistant", "context-awareness", "screen-understanding", "voice-interaction"],
+    "tags": [
+      "ai-assistant",
+      "context-awareness",
+      "screen-understanding",
+      "voice-interaction"
+    ],
     "relevance_score": 0.76,
     "collected_at": "2026-04-18T08:00:00Z",
     "organized_at": "2026-04-18T11:00:00Z"
@@ -82,8 +129,13 @@
     "url": "https://github.com/EvoMap/evolver",
     "source": "github-trending",
     "file": "2026-04-18-evolver.json",
-    "tags": ["self-evolution", "genome-evolution", "ai-agent", "optimization"],
-    "relevance_score": 0.70,
+    "tags": [
+      "self-evolution",
+      "genome-evolution",
+      "ai-agent",
+      "optimization"
+    ],
+    "relevance_score": 0.7,
     "collected_at": "2026-04-18T08:00:00Z",
     "organized_at": "2026-04-18T11:00:00Z"
   },
@@ -93,7 +145,12 @@
     "url": "https://github.com/lukilabs/craft-agents-oss",
     "source": "github-trending",
     "file": "2026-04-18-craft-agents-oss.json",
-    "tags": ["multi-agent", "task-orchestration", "collaboration", "open-source"],
+    "tags": [
+      "multi-agent",
+      "task-orchestration",
+      "collaboration",
+      "open-source"
+    ],
     "relevance_score": 0.68,
     "collected_at": "2026-04-18T08:00:00Z",
     "organized_at": "2026-04-18T11:00:00Z"
@@ -104,7 +161,12 @@
     "url": "https://github.com/lsdefine/GenericAgent",
     "source": "github-trending",
     "file": "2026-04-18-generic-agent.json",
-    "tags": ["self-evolving", "skill-tree", "token-optimization", "ai-agent"],
+    "tags": [
+      "self-evolving",
+      "skill-tree",
+      "token-optimization",
+      "ai-agent"
+    ],
     "relevance_score": 0.68,
     "collected_at": "2026-04-18T08:00:00Z",
     "organized_at": "2026-04-18T11:00:00Z"
@@ -115,7 +177,12 @@
     "url": "https://github.com/z-lab/dflash",
     "source": "github-trending",
     "file": "2026-04-18-dflash.json",
-    "tags": ["llm-acceleration", "speculative-decoding", "diffusion", "performance"],
+    "tags": [
+      "llm-acceleration",
+      "speculative-decoding",
+      "diffusion",
+      "performance"
+    ],
     "relevance_score": 0.65,
     "collected_at": "2026-04-18T08:00:00Z",
     "organized_at": "2026-04-18T11:00:00Z"
@@ -126,7 +193,13 @@
     "url": "https://github.com/Tracer-Cloud/opensre",
     "source": "github-trending",
     "file": "2026-04-18-opensre.json",
-    "tags": ["sre", "devops", "ai-agent", "operations", "automation"],
+    "tags": [
+      "sre",
+      "devops",
+      "ai-agent",
+      "operations",
+      "automation"
+    ],
     "relevance_score": 0.62,
     "collected_at": "2026-04-18T08:00:00Z",
     "organized_at": "2026-04-18T11:00:00Z"
@@ -217,7 +290,12 @@
     "url": "https://github.com/openclaw/openclaw",
     "source": "github-trending",
     "file": "2026-04-20-analysis.json",
-    "tags": ["ai", "assistant", "personal-ai", "self-hosted"],
+    "tags": [
+      "ai",
+      "assistant",
+      "personal-ai",
+      "self-hosted"
+    ],
     "relevance_score": 0.95,
     "collected_at": "2026-04-20T08:00:00Z",
     "organized_at": "2026-04-20T10:00:00Z"
@@ -228,8 +306,12 @@
     "url": "https://github.com/tensorflow/tensorflow",
     "source": "github-trending",
     "file": "2026-04-20-analysis.json",
-    "tags": ["machine-learning", "deep-learning", "tensorflow"],
-    "relevance_score": 0.90,
+    "tags": [
+      "machine-learning",
+      "deep-learning",
+      "tensorflow"
+    ],
+    "relevance_score": 0.9,
     "collected_at": "2026-04-20T08:00:00Z",
     "organized_at": "2026-04-20T10:00:00Z"
   },
@@ -239,7 +321,12 @@
     "url": "https://github.com/n8n-io/n8n",
     "source": "github-trending",
     "file": "2026-04-20-analysis.json",
-    "tags": ["workflow-automation", "ai", "mcp", "no-code"],
+    "tags": [
+      "workflow-automation",
+      "ai",
+      "mcp",
+      "no-code"
+    ],
     "relevance_score": 0.88,
     "collected_at": "2026-04-20T08:00:00Z",
     "organized_at": "2026-04-20T10:00:00Z"
@@ -250,7 +337,11 @@
     "url": "https://github.com/Significant-Gravitas/AutoGPT",
     "source": "github-trending",
     "file": "2026-04-20-analysis.json",
-    "tags": ["agentic-ai", "autonomous-agent", "ai"],
+    "tags": [
+      "agentic-ai",
+      "autonomous-agent",
+      "ai"
+    ],
     "relevance_score": 0.92,
     "collected_at": "2026-04-20T08:00:00Z",
     "organized_at": "2026-04-20T10:00:00Z"
@@ -261,7 +352,12 @@
     "url": "https://github.com/ollama/ollama",
     "source": "github-trending",
     "file": "2026-04-20-github-ollama.json",
-    "tags": ["llm", "local-llm", "ollama", "deepseek"],
+    "tags": [
+      "llm",
+      "local-llm",
+      "ollama",
+      "deepseek"
+    ],
     "relevance_score": 0.94,
     "collected_at": "2026-04-20T08:00:00Z",
     "organized_at": "2026-04-20T10:30:00Z"
@@ -272,7 +368,11 @@
     "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
     "source": "github-trending",
     "file": "2026-04-20-analysis.json",
-    "tags": ["ai-art", "stable-diffusion", "generative-ai"],
+    "tags": [
+      "ai-art",
+      "stable-diffusion",
+      "generative-ai"
+    ],
     "relevance_score": 0.75,
     "collected_at": "2026-04-20T08:00:00Z",
     "organized_at": "2026-04-20T10:00:00Z"
@@ -283,8 +383,12 @@
     "url": "https://github.com/obra/superpowers",
     "source": "github-trending",
     "file": "2026-04-20-analysis.json",
-    "tags": ["agentic", "skills-framework", "methodology"],
-    "relevance_score": 0.70,
+    "tags": [
+      "agentic",
+      "skills-framework",
+      "methodology"
+    ],
+    "relevance_score": 0.7,
     "collected_at": "2026-04-20T08:00:00Z",
     "organized_at": "2026-04-20T10:00:00Z"
   },
@@ -294,7 +398,12 @@
     "url": "https://github.com/huggingface/transformers",
     "source": "github-trending",
     "file": "2026-04-20-analysis.json",
-    "tags": ["huggingface", "transformers", "machine-learning", "nlp"],
+    "tags": [
+      "huggingface",
+      "transformers",
+      "machine-learning",
+      "nlp"
+    ],
     "relevance_score": 0.93,
     "collected_at": "2026-04-20T08:00:00Z",
     "organized_at": "2026-04-20T10:00:00Z"
@@ -305,8 +414,12 @@
     "url": "https://github.com/langflow-ai/langflow",
     "source": "github-trending",
     "file": "2026-04-20-analysis.json",
-    "tags": ["langchain", "visual-workflow", "ai-agents"],
-    "relevance_score": 0.80,
+    "tags": [
+      "langchain",
+      "visual-workflow",
+      "ai-agents"
+    ],
+    "relevance_score": 0.8,
     "collected_at": "2026-04-20T08:00:00Z",
     "organized_at": "2026-04-20T10:00:00Z"
   },
@@ -316,7 +429,11 @@
     "url": "https://github.com/anomalyco/opencode",
     "source": "github-trending",
     "file": "2026-04-20-github-opencode.json",
-    "tags": ["ai-coding", "developer-tools", "agent"],
+    "tags": [
+      "ai-coding",
+      "developer-tools",
+      "agent"
+    ],
     "relevance_score": 0.85,
     "collected_at": "2026-04-20T08:00:00Z",
     "organized_at": "2026-04-20T10:30:00Z"
@@ -327,7 +444,11 @@
     "url": "https://github.com/langgenius/dify",
     "source": "github-trending",
     "file": "2026-04-20-analysis.json",
-    "tags": ["agentic-workflow", "dify", "llm-application"],
+    "tags": [
+      "agentic-workflow",
+      "dify",
+      "llm-application"
+    ],
     "relevance_score": 0.78,
     "collected_at": "2026-04-20T08:00:00Z",
     "organized_at": "2026-04-20T10:00:00Z"
@@ -338,7 +459,11 @@
     "url": "https://github.com/langchain-ai/langchain",
     "source": "github-trending",
     "file": "2026-04-20-github-langchain.json",
-    "tags": ["langchain", "llm", "agent-framework"],
+    "tags": [
+      "langchain",
+      "llm",
+      "agent-framework"
+    ],
     "relevance_score": 0.88,
     "collected_at": "2026-04-20T08:00:00Z",
     "organized_at": "2026-04-20T10:30:00Z"
@@ -349,7 +474,11 @@
     "url": "https://github.com/open-webui/open-webui",
     "source": "github-trending",
     "file": "2026-04-20-github-open-webui.json",
-    "tags": ["llm-ui", "ollama", "self-hosted"],
+    "tags": [
+      "llm-ui",
+      "ollama",
+      "self-hosted"
+    ],
     "relevance_score": 0.72,
     "collected_at": "2026-04-20T08:00:00Z",
     "organized_at": "2026-04-20T10:30:00Z"
@@ -360,7 +489,11 @@
     "url": "https://github.com/anthropics/claude-code",
     "source": "github-trending",
     "file": "2026-04-20-github-claude-code.json",
-    "tags": ["claude", "ai-coding", "developer-tools"],
+    "tags": [
+      "claude",
+      "ai-coding",
+      "developer-tools"
+    ],
     "relevance_score": 0.91,
     "collected_at": "2026-04-20T08:00:00Z",
     "organized_at": "2026-04-20T10:30:00Z"
@@ -371,7 +504,11 @@
     "url": "https://github.com/firecrawl/firecrawl",
     "source": "github-trending",
     "file": "2026-04-20-github-firecrawl.json",
-    "tags": ["web-scraping", "ai-search", "rag"],
+    "tags": [
+      "web-scraping",
+      "ai-search",
+      "rag"
+    ],
     "relevance_score": 0.76,
     "collected_at": "2026-04-20T08:00:00Z",
     "organized_at": "2026-04-20T10:30:00Z"
