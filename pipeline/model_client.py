@@ -258,7 +258,7 @@ def create_provider(provider_name: str | None = None) -> LLMProvider:
         )
 
     config = PROVIDER_CONFIG[name]
-    api_key = os.getenv(config["api_key_env"], "").strip()
+    api_key = os.getenv(config["api_key_env"], "")
     if not api_key:
         raise RuntimeError(
             f"缺少 API Key，请设置环境变量: {config['api_key_env']}"
@@ -373,12 +373,3 @@ if __name__ == "__main__":
         print(f"\n错误: {e}")
         print("请检查 .env 文件中的 API Key 配置。")
 
-
-# 使用示例：
-# from pipeline.model_client import create_provider, get_tracker
-# provider = create_provider("deepseek")
-# response = provider.chat(messages)
-# # 自动统计
-# get_tracker().report()           # 全局报告
-# get_tracker().report("deepseek") # 单提供商报告
-# get_tracker().estimated_cost()   # 总成本
