@@ -12,6 +12,7 @@ import time
 import logging
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
+from datetime import datetime, timezone
 from typing import Any
 
 import httpx
@@ -21,7 +22,6 @@ load_dotenv()
 
 logger = logging.getLogger(__name__)
 
-# ── 数据结构 ──────────────────────────────────────────────────────────────
 
 @dataclass
 class Usage:
@@ -54,37 +54,101 @@ class LLMResponse:
         }
 
 
-# ── 成本估算（每 1K tokens 价格，单位 USD） ────────────────────────────────
-
-PRICING: dict[str, dict[str, float]] = {
-    "deepseek-chat": {"input": 0.0014, "output": 0.0028},
-    "deepseek-reasoner": {"input": 0.004, "output": 0.016},
-    "qwen-plus": {"input": 0.002, "output": 0.006},
-    "qwen-turbo": {"input": 0.0005, "output": 0.001},
-    "gpt-4o-mini": {"input": 0.00015, "output": 0.0006},
-    "gpt-4o": {"input": 0.005, "output": 0.015},
-    "MiniMax-M2.7": {"input": 0.0001, "output": 0.0001},
+PRICING_CNY: dict[str, dict[str, float]] = {
+    "deepseek": {"input": 1.0, "output": 2.0},
+    "qwen": {"input": 4.0, "output": 12.0},
+    "openai": {"input": 150.0, "output": 600.0},
+    "minimax": {"input": 2.1, "output": 8.4},
 }
 
 
-def estimate_cost(model: str, usage: Usage) -> float:
-    """估算单次调用成本（USD）"""
-    prices = PRICING.get(model, {"input": 0.002, "output": 0.006})
-    return (
-        usage.prompt_tokens / 1000 * prices["input"]
-        + usage.completion_tokens / 1000 * prices["output"]
-    )
+class CostTracker:
+    """LLM 调用成本追踪器"""
+
+    def __init__(self) -> None:
+        self._records: list[dict[str, Any]] = []
+
+    def record(self, usage: Usage, provider: str) -> None:
+        """记录一次 API 调用
+
+        Args:
+            usage: Token 用量
+            provider: 提供商名称
+        """
+        prices = PRICING_CNY.get(provider, {"input": 0, "output": 0})
+        prompt_cost = (usage.prompt_tokens / 1_000_000) * prices["input"]
+        completion_cost = (usage.completion_tokens / 1_000_000) * prices["output"]
+        total_cost = prompt_cost + completion_cost
+
+        self._records.append({
+            "provider": provider,
+            "prompt_tokens": usage.prompt_tokens,
+            "completion_tokens": usage.completion_tokens,
+            "total_tokens": usage.total_tokens,
+            "prompt_cost": prompt_cost,
+            "completion_cost": completion_cost,
+            "total_cost": total_cost,
+            "recorded_at": datetime.now(timezone.utc).isoformat(),
+        })
+
+    def estimated_cost(self, provider: str | None = None) -> float:
+        """返回估算成本（元）
+
+        Args:
+            provider: 提供商名称，None 表示所有
+
+        Returns:
+            成本（元）
+        """
+        if provider is None:
+            return sum(r["total_cost"] for r in self._records)
+        return sum(r["total_cost"] for r in self._records if r["provider"] == provider)
+
+    def report(self, provider: str | None = None) -> None:
+        """打印成本报告
+
+        Args:
+            provider: 提供商名称，None 表示所有
+        """
+        records = self._records if provider is None else [r for r in self._records if r["provider"] == provider]
+
+        if not records:
+            print("暂无调用记录")
+            return
+
+        total_cost = sum(r["total_cost"] for r in records)
+        total_prompt = sum(r["prompt_tokens"] for r in records)
+        total_completion = sum(r["completion_tokens"] for r in records)
+        total_tokens = sum(r["total_tokens"] for r in records)
+        request_count = len(records)
+
+        header = f"{'='*50}\n  成本报告" + (f" - {provider}" if provider else " - 全局")
+        footer = "=" * 50
+        print(f"\n{header}")
+        print(f"  调用次数: {request_count}")
+        print(f"  Prompt Tokens:     {total_prompt:>10,}")
+        print(f"  Completion Tokens:{total_completion:>10,}")
+        print(f"  总 Tokens:         {total_tokens:>10,}")
+        print(f"  估算成本:          {total_cost:>10.4f} 元")
+        print(f"{footer}\n")
 
 
-# ── Provider 抽象基类 ────────────────────────────────────────────────────
+_global_tracker = CostTracker()
+
+
+def get_tracker() -> CostTracker:
+    """获取全局 CostTracker 实例"""
+    return _global_tracker
+
 
 class LLMProvider(ABC):
     """LLM 提供商抽象基类"""
 
-    def __init__(self, api_key: str, base_url: str, model: str):
+    def __init__(self, api_key: str, base_url: str, model: str, provider_name: str = "unknown"):
         self.api_key = api_key
         self.base_url = base_url.rstrip("/")
         self.model = model
+        self.provider_name = provider_name
         self.client = httpx.Client(timeout=60.0)
 
     @abstractmethod
@@ -108,10 +172,7 @@ class LLMProvider(ABC):
 
 
 class OpenAICompatibleProvider(LLMProvider):
-    """
-    兼容 OpenAI Chat Completions API 的提供商。
-    DeepSeek、Qwen、OpenAI 都使用相同的 API 格式。
-    """
+    """兼容 OpenAI Chat Completions API 的提供商"""
 
     def chat(
         self,
@@ -142,12 +203,11 @@ class OpenAICompatibleProvider(LLMProvider):
             completion_tokens=usage_data.get("completion_tokens", 0),
         )
 
+        _global_tracker.record(usage, self.provider_name)
+
         return LLMResponse(content=content, usage=usage)
 
 
-# ── 工厂函数 ─────────────────────────────────────────────────────────────
-
-# 各提供商的环境变量映射
 PROVIDER_CONFIG: dict[str, dict[str, str]] = {
     "deepseek": {
         "api_key_env": "DEEPSEEK_API_KEY",
@@ -177,11 +237,10 @@ PROVIDER_CONFIG: dict[str, dict[str, str]] = {
 
 
 def create_provider(provider_name: str | None = None) -> LLMProvider:
-    """
-    工厂函数：根据提供商名称创建对应的 LLM 客户端。
+    """工厂函数：根据提供商名称创建对应的 LLM 客户端
 
     Args:
-        provider_name: 提供商名称（deepseek/qwen/openai），
+        provider_name: 提供商名称（deepseek/qwen/openai/minimax），
                        默认读取环境变量 LLM_PROVIDER
 
     Returns:
@@ -199,7 +258,7 @@ def create_provider(provider_name: str | None = None) -> LLMProvider:
         )
 
     config = PROVIDER_CONFIG[name]
-    api_key = os.getenv(config["api_key_env"], "")
+    api_key = os.getenv(config["api_key_env"], "").strip()
     if not api_key:
         raise RuntimeError(
             f"缺少 API Key，请设置环境变量: {config['api_key_env']}"
@@ -209,10 +268,10 @@ def create_provider(provider_name: str | None = None) -> LLMProvider:
     model = os.getenv("MINIMAX_MODEL", config["default_model"]) if name == "minimax" else config["default_model"]
 
     logger.info("创建 LLM 客户端: provider=%s, model=%s", name, model)
-    return OpenAICompatibleProvider(api_key=api_key, base_url=base_url, model=model)
+    return OpenAICompatibleProvider(
+        api_key=api_key, base_url=base_url, model=model, provider_name=name
+    )
 
-
-# ── 带重试的调用封装 ──────────────────────────────────────────────────────
 
 def chat_with_retry(
     provider: LLMProvider,
@@ -222,8 +281,7 @@ def chat_with_retry(
     max_retries: int = 3,
     backoff_base: float = 2.0,
 ) -> LLMResponse:
-    """
-    带指数退避重试的聊天调用。
+    """带指数退避重试的聊天调用
 
     Args:
         provider: LLM 提供商实例
@@ -267,15 +325,12 @@ def chat_with_retry(
     raise last_error  # type: ignore[misc]
 
 
-# ── 便捷函数 ─────────────────────────────────────────────────────────────
-
 def quick_chat(
     prompt: str,
     system: str = "你是一个 AI 技术分析助手。",
     provider_name: str | None = None,
 ) -> str:
-    """
-    快捷调用：一句话调用 LLM，返回纯文本。
+    """快捷调用：一句话调用 LLM，返回纯文本
 
     Args:
         prompt: 用户提示词
@@ -293,30 +348,37 @@ def quick_chat(
     provider = create_provider(provider_name)
     try:
         response = chat_with_retry(provider, messages)
-        cost = estimate_cost(provider.model, response.usage)
         logger.info(
-            "Token 用量: %d (prompt) + %d (completion) = %d, 估算成本: $%.6f",
+            "Token 用量: %d (prompt) + %d (completion) = %d",
             response.usage.prompt_tokens,
             response.usage.completion_tokens,
             response.usage.total_tokens,
-            cost,
         )
         return response.content
     finally:
         provider.close()
 
 
-# ── CLI 测试入口 ─────────────────────────────────────────────────────────
-
 if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
     print("=== LLM 客户端测试 ===")
-    print(f"提供商: {os.getenv('LLM_PROVIDER', 'minimax')}")
+    print(f"提供商: {os.getenv('LLM_PROVIDER', 'deepseek')}")
 
     try:
         result = quick_chat("用一句话介绍什么是 AI Agent。")
         print(f"\n回复: {result}")
+        _global_tracker.report()
     except Exception as e:
         print(f"\n错误: {e}")
         print("请检查 .env 文件中的 API Key 配置。")
+
+
+# 使用示例：
+# from pipeline.model_client import create_provider, get_tracker
+# provider = create_provider("deepseek")
+# response = provider.chat(messages)
+# # 自动统计
+# get_tracker().report()           # 全局报告
+# get_tracker().report("deepseek") # 单提供商报告
+# get_tracker().estimated_cost()   # 总成本

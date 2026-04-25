@@ -24,7 +24,7 @@ from dotenv import load_dotenv
 
 # 添加项目根目录到 path，以便导入 model_client 和 rss_reader
 sys.path.insert(0, str(Path(__file__).parent))
-from model_client import create_provider, chat_with_retry, estimate_cost, LLMResponse
+from model_client import create_provider, chat_with_retry, get_tracker, LLMResponse
 from rss_reader import collect_rss  # noqa: F401 — 重导出供内部使用
 
 load_dotenv()
@@ -181,7 +181,6 @@ def step_analyze(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
     provider = create_provider()
     analyzed: list[dict[str, Any]] = []
-    total_cost = 0.0
 
     try:
         for i, item in enumerate(items):
@@ -203,9 +202,6 @@ def step_analyze(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
                     temperature=0.3,
                     max_tokens=500,
                 )
-
-                cost = estimate_cost(provider.model, response.usage)
-                total_cost += cost
 
                 # 解析 LLM 返回的 JSON
                 content = response.content.strip()
@@ -240,7 +236,7 @@ def step_analyze(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
         provider.close()
 
     print(f"  分析完成: {len(analyzed)} 条")
-    print(f"  估算总成本: ${total_cost:.6f}")
+    get_tracker().report()
 
     return analyzed
 
@@ -417,6 +413,8 @@ def run_pipeline(
     print(f"# 采集: {stats['collected']} → 分析: {stats['analyzed']} "
           f"→ 整理: {stats['organized']} → 保存: {stats['saved']}")
     print(f"{'#'*60}\n")
+
+    get_tracker().report()
 
     return stats
 
