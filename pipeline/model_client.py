@@ -258,7 +258,7 @@ def create_provider(provider_name: str | None = None) -> LLMProvider:
         )
 
     config = PROVIDER_CONFIG[name]
-    api_key = os.getenv(config["api_key_env"], "")
+    api_key = os.getenv(config["api_key_env"], "").strip()
     if not api_key:
         raise RuntimeError(
             f"缺少 API Key，请设置环境变量: {config['api_key_env']}"
