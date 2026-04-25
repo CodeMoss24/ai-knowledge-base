@@ -1,0 +1,20 @@
+{
+  "id": "github-20260425-018",
+  "title": "ZhuLinsen/daily_stock_analysis",
+  "source": "github",
+  "source_url": "https://github.com/ZhuLinsen/daily_stock_analysis",
+  "author": "ZhuLinsen",
+  "published_at": "2026-04-25T08:58:05Z",
+  "collected_at": "2026-04-25T09:03:37.536315+00:00",
+  "summary": "这是一个基于LLM的股票智能分析系统，支持A股、港股、美股多市场，整合行情数据和实时新闻，通过大语言模型进行投资决策分析，并支持多渠道推送通知。项目采用零成本定时运行模式，充分利用免费资源实现自动化，适合个人投资者使用。",
+  "score": 7,
+  "tags": [
+    "llm",
+    "agent",
+    "tool-use",
+    "multi-agent"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-25T09:12:17.518316+00:00"
+}

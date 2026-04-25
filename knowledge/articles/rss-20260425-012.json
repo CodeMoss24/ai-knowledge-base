@@ -1,0 +1,18 @@
+{
+  "id": "rss-20260425-012",
+  "title": "Project Glasswing: Securing critical software for the AI era",
+  "source": "rss:Lobsters AI/ML",
+  "source_url": "https://www.anthropic.com/glasswing",
+  "author": "Lobsters AI/ML",
+  "published_at": "2026-04-25T09:03:38.445240+00:00",
+  "collected_at": "2026-04-25T09:03:38.445240+00:00",
+  "summary": "Project Glasswing 是一个专注于 AI 时代关键软件安全性的技术项目。该项目旨在解决 AI 系统在软件层面的安全挑战，保障 AI 应用的安全可靠性。随着 AI 技术在关键系统中的广泛部署，软件安全问题变得日益重要，此类安全专项项目对于提升 AI 系统整体安全性具有积极意义。",
+  "score": 7,
+  "tags": [
+    "security",
+    "llm"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-25T09:12:17.518361+00:00"
+}

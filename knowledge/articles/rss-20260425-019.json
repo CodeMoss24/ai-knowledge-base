@@ -1,0 +1,19 @@
+{
+  "id": "rss-20260425-019",
+  "title": "Pipevals: Evaluation pipelines for every LLM application",
+  "source": "rss:Lobsters AI/ML",
+  "source_url": "https://www.pipevals.com",
+  "author": "Lobsters AI/ML",
+  "published_at": "2026-04-25T09:03:38.445275+00:00",
+  "collected_at": "2026-04-25T09:03:38.445275+00:00",
+  "summary": "Pipevals 是一个为 LLM 应用设计的评估管道工具，帮助开发者系统性地测试和验证大语言模型的输出质量。该工具提供了标准化的评估流程，支持多种测试场景和指标追踪，能够提升 LLM 应用开发的迭代效率。",
+  "score": 7,
+  "tags": [
+    "evaluation",
+    "llm",
+    "tool-use"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-25T09:12:17.518384+00:00"
+}

@@ -1,0 +1,19 @@
+{
+  "id": "rss-20260425-006",
+  "title": "PyTexas 2026 Recap",
+  "source": "rss:Lobsters AI/ML",
+  "source_url": "https://bernat.tech/posts/pytexas-2026-recap/",
+  "author": "Lobsters AI/ML",
+  "published_at": "2026-04-25T09:03:38.445202+00:00",
+  "collected_at": "2026-04-25T09:03:38.445202+00:00",
+  "summary": "PyTexas 2026 是美国德克萨斯州的 Python 开发者年度技术会议，该回顾内容涵盖了 2026 年会议中的重要技术分享和行业趋势。作为专注于 Python 生态的技术会议，PyTexas 通常会涉及 Python 在 AI/ML、数据科学、Web 开发等领域的最新应用和最佳实践，为 Python 开发者提供有价值的技术交流和学习机会。",
+  "score": 7,
+  "tags": [
+    "llm",
+    "code-generation",
+    "python"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-25T09:12:17.518343+00:00"
+}

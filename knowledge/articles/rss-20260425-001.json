@@ -1,0 +1,19 @@
+{
+  "id": "rss-20260425-001",
+  "title": "MeshCore development team splits over trademark dispute and AI-generated code",
+  "source": "rss:Hacker News Best (AI)",
+  "source_url": "https://blog.meshcore.io/2026/04/23/the-split",
+  "author": "Hacker News Best (AI)",
+  "published_at": "2026-04-25T09:03:38.174217+00:00",
+  "collected_at": "2026-04-25T09:03:38.174217+00:00",
+  "summary": "MeshCore开发团队因商标争议和AI生成代码的使用问题产生分歧，导致团队分裂。该事件反映了AI辅助代码开发在实际应用中的争议，包括代码所有权归属、商标使用以及团队协作模式等关键问题。",
+  "score": 7,
+  "tags": [
+    "code-generation",
+    "security",
+    "agent"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-25T09:12:17.518325+00:00"
+}

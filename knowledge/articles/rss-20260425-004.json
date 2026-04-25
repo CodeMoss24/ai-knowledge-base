@@ -1,0 +1,19 @@
+{
+  "id": "rss-20260425-004",
+  "title": "Mind the van Emden Gap",
+  "source": "rss:Lobsters AI/ML",
+  "source_url": "https://blog.fogus.me/llm/van-emden.html",
+  "author": "Lobsters AI/ML",
+  "published_at": "2026-04-25T09:03:38.445189+00:00",
+  "collected_at": "2026-04-25T09:03:38.445189+00:00",
+  "summary": "这篇文章探讨了AI和ML系统中关于van Emden间隙的概念，这是一个源自形式验证的重要测试方法。该内容可能涉及如何评估和测试AI系统的能力边界，特别是模型检查和系统完整性验证。对于AI从业者来说，理解这种系统化的评估方法对于构建更可靠的AI系统具有重要价值。",
+  "score": 7,
+  "tags": [
+    "evaluation",
+    "reasoning",
+    "llm"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-25T09:12:17.518334+00:00"
+}

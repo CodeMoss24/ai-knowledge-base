@@ -1,0 +1,18 @@
+{
+  "id": "rss-20260425-018",
+  "title": "Activating Two Trap Cards at Once, or: A Gentle Response to the Popularity of Vibecoding",
+  "source": "rss:Lobsters AI/ML",
+  "source_url": "https://gist.github.com/MostAwesomeDude/560185c24f959f6fec229739cb5a6735",
+  "author": "Lobsters AI/ML",
+  "published_at": "2026-04-25T09:03:38.445271+00:00",
+  "collected_at": "2026-04-25T09:03:38.445271+00:00",
+  "summary": "文章探讨了vibecoding（通过自然语言与AI交互生成代码的编程方式）的流行现象，分析了其带来的便利性与潜在风险。作者以技术社区视角，对这种新兴编程范式提出了理性思考，强调在追求效率的同时需要关注代码质量和系统设计的基本原则。",
+  "score": 7,
+  "tags": [
+    "tool-use",
+    "code-generation"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-25T09:12:17.518381+00:00"
+}

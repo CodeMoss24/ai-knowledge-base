@@ -1,0 +1,19 @@
+{
+  "id": "rss-20260425-008",
+  "title": "TESSERA — A pixel-wise earth observation foundation model",
+  "source": "rss:Lobsters AI/ML",
+  "source_url": "https://geotessera.org",
+  "author": "Lobsters AI/ML",
+  "published_at": "2026-04-25T09:03:38.445220+00:00",
+  "collected_at": "2026-04-25T09:03:38.445220+00:00",
+  "summary": "TESSERA 是一个像素级地球观测基础模型，专注于遥感图像的细粒度分析。该模型针对地球观测场景进行优化，能够对卫星图像进行逐像素级别的理解、分割和识别任务。作为领域特定的基础模型，它降低了遥感AI应用的开发门槛，为土地利用监测、灾害评估等应用提供了新的技术底座。",
+  "score": 7,
+  "tags": [
+    "vision",
+    "fine-tuning",
+    "multi-agent"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-25T09:12:17.518349+00:00"
+}

@@ -1,0 +1,20 @@
+{
+  "id": "github-20260425-017",
+  "title": "continuedev/continue",
+  "source": "github",
+  "source_url": "https://github.com/continuedev/continue",
+  "author": "continuedev",
+  "published_at": "2026-04-24T18:33:26Z",
+  "collected_at": "2026-04-25T09:03:37.536310+00:00",
+  "summary": "Continue 是一个开源的 AI 代码检查工具，可以将 AI 验证集成到源码控制系统和 CI/CD 流程中，实现可强制执行的 AI 检查。它通过 CLI 工具让团队能够在代码审查和部署阶段自动验证 AI 生成代码的质量和一致性，提升开发工作流的可靠性和效率。",
+  "score": 7,
+  "tags": [
+    "tool-use",
+    "evaluation",
+    "deployment",
+    "code-generation"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-25T09:12:17.518313+00:00"
+}

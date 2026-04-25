@@ -1,0 +1,19 @@
+{
+  "id": "rss-20260425-016",
+  "title": "Embarrassingly Simple Self-Distillation Improves Code Generation",
+  "source": "rss:Lobsters AI/ML",
+  "source_url": "https://arxiv.org/abs/2604.01193",
+  "author": "Lobsters AI/ML",
+  "published_at": "2026-04-25T09:03:38.445262+00:00",
+  "collected_at": "2026-04-25T09:03:38.445262+00:00",
+  "summary": "该研究提出了一种极其简单的自蒸馏方法用于改进代码生成模型。通过让模型自己生成的高质量代码作为训练数据，实现自我提升，从而降低对外部标注数据的依赖。这种方法在保持简洁的同时有效提升了代码生成质量。",
+  "score": 7,
+  "tags": [
+    "code-generation",
+    "llm",
+    "fine-tuning"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-25T09:12:17.518375+00:00"
+}

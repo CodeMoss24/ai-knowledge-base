@@ -1,0 +1,21 @@
+{
+  "id": "github-20260425-013",
+  "title": "zhayujie/CowAgent",
+  "source": "github",
+  "source_url": "https://github.com/zhayujie/CowAgent",
+  "author": "zhayujie",
+  "published_at": "2026-04-24T08:40:31Z",
+  "collected_at": "2026-04-25T09:03:37.536289+00:00",
+  "summary": "CowAgent是一个基于大模型的超级AI助理项目，核心功能包括主动思考与任务规划、操作系统访问、技能创建执行、以及长期记忆与知识库管理。该项目支持微信、飞书、钉钉等多平台接入，兼容OpenAI、Claude、DeepSeek等主流大模型，可处理文本、语音、图片和文件，整体设计比OpenClaw更轻量便捷，适合快速搭建个人AI助理或企业数字员工。",
+  "score": 7,
+  "tags": [
+    "agent",
+    "multi-agent",
+    "tool-use",
+    "llm",
+    "deployment"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-25T09:12:17.518298+00:00"
+}

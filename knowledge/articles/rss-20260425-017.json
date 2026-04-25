@@ -1,0 +1,19 @@
+{
+  "id": "rss-20260425-017",
+  "title": "The Design of AI Memory Systems",
+  "source": "rss:Lobsters AI/ML",
+  "source_url": "https://tombedor.dev/approaches-to-agent-memory/",
+  "author": "Lobsters AI/ML",
+  "published_at": "2026-04-25T09:03:38.445266+00:00",
+  "collected_at": "2026-04-25T09:03:38.445266+00:00",
+  "summary": "本文探讨AI记忆系统的架构设计，涵盖短期记忆、长期记忆的管理机制以及记忆检索策略。记忆系统是提升AI智能体上下文理解能力和个性化服务的关键技术，对于构建更智能的agent系统具有重要参考价值。",
+  "score": 7,
+  "tags": [
+    "agent",
+    "rag",
+    "multi-agent"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-25T09:12:17.518378+00:00"
+}

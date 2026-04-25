@@ -1,0 +1,19 @@
+{
+  "id": "github-20260425-010",
+  "title": "mem0ai/mem0",
+  "source": "github",
+  "source_url": "https://github.com/mem0ai/mem0",
+  "author": "mem0ai",
+  "published_at": "2026-04-25T01:21:12Z",
+  "collected_at": "2026-04-25T09:03:37.536274+00:00",
+  "summary": "mem0 是一个为 AI Agents 设计的通用记忆层框架，旨在解决 AI 代理无法跨会话记住用户偏好和历史交互的问题。它提供了统一的记忆接口，使开发者能够轻松为 AI 代理添加持久化和检索记忆的能力，显著提升代理的上下文连贯性和个性化服务水平。",
+  "score": 7,
+  "tags": [
+    "agent",
+    "llm",
+    "prompt-engineering"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-25T09:12:17.518288+00:00"
+}

@@ -1,0 +1,18 @@
+{
+  "id": "rss-20260425-009",
+  "title": "The Origins of GPU Computing",
+  "source": "rss:Lobsters AI/ML",
+  "source_url": "https://cacm.acm.org/federal-funding-of-academic-research/the-origins-of-gpu-computing/",
+  "author": "Lobsters AI/ML",
+  "published_at": "2026-04-25T09:03:38.445225+00:00",
+  "collected_at": "2026-04-25T09:03:38.445225+00:00",
+  "summary": "文章探讨了GPU计算的起源和发展历程，解释了GPU从图形渲染到通用计算的转型过程。内容对于理解现代AI/ML基础设施的演进具有重要参考价值，帮助读者建立对深度学习硬件基础的系统认知。",
+  "score": 7,
+  "tags": [
+    "deployment",
+    "infrastructure"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-25T09:12:17.518352+00:00"
+}

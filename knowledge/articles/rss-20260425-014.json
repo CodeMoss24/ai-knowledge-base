@@ -1,0 +1,20 @@
+{
+  "id": "rss-20260425-014",
+  "title": "(Artificial) Intelligence saturation and the future of work",
+  "source": "rss:Lobsters AI/ML",
+  "source_url": "https://www.brookings.edu/articles/artificial-intelligence-saturation-and-the-future-of-work/",
+  "author": "Lobsters AI/ML",
+  "published_at": "2026-04-25T09:03:38.445253+00:00",
+  "collected_at": "2026-04-25T09:03:38.445253+00:00",
+  "summary": "该内容讨论人工智能技术发展的饱和状态及其对未来工作形式的影响，聚焦于AI能力边界、自动化对职业的冲击以及技术发展阶段的思考。这是当前AI领域重要的宏观议题，涉及技术成熟度评估与人类社会发展的深层思考。",
+  "score": 7,
+  "tags": [
+    "llm",
+    "reasoning",
+    "agent",
+    "evaluation"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-25T09:12:17.518367+00:00"
+}

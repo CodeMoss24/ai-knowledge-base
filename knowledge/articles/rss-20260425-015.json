@@ -1,0 +1,19 @@
+{
+  "id": "rss-20260425-015",
+  "title": "Mathematical methods and human thought in the age of AI",
+  "source": "rss:Lobsters AI/ML",
+  "source_url": "https://arxiv.org/pdf/2603.26524",
+  "author": "Lobsters AI/ML",
+  "published_at": "2026-04-25T09:03:38.445257+00:00",
+  "collected_at": "2026-04-25T09:03:38.445257+00:00",
+  "summary": "探讨AI时代数学方法与人类思维的关系，讨论人工智能如何影响和改变我们的问题解决方式与认知过程。这是一个理论性较强的技术话题，关注AI的基础方法论。",
+  "score": 7,
+  "tags": [
+    "reasoning",
+    "llm",
+    "agent"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-25T09:12:17.518370+00:00"
+}

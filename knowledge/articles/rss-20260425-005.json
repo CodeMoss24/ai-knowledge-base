@@ -1,0 +1,19 @@
+{
+  "id": "rss-20260425-005",
+  "title": "How are you protecting yourself against the imminent AI dooms zero day?",
+  "source": "rss:Lobsters AI/ML",
+  "source_url": "https://lobste.rs/s/cfzhwf/how_are_you_protecting_yourself_against",
+  "author": "Lobsters AI/ML",
+  "published_at": "2026-04-25T09:03:38.445195+00:00",
+  "collected_at": "2026-04-25T09:03:38.445195+00:00",
+  "summary": "该内容来自技术社区Lobsters的AI/ML频道，讨论AI系统面临的潜在安全威胁及防护策略。话题聚焦于AI模型的零日漏洞风险和防御措施，反映了业界对AI安全性的深度关注。对于AI开发者和安全研究人员具有较高的参考价值。",
+  "score": 7,
+  "tags": [
+    "security",
+    "llm",
+    "agent"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-25T09:12:17.518338+00:00"
+}

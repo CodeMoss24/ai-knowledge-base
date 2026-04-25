@@ -1,0 +1,19 @@
+{
+  "id": "github-20260425-015",
+  "title": "HKUDS/nanobot",
+  "source": "github",
+  "source_url": "https://github.com/HKUDS/nanobot",
+  "author": "HKUDS",
+  "published_at": "2026-04-25T07:26:27Z",
+  "collected_at": "2026-04-25T09:03:37.536298+00:00",
+  "summary": "nanobot是香港大学数据科学团队开发的超轻量级个人AI代理框架，专注于为个人用户提供高效、低资源占用的AI助手能力。该项目体现了当前AI Agent领域向轻量化、平民化方向发展的趋势，适合个人开发者和小型项目集成使用。",
+  "score": 7,
+  "tags": [
+    "agent",
+    "tool-use",
+    "prompt-engineering"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-25T09:12:17.518304+00:00"
+}

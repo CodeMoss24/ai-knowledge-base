@@ -1,0 +1,18 @@
+{
+  "id": "rss-20260425-010",
+  "title": "How is your org/company measuring the impact of AI adoption?",
+  "source": "rss:Lobsters AI/ML",
+  "source_url": "https://lobste.rs/s/bzcjrl/how_is_your_org_company_measuring_impact",
+  "author": "Lobsters AI/ML",
+  "published_at": "2026-04-25T09:03:38.445230+00:00",
+  "collected_at": "2026-04-25T09:03:38.445230+00:00",
+  "summary": "该内容讨论了组织和公司如何衡量AI采用的影响，聚焦于AI项目成功与否的评估指标和度量方法。这是AI从实验走向实际部署过程中非常关键的管理实践问题，涉及ROI计算、业务指标追踪和技术效果评估等方面，对AI项目的可持续发展和组织决策具有重要参考价值。",
+  "score": 7,
+  "tags": [
+    "evaluation",
+    "deployment"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-25T09:12:17.518355+00:00"
+}

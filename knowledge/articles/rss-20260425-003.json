@@ -1,0 +1,19 @@
+{
+  "id": "rss-20260425-003",
+  "title": "The Future of Deep Learning Is Photonic (2021)",
+  "source": "rss:Lobsters AI/ML",
+  "source_url": "https://spectrum.ieee.org/the-future-of-deep-learning-is-photonic",
+  "author": "Lobsters AI/ML",
+  "published_at": "2026-04-25T09:03:38.445181+00:00",
+  "collected_at": "2026-04-25T09:03:38.445181+00:00",
+  "summary": "文章探讨了光子计算技术在深度学习领域的应用前景，分析了光子在并行计算和能耗方面的优势，讨论了将光子技术融入神经网络训练和推理的潜在可能，以及这一技术路线对AI硬件发展的影响。",
+  "score": 7,
+  "tags": [
+    "hardware",
+    "deployment",
+    "innovation"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-25T09:12:17.518331+00:00"
+}
