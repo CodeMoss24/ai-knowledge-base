@@ -36,13 +36,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: cd pipeline && python pipeline.py --sources github,rss --limit 20 --verbose
 
-      - name: Validate collected articles
+      - name: Validate collected raw data  
         run: |
-          if ls knowledge/articles/*.json 1>/dev/null 2>&1; then
-            python hooks/validate_json.py knowledge/articles/*.json
-            python hooks/check_quality.py knowledge/articles/*.json
+          if ls knowledge/raw/*.json 1>/dev/null 2>&1; then
+            python hooks/validate_json.py knowledge/raw/*.json
+            python hooks/check_quality.py knowledge/raw/*.json
           else
-            echo "No articles to validate"
+            echo "No raw data to validate"
           fi
 
       - name: Commit and push results
