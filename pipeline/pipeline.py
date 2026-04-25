@@ -197,7 +197,7 @@ def step_analyze(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 response = chat_with_retry(
                     provider,
                     messages=[
-                        {"role": "system", "content": "你是一个 AI 技术分析专家。请严格按要求返回 JSON。"},
+                        {"role": "system", "content": "你是一个 AI 技术分析专家。请严格按要求返回 JSON，且回答必须使用中文。"},
                         {"role": "user", "content": prompt},
                     ],
                     temperature=0.3,
@@ -209,9 +209,10 @@ def step_analyze(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
                 # 解析 LLM 返回的 JSON
                 content = response.content.strip()
-                # 去除可能的 markdown 代码块标记
+                content = re.sub(r"<think>.*?</think>", "", content, flags=re.DOTALL)
                 content = re.sub(r"^```json\s*", "", content)
                 content = re.sub(r"\s*```$", "", content)
+                content = content.strip()
 
                 analysis = json.loads(content)
 
