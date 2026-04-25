@@ -31,10 +31,22 @@ jobs:
           LLM_PROVIDER: ${{ secrets.LLM_PROVIDER }}
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           QWEN_API_KEY: ${{ secrets.QWEN_API_KEY }}
-          MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: cd pipeline && python pipeline.py --sources github,rss --limit 20 --step 1
+        run: |
+          python pipeline/pipeline.py \
+            --sources github,rss \
+            --limit 20 \
+            --verbose
+
+      - name: Validate collected articles
+        run: |
+          if ls knowledge/articles/*.json 1>/dev/null 2>&1; then
+            python hooks/validate_json.py knowledge/articles/*.json
+            python hooks/check_quality.py knowledge/articles/*.json
+          else
+            echo "No articles to validate"
+          fi
 
       - name: Commit and push results
         run: |
