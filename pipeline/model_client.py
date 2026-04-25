@@ -191,7 +191,7 @@ def create_provider(provider_name: str | None = None) -> LLMProvider:
         ValueError: 未知的提供商名称
         RuntimeError: 缺少 API Key
     """
-    name = (provider_name or os.getenv("LLM_PROVIDER", "deepseek")).lower()
+    name = (provider_name or os.getenv("LLM_PROVIDER", "minimax")).lower()
 
     if name not in PROVIDER_CONFIG:
         raise ValueError(
@@ -312,7 +312,7 @@ if __name__ == "__main__":
     logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
     print("=== LLM 客户端测试 ===")
-    print(f"提供商: {os.getenv('LLM_PROVIDER', 'deepseek')}")
+    print(f"提供商: {os.getenv('LLM_PROVIDER', 'minimax')}")
 
     try:
         result = quick_chat("用一句话介绍什么是 AI Agent。")
