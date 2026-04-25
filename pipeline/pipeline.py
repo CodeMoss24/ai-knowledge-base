@@ -51,6 +51,11 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Enable verbose logging",
     )
+    parser.add_argument(
+        "--collect-only",
+        action="store_true",
+        help="Only collect data, skip analysis and organization",
+    )
     return parser.parse_args()
 
 
@@ -391,15 +396,13 @@ def run_pipeline(
     limit: int,
     dry_run: bool,
     verbose: bool,
+    collect_only: bool = False,
 ) -> None:
     if verbose:
         logging.getLogger().setLevel(logging.DEBUG)
-        logger.debug("Starting pipeline with sources=%s, limit=%d, dry_run=%s", sources, limit, dry_run)
+        logger.debug("Starting pipeline with sources=%s, limit=%d, dry_run=%s, collect_only=%s", sources, limit, dry_run, collect_only)
 
     collect = CollectStep(limit=limit, dry_run=dry_run, verbose=verbose)
-    analyze = AnalyzeStep(dry_run=dry_run, verbose=verbose)
-    organize = OrganizeStep(dry_run=dry_run, verbose=verbose)
-    save = SaveStep(dry_run=dry_run, verbose=verbose)
 
     logger.info("=== Step 1: Collect ===")
     items = collect.run(sources)
@@ -409,6 +412,14 @@ def run_pipeline(
 
     raw_source = sources[0] if sources else "mixed"
     collect.save_raw(items, raw_source)
+
+    if collect_only:
+        logger.info("=== Collect only mode, skipping analyze/organize/save ===")
+        return
+
+    analyze = AnalyzeStep(dry_run=dry_run, verbose=verbose)
+    organize = OrganizeStep(dry_run=dry_run, verbose=verbose)
+    save = SaveStep(dry_run=dry_run, verbose=verbose)
 
     logger.info("=== Step 2: Analyze ===")
     analyzed = analyze.run(items)
@@ -432,7 +443,7 @@ def run_pipeline(
 def main():
     args = parse_args()
     sources = [s.strip() for s in args.sources.split(",") if s.strip()]
-    run_pipeline(sources, args.limit, args.dry_run, args.verbose)
+    run_pipeline(sources, args.limit, args.dry_run, args.verbose, args.collect_only)
 
 
 if __name__ == "__main__":
