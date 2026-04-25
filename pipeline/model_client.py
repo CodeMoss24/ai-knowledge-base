@@ -1,375 +1,322 @@
-"""LLM Model Client - Unified interface for multiple LLM providers.
+"""
+统一 LLM 客户端 — 工厂模式封装多模型调用
 
-This module provides a consistent interface for calling various LLM providers
-including DeepSeek, Qwen, MiniMax, and OpenAI through their OpenAI-compatible APIs.
+支持 DeepSeek、Qwen、OpenAI，通过环境变量切换。
+返回统一格式：{"content": str, "usage": {"prompt_tokens": int, "completion_tokens": int}}
 """
 
+from __future__ import annotations
+
 import os
+import time
 import logging
-from dotenv import load_dotenv
-load_dotenv()
-import math
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
-from typing import Optional
+from typing import Any
 
 import httpx
+from dotenv import load_dotenv
 
-logging.basicConfig(level=logging.INFO)
+load_dotenv()
+
 logger = logging.getLogger(__name__)
 
-LLMProviderType = str 
-PROVIDER_DEEPSEEK: LLMProviderType = "deepseek"
-PROVIDER_QWEN: LLMProviderType = "qwen"
-PROVIDER_MINIMAX: LLMProviderType = "minimax"
-PROVIDER_OPENAI: LLMProviderType = "openai"
-
-DEFAULT_PROVIDER = os.getenv("LLM_PROVIDER", PROVIDER_MINIMAX).lower()
-
-DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY", "")
-QWEN_API_KEY = os.getenv("QWEN_API_KEY", "")
-MINIMAX_API_KEY = os.getenv("MINIMAX_API_KEY", "")
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
-
-PROVIDER_BASE_URLS = {
-    PROVIDER_DEEPSEEK: "https://api.deepseek.com/v1",
-    PROVIDER_QWEN: "https://dashscope.aliyuncs.com/compatible-mode/v1",
-    PROVIDER_MINIMAX: "https://api.minimaxi.com/v1",
-    PROVIDER_OPENAI: "https://api.openai.com/v1",
-}
-
-PROVIDER_MODELS = {
-    PROVIDER_DEEPSEEK: "deepseek-chat",
-    PROVIDER_QWEN: "qwen-plus",
-    PROVIDER_MINIMAX: "MiniMax-M2.7",
-    PROVIDER_OPENAI: "gpt-4o-mini",
-}
-
-TOKEN_PRICES_PER_MILLION = {
-    PROVIDER_DEEPSEEK: {"input": 0.27, "output": 1.1},
-    PROVIDER_QWEN: {"input": 0.6, "output": 1.2},
-    PROVIDER_MINIMAX: {"input": 0.1, "output": 0.1},
-    PROVIDER_OPENAI: {"input": 0.15, "output": 0.6},
-}
-
+# ── 数据结构 ──────────────────────────────────────────────────────────────
 
 @dataclass
 class Usage:
-    """Token usage statistics for an LLM response."""
-
+    """Token 用量统计"""
     prompt_tokens: int = 0
     completion_tokens: int = 0
-    total_tokens: int = 0
+
+    @property
+    def total_tokens(self) -> int:
+        return self.prompt_tokens + self.completion_tokens
+
+    def to_dict(self) -> dict[str, int]:
+        return {
+            "prompt_tokens": self.prompt_tokens,
+            "completion_tokens": self.completion_tokens,
+            "total_tokens": self.total_tokens,
+        }
 
 
 @dataclass
 class LLMResponse:
-    """Unified response from LLM providers."""
-
+    """统一的 LLM 响应格式"""
     content: str
     usage: Usage = field(default_factory=Usage)
-    provider: LLMProviderType = ""
-    model: str = ""
-    cost_usd: float = 0.0
 
-
-class LLMProvider(ABC):
-    """Abstract base class for LLM providers."""
-
-    @abstractmethod
-    def chat(self, messages: list[dict[str, str]], **kwargs) -> LLMResponse:
-        """Send a chat request to the LLM.
-
-        Args:
-            messages: List of message dicts with 'role' and 'content' keys.
-            **kwargs: Additional provider-specific parameters.
-
-        Returns:
-            LLMResponse with content and usage information.
-        """
-        pass
-
-    @abstractmethod
-    def get_model(self) -> str:
-        """Get the model name for this provider."""
-        pass
-
-
-class OpenAICompatibleProvider(LLMProvider):
-    """OpenAI-compatible LLM provider implementation."""
-
-    def __init__(
-        self,
-        api_key: str,
-        base_url: str,
-        model: str,
-        provider_name: LLMProviderType,
-    ):
-        """Initialize the OpenAI-compatible provider.
-
-        Args:
-            api_key: API key for authentication.
-            base_url: Base URL for the API endpoint.
-            model: Model name to use.
-            provider_name: Name identifier for the provider.
-        """
-        self.api_key = api_key
-        self.base_url = base_url.rstrip("/")
-        self.model = model
-        self.provider_name = provider_name
-        self._client: Optional[httpx.Client] = None
-
-    def _get_client(self) -> httpx.Client:
-        """Get or create the HTTP client."""
-        if self._client is None:
-            self._client = httpx.Client(
-                base_url=self.base_url,
-                headers={
-                    "Authorization": f"Bearer {self.api_key}",
-                    "Content-Type": "application/json",
-                },
-                timeout=60.0,
-            )
-        return self._client
-
-    def chat(self, messages: list[dict[str, str]], **kwargs) -> LLMResponse:
-        """Send a chat request to the LLM.
-
-        Args:
-            messages: List of message dicts with 'role' and 'content' keys.
-            **kwargs: Additional parameters like temperature, max_tokens.
-
-        Returns:
-            LLMResponse with content and usage information.
-        """
-        client = self._get_client()
-        payload = {
-            "model": self.model,
-            "messages": messages,
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "content": self.content,
+            "usage": self.usage.to_dict(),
         }
-        if kwargs:
-            payload.update(kwargs)
-
-        response = client.post("/chat/completions", json=payload)
-        response.raise_for_status()
-        data = response.json()
-
-        content = data["choices"][0]["message"]["content"]
-        usage_data = data.get("usage", {})
-
-        usage = Usage(
-            prompt_tokens=usage_data.get("prompt_tokens", 0),
-            completion_tokens=usage_data.get("completion_tokens", 0),
-            total_tokens=usage_data.get("total_tokens", 0),
-        )
-
-        cost = calculate_cost(
-            usage.prompt_tokens,
-            usage.completion_tokens,
-            self.provider_name,
-        )
-
-        return LLMResponse(
-            content=content,
-            usage=usage,
-            provider=self.provider_name,
-            model=self.model,
-            cost_usd=cost,
-        )
-
-    def get_model(self) -> str:
-        """Get the model name for this provider."""
-        return self.model
-
-    def close(self):
-        """Close the HTTP client."""
-        if self._client:
-            self._client.close()
-            self._client = None
 
 
-def get_provider(provider_type: Optional[LLMProviderType] = None) -> LLMProvider:
-    """Factory function to get an LLM provider instance.
+# ── 成本估算（每 1K tokens 价格，单位 USD） ────────────────────────────────
 
-    Args:
-        provider_type: Type of provider to create. Defaults to LLM_PROVIDER env var.
+PRICING: dict[str, dict[str, float]] = {
+    "deepseek-chat": {"input": 0.0014, "output": 0.0028},
+    "deepseek-reasoner": {"input": 0.004, "output": 0.016},
+    "qwen-plus": {"input": 0.002, "output": 0.006},
+    "qwen-turbo": {"input": 0.0005, "output": 0.001},
+    "gpt-4o-mini": {"input": 0.00015, "output": 0.0006},
+    "gpt-4o": {"input": 0.005, "output": 0.015},
+    "MiniMax-M2.7": {"input": 0.0001, "output": 0.0001},
+}
 
-    Returns:
-        An LLMProvider instance.
 
-    Raises:
-        ValueError: If provider type is unknown or API key is missing.
-    """
-    provider = (provider_type or DEFAULT_PROVIDER).lower()
-
-    if provider not in PROVIDER_BASE_URLS:
-        raise ValueError(f"Unknown provider: {provider}")
-
-    api_keys = {
-        PROVIDER_DEEPSEEK: DEEPSEEK_API_KEY,
-        PROVIDER_QWEN: QWEN_API_KEY,
-        PROVIDER_MINIMAX: MINIMAX_API_KEY,
-        PROVIDER_OPENAI: OPENAI_API_KEY,
-    }
-
-    api_key = api_keys.get(provider, "")
-    if not api_key:
-        raise ValueError(f"API key not found for provider: {provider}")
-
-    return OpenAICompatibleProvider(
-        api_key=api_key,
-        base_url=PROVIDER_BASE_URLS[provider],
-        model=PROVIDER_MODELS[provider],
-        provider_name=provider,
+def estimate_cost(model: str, usage: Usage) -> float:
+    """估算单次调用成本（USD）"""
+    prices = PRICING.get(model, {"input": 0.002, "output": 0.006})
+    return (
+        usage.prompt_tokens / 1000 * prices["input"]
+        + usage.completion_tokens / 1000 * prices["output"]
     )
 
 
-def estimate_tokens(text: str, model: Optional[str] = None) -> int:
-    """Estimate token count for text using approximation.
+# ── Provider 抽象基类 ────────────────────────────────────────────────────
 
-    Args:
-        text: Input text to estimate tokens for.
-        model: Model to use for estimation (affects encoding).
+class LLMProvider(ABC):
+    """LLM 提供商抽象基类"""
 
-    Returns:
-        Estimated token count.
+    def __init__(self, api_key: str, base_url: str, model: str):
+        self.api_key = api_key
+        self.base_url = base_url.rstrip("/")
+        self.model = model
+        self.client = httpx.Client(timeout=60.0)
+
+    @abstractmethod
+    def chat(
+        self,
+        messages: list[dict[str, str]],
+        temperature: float = 0.7,
+        max_tokens: int = 2000,
+    ) -> LLMResponse:
+        """发送聊天请求，返回统一格式响应"""
+        ...
+
+    def close(self) -> None:
+        self.client.close()
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *args):
+        self.close()
+
+
+class OpenAICompatibleProvider(LLMProvider):
     """
-    return math.ceil(len(text) / 4)
-
-
-def calculate_cost(
-    prompt_tokens: int,
-    completion_tokens: int,
-    provider: LLMProviderType,
-) -> float:
-    """Calculate the cost in USD for token usage.
-
-    Args:
-        prompt_tokens: Number of tokens in the prompt.
-        completion_tokens: Number of tokens in the completion.
-        provider: Provider type for pricing.
-
-    Returns:
-        Cost in USD.
+    兼容 OpenAI Chat Completions API 的提供商。
+    DeepSeek、Qwen、OpenAI 都使用相同的 API 格式。
     """
-    prices = TOKEN_PRICES_PER_MILLION.get(provider, {"input": 0, "output": 0})
-    input_cost = (prompt_tokens / 1_000_000) * prices["input"]
-    output_cost = (completion_tokens / 1_000_000) * prices["output"]
-    return round(input_cost + output_cost, 6)
+
+    def chat(
+        self,
+        messages: list[dict[str, str]],
+        temperature: float = 0.7,
+        max_tokens: int = 2000,
+    ) -> LLMResponse:
+        url = f"{self.base_url}/chat/completions"
+        headers = {
+            "Authorization": f"Bearer {self.api_key}",
+            "Content-Type": "application/json",
+        }
+        payload = {
+            "model": self.model,
+            "messages": messages,
+            "temperature": temperature,
+            "max_tokens": max_tokens,
+        }
+
+        resp = self.client.post(url, json=payload, headers=headers)
+        resp.raise_for_status()
+        data = resp.json()
+
+        content = data["choices"][0]["message"]["content"]
+        usage_data = data.get("usage", {})
+        usage = Usage(
+            prompt_tokens=usage_data.get("prompt_tokens", 0),
+            completion_tokens=usage_data.get("completion_tokens", 0),
+        )
+
+        return LLMResponse(content=content, usage=usage)
 
 
-def chat_with_retry(
-    messages: list[dict[str, str]],
-    provider_type: Optional[LLMProviderType] = None,
-    max_retries: int = 3,
-    **kwargs,
-) -> LLMResponse:
-    """Send a chat request with automatic retry on failure.
+# ── 工厂函数 ─────────────────────────────────────────────────────────────
 
-    Uses exponential backoff for retries.
+# 各提供商的环境变量映射
+PROVIDER_CONFIG: dict[str, dict[str, str]] = {
+    "deepseek": {
+        "api_key_env": "DEEPSEEK_API_KEY",
+        "base_url_env": "DEEPSEEK_BASE_URL",
+        "default_base_url": "https://api.deepseek.com",
+        "default_model": "deepseek-chat",
+    },
+    "qwen": {
+        "api_key_env": "QWEN_API_KEY",
+        "base_url_env": "QWEN_BASE_URL",
+        "default_base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+        "default_model": "qwen-plus",
+    },
+    "openai": {
+        "api_key_env": "OPENAI_API_KEY",
+        "base_url_env": "OPENAI_BASE_URL",
+        "default_base_url": "https://api.openai.com/v1",
+        "default_model": "gpt-4o-mini",
+    },
+    "minimax": {
+        "api_key_env": "MINIMAX_API_KEY",
+        "base_url_env": "MINIMAX_BASE_URL",
+        "default_base_url": "https://api.minimaxi.com/v1",
+        "default_model": "MiniMax-M2.7",
+    },
+}
+
+
+def create_provider(provider_name: str | None = None) -> LLMProvider:
+    """
+    工厂函数：根据提供商名称创建对应的 LLM 客户端。
 
     Args:
-        messages: List of message dicts with 'role' and 'content' keys.
-        provider_type: Type of provider to use.
-        max_retries: Maximum number of retry attempts.
-        **kwargs: Additional parameters passed to the chat method.
+        provider_name: 提供商名称（deepseek/qwen/openai），
+                       默认读取环境变量 LLM_PROVIDER
 
     Returns:
-        LLMResponse with content and usage information.
+        LLMProvider 实例
 
     Raises:
-        httpx.HTTPStatusError: After all retries are exhausted.
+        ValueError: 未知的提供商名称
+        RuntimeError: 缺少 API Key
     """
-    provider = get_provider(provider_type)
-    base_delay = 1.0
+    name = (provider_name or os.getenv("LLM_PROVIDER", "deepseek")).lower()
+
+    if name not in PROVIDER_CONFIG:
+        raise ValueError(
+            f"未知的模型提供商: {name}，支持: {', '.join(PROVIDER_CONFIG.keys())}"
+        )
+
+    config = PROVIDER_CONFIG[name]
+    api_key = os.getenv(config["api_key_env"], "")
+    if not api_key:
+        raise RuntimeError(
+            f"缺少 API Key，请设置环境变量: {config['api_key_env']}"
+        )
+
+    base_url = os.getenv(config["base_url_env"], config["default_base_url"])
+    model = os.getenv("MINIMAX_MODEL", config["default_model"]) if name == "minimax" else config["default_model"]
+
+    logger.info("创建 LLM 客户端: provider=%s, model=%s", name, model)
+    return OpenAICompatibleProvider(api_key=api_key, base_url=base_url, model=model)
+
+
+# ── 带重试的调用封装 ──────────────────────────────────────────────────────
+
+def chat_with_retry(
+    provider: LLMProvider,
+    messages: list[dict[str, str]],
+    temperature: float = 0.7,
+    max_tokens: int = 2000,
+    max_retries: int = 3,
+    backoff_base: float = 2.0,
+) -> LLMResponse:
+    """
+    带指数退避重试的聊天调用。
+
+    Args:
+        provider: LLM 提供商实例
+        messages: 消息列表
+        temperature: 温度参数
+        max_tokens: 最大生成 token 数
+        max_retries: 最大重试次数
+        backoff_base: 退避基数（秒）
+
+    Returns:
+        LLMResponse 统一响应
+
+    Raises:
+        最后一次重试仍失败时抛出原始异常
+    """
+    last_error: Exception | None = None
 
     for attempt in range(max_retries):
         try:
-            return provider.chat(messages, **kwargs)
-        except httpx.HTTPStatusError as e:
-            if attempt == max_retries - 1:
-                logger.error("All retry attempts exhausted: %s", e)
-                raise
-            delay = base_delay * (2 ** attempt)
-            logger.warning(
-                "Request failed (attempt %d/%d), retrying in %.1fs: %s",
-                attempt + 1,
-                max_retries,
-                delay,
-                e,
+            response = provider.chat(
+                messages=messages,
+                temperature=temperature,
+                max_tokens=max_tokens,
             )
-        except httpx.RequestError as e:
-            if attempt == max_retries - 1:
-                logger.error("Request error after all retries: %s", e)
-                raise
-            delay = base_delay * (2 ** attempt)
-            logger.warning(
-                "Request error (attempt %d/%d), retrying in %.1fs: %s",
-                attempt + 1,
-                max_retries,
-                delay,
-                e,
-            )
-        except Exception as e:
-            logger.error("Unexpected error during chat: %s", e)
-            raise
+            if attempt > 0:
+                logger.info("第 %d 次重试成功", attempt)
+            return response
 
+        except (httpx.HTTPStatusError, httpx.ConnectError, httpx.TimeoutException) as e:
+            last_error = e
+            if attempt < max_retries - 1:
+                wait_time = backoff_base ** attempt
+                logger.warning(
+                    "LLM 调用失败（第 %d/%d 次），%0.1f 秒后重试: %s",
+                    attempt + 1, max_retries, wait_time, str(e),
+                )
+                time.sleep(wait_time)
+            else:
+                logger.error("LLM 调用失败，已达最大重试次数: %s", str(e))
+
+    raise last_error  # type: ignore[misc]
+
+
+# ── 便捷函数 ─────────────────────────────────────────────────────────────
 
 def quick_chat(
     prompt: str,
-    system_message: Optional[str] = None,
-    provider_type: Optional[LLMProviderType] = None,
-    **kwargs,
-) -> LLMResponse:
-    """Convenience function for a single LLM chat interaction.
+    system: str = "你是一个 AI 技术分析助手。",
+    provider_name: str | None = None,
+) -> str:
+    """
+    快捷调用：一句话调用 LLM，返回纯文本。
 
     Args:
-        prompt: User message to send.
-        system_message: Optional system message to prepend.
-        provider_type: Type of provider to use.
-        **kwargs: Additional parameters passed to the chat method.
+        prompt: 用户提示词
+        system: 系统提示词
+        provider_name: 提供商名称，默认读环境变量
 
     Returns:
-        LLMResponse with content and usage information.
+        LLM 返回的文本内容
     """
-    messages = []
-    if system_message:
-        messages.append({"role": "system", "content": system_message})
-    messages.append({"role": "user", "content": prompt})
+    messages = [
+        {"role": "system", "content": system},
+        {"role": "user", "content": prompt},
+    ]
 
-    return chat_with_retry(messages, provider_type, **kwargs)
+    provider = create_provider(provider_name)
+    try:
+        response = chat_with_retry(provider, messages)
+        cost = estimate_cost(provider.model, response.usage)
+        logger.info(
+            "Token 用量: %d (prompt) + %d (completion) = %d, 估算成本: $%.6f",
+            response.usage.prompt_tokens,
+            response.usage.completion_tokens,
+            response.usage.total_tokens,
+            cost,
+        )
+        return response.content
+    finally:
+        provider.close()
 
+
+# ── CLI 测试入口 ─────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
-    test_system = "You are a helpful assistant."
-    test_prompt = "What is 2+2? Answer in one sentence."
-
-    print(f"Testing LLM client with default provider ({DEFAULT_PROVIDER})")
-    print(f"Model: {PROVIDER_MODELS.get(DEFAULT_PROVIDER, 'unknown')}")
-    print("-" * 50)
+    print("=== LLM 客户端测试 ===")
+    print(f"提供商: {os.getenv('LLM_PROVIDER', 'deepseek')}")
 
     try:
-        response = quick_chat(
-            prompt=test_prompt,
-            system_message=test_system,
-        )
-
-        print(f"Provider: {response.provider}")
-        print(f"Model: {response.model}")
-        print(f"Response: {response.content}")
-        print(f"Usage: {response.usage}")
-        print(f"Cost: ${response.cost_usd:.6f}")
-
-        print("-" * 50)
-        prompt_tokens_est = estimate_tokens(test_prompt + test_system)
-        print(f"Estimated prompt tokens: {prompt_tokens_est}")
-
-    except ValueError as e:
-        print(f"Configuration error: {e}")
-        print("Please set the appropriate API key environment variable.")
-    except httpx.HTTPStatusError as e:
-        print(f"HTTP error: {e}")
+        result = quick_chat("用一句话介绍什么是 AI Agent。")
+        print(f"\n回复: {result}")
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"\n错误: {e}")
+        print("请检查 .env 文件中的 API Key 配置。")
