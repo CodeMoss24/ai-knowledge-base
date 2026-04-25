@@ -1,0 +1,426 @@
+{
+  "source": "github",
+  "collected_at": "2026-04-25T00:11:55.853500+00:00",
+  "items": [
+    {
+      "id": "github-1103012935",
+      "title": "openclaw",
+      "description": "Your own personal AI assistant. Any OS. Any Platform. The lobster way. 🦞 ",
+      "url": "https://github.com/openclaw/openclaw",
+      "source": "github",
+      "source_url": "https://github.com/openclaw/openclaw",
+      "stars": 363454,
+      "language": "TypeScript",
+      "collected_at": "2026-04-25T00:11:55.276532+00:00"
+    },
+    {
+      "id": "github-45717250",
+      "title": "tensorflow",
+      "description": "An Open Source Machine Learning Framework for Everyone",
+      "url": "https://github.com/tensorflow/tensorflow",
+      "source": "github",
+      "source_url": "https://github.com/tensorflow/tensorflow",
+      "stars": 194859,
+      "language": "C++",
+      "collected_at": "2026-04-25T00:11:55.276554+00:00"
+    },
+    {
+      "id": "github-193215554",
+      "title": "n8n",
+      "description": "Fair-code workflow automation platform with native AI capabilities. Combine visual building with custom code, self-host or cloud, 400+ integrations.",
+      "url": "https://github.com/n8n-io/n8n",
+      "source": "github",
+      "source_url": "https://github.com/n8n-io/n8n",
+      "stars": 185470,
+      "language": "TypeScript",
+      "collected_at": "2026-04-25T00:11:55.276557+00:00"
+    },
+    {
+      "id": "github-614765452",
+      "title": "AutoGPT",
+      "description": "AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.",
+      "url": "https://github.com/Significant-Gravitas/AutoGPT",
+      "source": "github",
+      "source_url": "https://github.com/Significant-Gravitas/AutoGPT",
+      "stars": 183735,
+      "language": "Python",
+      "collected_at": "2026-04-25T00:11:55.276559+00:00"
+    },
+    {
+      "id": "github-658928958",
+      "title": "ollama",
+      "description": "Get up and running with Kimi-K2.5, GLM-5, MiniMax, DeepSeek, gpt-oss, Qwen, Gemma and other models.",
+      "url": "https://github.com/ollama/ollama",
+      "source": "github",
+      "source_url": "https://github.com/ollama/ollama",
+      "stars": 169909,
+      "language": "Go",
+      "collected_at": "2026-04-25T00:11:55.276561+00:00"
+    },
+    {
+      "id": "github-1136590548",
+      "title": "everything-claude-code",
+      "description": "The agent harness performance optimization system. Skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond.",
+      "url": "https://github.com/affaan-m/everything-claude-code",
+      "source": "github",
+      "source_url": "https://github.com/affaan-m/everything-claude-code",
+      "stars": 166246,
+      "language": "JavaScript",
+      "collected_at": "2026-04-25T00:11:55.276563+00:00"
+    },
+    {
+      "id": "github-527591471",
+      "title": "stable-diffusion-webui",
+      "description": "Stable Diffusion web UI",
+      "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
+      "source": "github",
+      "source_url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui",
+      "stars": 162585,
+      "language": "Python",
+      "collected_at": "2026-04-25T00:11:55.276564+00:00"
+    },
+    {
+      "id": "github-574523116",
+      "title": "prompts.chat",
+      "description": "f.k.a. Awesome ChatGPT Prompts. Share, discover, and collect prompts from the community. Free and open source — self-host for your organization with complete privacy.",
+      "url": "https://github.com/f/prompts.chat",
+      "source": "github",
+      "source_url": "https://github.com/f/prompts.chat",
+      "stars": 160561,
+      "language": "HTML",
+      "collected_at": "2026-04-25T00:11:55.276569+00:00"
+    },
+    {
+      "id": "github-155220641",
+      "title": "transformers",
+      "description": "🤗 Transformers: the model-definition framework for state-of-the-art machine learning models in text, vision, audio, and multimodal models, for both inference and training. ",
+      "url": "https://github.com/huggingface/transformers",
+      "source": "github",
+      "source_url": "https://github.com/huggingface/transformers",
+      "stars": 159883,
+      "language": "Python",
+      "collected_at": "2026-04-25T00:11:55.276571+00:00"
+    },
+    {
+      "id": "github-132464395",
+      "title": "JavaGuide",
+      "description": "Java 面试 & 后端通用面试指南，覆盖计算机基础、数据库、分布式、高并发、系统设计与 AI 应用开发",
+      "url": "https://github.com/Snailclimb/JavaGuide",
+      "source": "github",
+      "source_url": "https://github.com/Snailclimb/JavaGuide",
+      "stars": 155196,
+      "language": "Java",
+      "collected_at": "2026-04-25T00:11:55.276573+00:00"
+    },
+    {
+      "id": "github-599320067",
+      "title": "langflow",
+      "description": "Langflow is a powerful tool for building and deploying AI-powered agents and workflows.",
+      "url": "https://github.com/langflow-ai/langflow",
+      "source": "github",
+      "source_url": "https://github.com/langflow-ai/langflow",
+      "stars": 147335,
+      "language": "Python",
+      "collected_at": "2026-04-25T00:11:55.276575+00:00"
+    },
+    {
+      "id": "github-626805178",
+      "title": "dify",
+      "description": "Production-ready platform for agentic workflow development.",
+      "url": "https://github.com/langgenius/dify",
+      "source": "github",
+      "source_url": "https://github.com/langgenius/dify",
+      "stars": 139067,
+      "language": "TypeScript",
+      "collected_at": "2026-04-25T00:11:55.276576+00:00"
+    },
+    {
+      "id": "github-943398999",
+      "title": "system-prompts-and-models-of-ai-tools",
+      "description": "FULL Augment Code, Claude Code, Cluely, CodeBuddy, Comet, Cursor, Devin AI, Junie, Kiro, Leap.new, Lovable, Manus, NotionAI, Orchids.app, Perplexity, Poke, Qoder, Replit, Same.dev, Trae, Traycer AI, VSCode Agent, Warp.dev, Windsurf, Xcode, Z.ai Code, Dia & v0. (And other Open Sourced) System Prompts, Internal Tools & AI Models",
+      "url": "https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools",
+      "source": "github",
+      "source_url": "https://github.com/x1xhlol/system-prompts-and-models-of-ai-tools",
+      "stars": 136010,
+      "language": "unknown",
+      "collected_at": "2026-04-25T00:11:55.276578+00:00"
+    },
+    {
+      "id": "github-552661142",
+      "title": "langchain",
+      "description": "The agent engineering platform",
+      "url": "https://github.com/langchain-ai/langchain",
+      "source": "github",
+      "source_url": "https://github.com/langchain-ai/langchain",
+      "stars": 134793,
+      "language": "Python",
+      "collected_at": "2026-04-25T00:11:55.276580+00:00"
+    },
+    {
+      "id": "github-701547123",
+      "title": "open-webui",
+      "description": "User-friendly AI Interface (Supports Ollama, OpenAI API, ...)",
+      "url": "https://github.com/open-webui/open-webui",
+      "source": "github",
+      "source_url": "https://github.com/open-webui/open-webui",
+      "stars": 133924,
+      "language": "Python",
+      "collected_at": "2026-04-25T00:11:55.276583+00:00"
+    },
+    {
+      "id": "github-1024554267",
+      "title": "hermes-agent",
+      "description": "The agent that grows with you",
+      "url": "https://github.com/NousResearch/hermes-agent",
+      "source": "github",
+      "source_url": "https://github.com/NousResearch/hermes-agent",
+      "stars": 115154,
+      "language": "Python",
+      "collected_at": "2026-04-25T00:11:55.276585+00:00"
+    },
+    {
+      "id": "github-787076358",
+      "title": "firecrawl",
+      "description": "🔥 The API to search, scrape, and interact with the web for AI",
+      "url": "https://github.com/firecrawl/firecrawl",
+      "source": "github",
+      "source_url": "https://github.com/firecrawl/firecrawl",
+      "stars": 112049,
+      "language": "TypeScript",
+      "collected_at": "2026-04-25T00:11:55.276586+00:00"
+    },
+    {
+      "id": "github-589831718",
+      "title": "ComfyUI",
+      "description": "The most powerful and modular diffusion model GUI, api and backend with a graph/nodes interface.",
+      "url": "https://github.com/Comfy-Org/ComfyUI",
+      "source": "github",
+      "source_url": "https://github.com/Comfy-Org/ComfyUI",
+      "stars": 109953,
+      "language": "Python",
+      "collected_at": "2026-04-25T00:11:55.276588+00:00"
+    },
+    {
+      "id": "github-655806940",
+      "title": "generative-ai-for-beginners",
+      "description": "21 Lessons, Get Started Building with Generative AI ",
+      "url": "https://github.com/microsoft/generative-ai-for-beginners",
+      "source": "github",
+      "source_url": "https://github.com/microsoft/generative-ai-for-beginners",
+      "stars": 109802,
+      "language": "Jupyter Notebook",
+      "collected_at": "2026-04-25T00:11:55.276591+00:00"
+    },
+    {
+      "id": "github-793375104",
+      "title": "awesome-llm-apps",
+      "description": "100+ AI Agent & RAG apps you can actually run — clone, customize, ship.",
+      "url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
+      "source": "github",
+      "source_url": "https://github.com/Shubhamsaboo/awesome-llm-apps",
+      "stars": 107339,
+      "language": "Python",
+      "collected_at": "2026-04-25T00:11:55.276595+00:00"
+    },
+    {
+      "id": "rss--442728085487777656",
+      "title": "FusionCore: ROS 2 sensor fusion (IMU and GPS and encoders)",
+      "description": "Article URL: https://github.com/manankharwar/fusioncore Comments URL: https://news.ycombinator.com/item?id=47896670 Points: 6 # Comments: 1",
+      "url": "https://github.com/manankharwar/fusioncore",
+      "source": "rss",
+      "source_url": "https://github.com/manankharwar/fusioncore",
+      "published_at": "Fri, 24 Apr 2026 22:36:38 +0000",
+      "collected_at": "2026-04-25T00:11:55.690574+00:00"
+    },
+    {
+      "id": "rss-356121046697146320",
+      "title": "Show HN: I've built a nice home server OS",
+      "description": "ohai!I've released Lightwhale 3, which is possibly the easiest way to self-host Docker containers.It's a free, immutable Linux system purpose-built to live-boot straight into a working Docker Engine, thereby shortcutting the need for installation, configuration, and maintenance. Its simple design makes it easy to learn, and its low memory footprint should make it especially attractive during these times of RAMageddon.If this has piqued your interest, do check it out, along with its easy-to-follo",
+      "url": "https://lightwhale.asklandd.dk/",
+      "source": "rss",
+      "source_url": "https://lightwhale.asklandd.dk/",
+      "published_at": "Fri, 24 Apr 2026 21:42:26 +0000",
+      "collected_at": "2026-04-25T00:11:55.690651+00:00"
+    },
+    {
+      "id": "rss--5790011581014024681",
+      "title": "Google Flow Music",
+      "description": "Article URL: https://www.flowmusic.app/ Comments URL: https://news.ycombinator.com/item?id=47895765 Points: 64 # Comments: 32",
+      "url": "https://www.flowmusic.app/",
+      "source": "rss",
+      "source_url": "https://www.flowmusic.app/",
+      "published_at": "Fri, 24 Apr 2026 21:01:50 +0000",
+      "collected_at": "2026-04-25T00:11:55.690679+00:00"
+    },
+    {
+      "id": "rss-6460908749406253322",
+      "title": "Tell HN: Claude 4.7 is ignoring stop hooks",
+      "description": "I've been using Anthropic's hook features [0] since they were introduced. It allows me to inject determinism into my workflows. This worked perfectly until 4.7. Now, Claude routinely ignores the hook rules. For example, I have a stop hook that prevents Claude from stopping if a source file has been changed and no tests have been run.Here's the relvant part of the script: # Source edits made without a subsequent test run -> block the stop. cat Here's a portion of the conversation:Me: \"message\": {",
+      "url": "https://news.ycombinator.com/item?id=47895029",
+      "source": "rss",
+      "source_url": "https://news.ycombinator.com/item?id=47895029",
+      "published_at": "Fri, 24 Apr 2026 19:55:09 +0000",
+      "collected_at": "2026-04-25T00:11:55.690894+00:00"
+    },
+    {
+      "id": "rss-3617072242765091430",
+      "title": "My audio interface has SSH enabled by default",
+      "description": "Article URL: https://hhh.hn/rodecaster-duo-fw/ Comments URL: https://news.ycombinator.com/item?id=47894747 Points: 129 # Comments: 27",
+      "url": "https://hhh.hn/rodecaster-duo-fw/",
+      "source": "rss",
+      "source_url": "https://hhh.hn/rodecaster-duo-fw/",
+      "published_at": "Fri, 24 Apr 2026 19:30:46 +0000",
+      "collected_at": "2026-04-25T00:11:55.690924+00:00"
+    },
+    {
+      "id": "rss-1462349944859580485",
+      "title": "TIPSv2: Advancing Vision-Language Pretraining with Enhanced Patch-Text Alignment",
+      "description": "Article URL: https://gdm-tipsv2.github.io/ Comments URL: https://news.ycombinator.com/item?id=47894734 Points: 18 # Comments: 1",
+      "url": "https://gdm-tipsv2.github.io/",
+      "source": "rss",
+      "source_url": "https://gdm-tipsv2.github.io/",
+      "published_at": "Fri, 24 Apr 2026 19:28:32 +0000",
+      "collected_at": "2026-04-25T00:11:55.690954+00:00"
+    },
+    {
+      "id": "rss-1703369817999847558",
+      "title": "The Classic American Diner",
+      "description": "Article URL: https://blogs.loc.gov/picturethis/2026/04/the-classic-american-diner/ Comments URL: https://news.ycombinator.com/item?id=47894435 Points: 130 # Comments: 73",
+      "url": "https://blogs.loc.gov/picturethis/2026/04/the-classic-american-diner/",
+      "source": "rss",
+      "source_url": "https://blogs.loc.gov/picturethis/2026/04/the-classic-american-diner/",
+      "published_at": "Fri, 24 Apr 2026 19:01:09 +0000",
+      "collected_at": "2026-04-25T00:11:55.690987+00:00"
+    },
+    {
+      "id": "rss-6409212455476017790",
+      "title": "SFO Quiet Airport (2025)",
+      "description": "Article URL: https://viewfromthewing.com/san-francisco-airport-removed-90-minutes-of-daily-noise-travelers-say-it-changed-everything/ Comments URL: https://news.ycombinator.com/item?id=47894081 Points: 123 # Comments: 73",
+      "url": "https://viewfromthewing.com/san-francisco-airport-removed-90-minutes-of-daily-noise-travelers-say-it-changed-everything/",
+      "source": "rss",
+      "source_url": "https://viewfromthewing.com/san-francisco-airport-removed-90-minutes-of-daily-noise-travelers-say-it-changed-everything/",
+      "published_at": "Fri, 24 Apr 2026 18:29:53 +0000",
+      "collected_at": "2026-04-25T00:11:55.691035+00:00"
+    },
+    {
+      "id": "rss-3276673677970378307",
+      "title": "OpenAI releases GPT-5.5 and GPT-5.5 Pro in the API",
+      "description": "GPT-5.5 - https://news.ycombinator.com/item?id=47879092 - April 2026 (1010 comments) Comments URL: https://news.ycombinator.com/item?id=47894000 Points: 198 # Comments: 110",
+      "url": "https://developers.openai.com/api/docs/changelog",
+      "source": "rss",
+      "source_url": "https://developers.openai.com/api/docs/changelog",
+      "published_at": "Fri, 24 Apr 2026 18:23:32 +0000",
+      "collected_at": "2026-04-25T00:11:55.691074+00:00"
+    },
+    {
+      "id": "rss-4624669136165285468",
+      "title": "There Will Be a Scientific Theory of Deep Learning",
+      "description": "Article URL: https://arxiv.org/abs/2604.21691 Comments URL: https://news.ycombinator.com/item?id=47893779 Points: 100 # Comments: 39",
+      "url": "https://arxiv.org/abs/2604.21691",
+      "source": "rss",
+      "source_url": "https://arxiv.org/abs/2604.21691",
+      "published_at": "Fri, 24 Apr 2026 18:06:05 +0000",
+      "collected_at": "2026-04-25T00:11:55.691105+00:00"
+    },
+    {
+      "id": "rss-5098334719074865158",
+      "title": "CC-Canary: Detect early signs of regressions in Claude Code",
+      "description": "Article URL: https://github.com/delta-hq/cc-canary Comments URL: https://news.ycombinator.com/item?id=47893620 Points: 37 # Comments: 17",
+      "url": "https://github.com/delta-hq/cc-canary",
+      "source": "rss",
+      "source_url": "https://github.com/delta-hq/cc-canary",
+      "published_at": "Fri, 24 Apr 2026 17:53:37 +0000",
+      "collected_at": "2026-04-25T00:11:55.691138+00:00"
+    },
+    {
+      "id": "rss-4977791301906122011",
+      "title": "CSS as a Query Language",
+      "description": "Article URL: https://evdc.me/blog/css-query Comments URL: https://news.ycombinator.com/item?id=47893427 Points: 54 # Comments: 19",
+      "url": "https://evdc.me/blog/css-query",
+      "source": "rss",
+      "source_url": "https://evdc.me/blog/css-query",
+      "published_at": "Fri, 24 Apr 2026 17:39:37 +0000",
+      "collected_at": "2026-04-25T00:11:55.691164+00:00"
+    },
+    {
+      "id": "rss-8904657501338350745",
+      "title": "Redesigning the Recurse Center application to inspire curious programmers",
+      "description": "Article URL: https://www.recurse.com/blog/192-redesigning-the-recurse-center-application Comments URL: https://news.ycombinator.com/item?id=47892660 Points: 53 # Comments: 9",
+      "url": "https://www.recurse.com/blog/192-redesigning-the-recurse-center-application",
+      "source": "rss",
+      "source_url": "https://www.recurse.com/blog/192-redesigning-the-recurse-center-application",
+      "published_at": "Fri, 24 Apr 2026 16:45:10 +0000",
+      "collected_at": "2026-04-25T00:11:55.691199+00:00"
+    },
+    {
+      "id": "rss-6818792446673368566",
+      "title": "SDL Now Supports DOS",
+      "description": "Article URL: https://github.com/libsdl-org/SDL/pull/15377 Comments URL: https://news.ycombinator.com/item?id=47892291 Points: 211 # Comments: 74",
+      "url": "https://github.com/libsdl-org/SDL/pull/15377",
+      "source": "rss",
+      "source_url": "https://github.com/libsdl-org/SDL/pull/15377",
+      "published_at": "Fri, 24 Apr 2026 16:20:15 +0000",
+      "collected_at": "2026-04-25T00:11:55.691230+00:00"
+    },
+    {
+      "id": "rss--1146746629570192360",
+      "title": "Diatec, known for its mechanical keyboard brand FILCO, has ceased operations",
+      "description": "Article URL: https://gigazine.net/gsc_news/en/20260424-filco-diatec/ Comments URL: https://news.ycombinator.com/item?id=47892236 Points: 86 # Comments: 28",
+      "url": "https://gigazine.net/gsc_news/en/20260424-filco-diatec/",
+      "source": "rss",
+      "source_url": "https://gigazine.net/gsc_news/en/20260424-filco-diatec/",
+      "published_at": "Fri, 24 Apr 2026 16:16:49 +0000",
+      "collected_at": "2026-04-25T00:11:55.691265+00:00"
+    },
+    {
+      "id": "rss--493992217184231466",
+      "title": "Google plans to invest up to $40B in Anthropic",
+      "description": "Article URL: https://www.bloomberg.com/news/articles/2026-04-24/google-plans-to-invest-up-to-40-billion-in-anthropic Comments URL: https://news.ycombinator.com/item?id=47892074 Points: 246 # Comments: 306",
+      "url": "https://www.bloomberg.com/news/articles/2026-04-24/google-plans-to-invest-up-to-40-billion-in-anthropic",
+      "source": "rss",
+      "source_url": "https://www.bloomberg.com/news/articles/2026-04-24/google-plans-to-invest-up-to-40-billion-in-anthropic",
+      "published_at": "Fri, 24 Apr 2026 16:04:41 +0000",
+      "collected_at": "2026-04-25T00:11:55.691311+00:00"
+    },
+    {
+      "id": "rss--7900580330476138215",
+      "title": "I cancelled Claude: Token issues, declining quality, and poor support",
+      "description": "Article URL: https://nickyreinert.de/en/2026/2026-04-24-claude-critics/ Comments URL: https://news.ycombinator.com/item?id=47892019 Points: 738 # Comments: 438",
+      "url": "https://nickyreinert.de/en/2026/2026-04-24-claude-critics/",
+      "source": "rss",
+      "source_url": "https://nickyreinert.de/en/2026/2026-04-24-claude-critics/",
+      "published_at": "Fri, 24 Apr 2026 15:59:19 +0000",
+      "collected_at": "2026-04-25T00:11:55.691343+00:00"
+    },
+    {
+      "id": "rss--8325402141101294526",
+      "title": "I'm done making desktop applications (2009)",
+      "description": "Article URL: https://www.kalzumeus.com/2009/09/05/desktop-aps-versus-web-apps/ Comments URL: https://news.ycombinator.com/item?id=47891801 Points: 136 # Comments: 153",
+      "url": "https://www.kalzumeus.com/2009/09/05/desktop-aps-versus-web-apps/",
+      "source": "rss",
+      "source_url": "https://www.kalzumeus.com/2009/09/05/desktop-aps-versus-web-apps/",
+      "published_at": "Fri, 24 Apr 2026 15:44:03 +0000",
+      "collected_at": "2026-04-25T00:11:55.691375+00:00"
+    },
+    {
+      "id": "rss--1919952256094217254",
+      "title": "Different Language Models Learn Similar Number Representations",
+      "description": "Article URL: https://arxiv.org/abs/2604.20817 Comments URL: https://news.ycombinator.com/item?id=47890873 Points: 89 # Comments: 35",
+      "url": "https://arxiv.org/abs/2604.20817",
+      "source": "rss",
+      "source_url": "https://arxiv.org/abs/2604.20817",
+      "published_at": "Fri, 24 Apr 2026 14:34:23 +0000",
+      "collected_at": "2026-04-25T00:11:55.691405+00:00"
+    },
+    {
+      "id": "rss--3284991099983670755",
+      "title": "Show HN: Browser Harness – Gives LLM freedom to complete any browser task",
+      "description": "Hey HN,We got tired of browser frameworks restricting the LLM, so we removed the framework and gave the LLM maximum freedom to do whatever it's trained on. We gave the harness the ability to self correct and add new tools if the LLM wants (is pre-trained on) that.Our Browser Use library is tens of thousands of lines of deterministic heuristics wrapping Chrome (CDP websocket). Element extractors, click helpers, target managemenet (SUPER painful), watchdogs (crash handling, file downloads, alerts)",
+      "url": "https://github.com/browser-use/browser-harness",
+      "source": "rss",
+      "source_url": "https://github.com/browser-use/browser-harness",
+      "published_at": "Fri, 24 Apr 2026 14:31:38 +0000",
+      "collected_at": "2026-04-25T00:11:55.691679+00:00"
+    }
+  ]
+}
