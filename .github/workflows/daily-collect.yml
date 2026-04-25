@@ -34,15 +34,7 @@ jobs:
           MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: cd pipeline && python pipeline.py --sources github,rss --limit 20 --verbose --collect-only
-
-      - name: Validate collected raw data
-        run: |
-          if ls knowledge/raw/*.json 1>/dev/null 2>&1; then
-            python hooks/validate_json.py knowledge/raw/*.json
-          else
-            echo "No raw data to validate"
-          fi
+        run: cd pipeline && python pipeline.py --sources github,rss --limit 20 --step 1
 
       - name: Commit and push results
         run: |

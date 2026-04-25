@@ -1,11 +1,17 @@
-"""Knowledge Base Automation Pipeline.
-
-Four-step pipeline: Collect -> Analyze -> Organize -> Save
 """
+AI 知识库四步流水线：采集 → 分析 → 整理 → 保存
+
+运行方式：
+    python3 pipeline/pipeline.py --sources github,rss --limit 20
+    python3 pipeline/pipeline.py --sources github --limit 5 --dry-run
+"""
+
+from __future__ import annotations
 
 import argparse
 import json
 import logging
+import os
 import re
 import sys
 from datetime import datetime, timezone
@@ -13,437 +19,474 @@ from pathlib import Path
 from typing import Any
 
 import httpx
+import yaml
+from dotenv import load_dotenv
 
-from model_client import chat_with_retry
+# 添加项目根目录到 path，以便导入 model_client 和 rss_reader
+sys.path.insert(0, str(Path(__file__).parent))
+from model_client import create_provider, chat_with_retry, estimate_cost, LLMResponse
+from rss_reader import collect_rss  # noqa: F401 — 重导出供内部使用
 
-BASE_DIR = Path(__file__).parent.parent
-RAW_DIR = BASE_DIR / "knowledge" / "raw"
-ARTICLES_DIR = BASE_DIR / "knowledge" / "articles"
-
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-)
+load_dotenv()
 logger = logging.getLogger(__name__)
 
+# ── 项目路径 ─────────────────────────────────────────────────────────────
 
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="AI Knowledge Base Pipeline")
+PROJECT_ROOT = Path(__file__).parent.parent
+RAW_DIR = PROJECT_ROOT / "knowledge" / "raw"
+ARTICLES_DIR = PROJECT_ROOT / "knowledge" / "articles"
+RSS_CONFIG = Path(__file__).parent / "rss_sources.yaml"
+
+
+# ── Step 1: 采集（Collect） ──────────────────────────────────────────────
+
+def collect_github(limit: int = 10) -> list[dict[str, Any]]:
+    """
+    从 GitHub 搜索 API 采集 AI 相关热门仓库。
+
+    Args:
+        limit: 最大采集数量
+
+    Returns:
+        原始数据列表
+    """
+    token = os.getenv("GITHUB_TOKEN", "")
+    headers = {"Accept": "application/vnd.github.v3+json"}
+    if token:
+        headers["Authorization"] = f"token {token}"
+
+    # 搜索最近一周更新的 AI 相关仓库，按 star 排序
+    one_week_ago = (datetime.now(timezone.utc) - __import__('datetime').timedelta(days=7)).strftime("%Y-%m-%d")
+    query = f"ai agent llm stars:>100 pushed:>{one_week_ago}"
+    url = "https://api.github.com/search/repositories"
+    params = {
+        "q": query,
+        "sort": "stars",
+        "order": "desc",
+        "per_page": min(limit, 30),
+    }
+
+    results: list[dict[str, Any]] = []
+    try:
+        with httpx.Client(timeout=30.0) as client:
+            resp = client.get(url, params=params, headers=headers)
+            resp.raise_for_status()
+            data = resp.json()
+
+            for i, repo in enumerate(data.get("items", [])[:limit]):
+                now = datetime.now(timezone.utc).isoformat()
+                results.append({
+                    "id": f"github-{datetime.now().strftime('%Y%m%d')}-{i+1:03d}",
+                    "title": repo["full_name"],
+                    "source": "github",
+                    "source_url": repo["html_url"],
+                    "author": repo["owner"]["login"],
+                    "published_at": repo.get("pushed_at", ""),
+                    "raw_description": repo.get("description", "") or "",
+                    "stars": repo.get("stargazers_count", 0),
+                    "language": repo.get("language", ""),
+                    "topics": repo.get("topics", []),
+                    "collected_at": now,
+                })
+
+        logger.info("GitHub 采集完成: %d 条", len(results))
+    except httpx.HTTPError as e:
+        logger.error("GitHub API 调用失败: %s", e)
+
+    return results
+
+
+# collect_rss 已抽取到 pipeline/rss_reader.py，此处通过顶部 import 重导出
+# 保持向后兼容：旧代码调用 pipeline.pipeline.collect_rss 仍然可用
+
+
+def step_collect(sources: list[str], limit: int) -> list[dict[str, Any]]:
+    """
+    Step 1: 按数据源采集原始数据。
+
+    Args:
+        sources: 数据源列表 ["github", "rss"]
+        limit: 每个源的最大采集数
+
+    Returns:
+        合并后的原始数据列表
+    """
+    print(f"\n{'='*60}")
+    print(f"📥 Step 1: 采集（sources={sources}, limit={limit}）")
+    print(f"{'='*60}")
+
+    all_items: list[dict[str, Any]] = []
+
+    if "github" in sources:
+        all_items.extend(collect_github(limit))
+    if "rss" in sources:
+        all_items.extend(collect_rss(limit))
+
+    # 保存原始数据
+    RAW_DIR.mkdir(parents=True, exist_ok=True)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    raw_file = RAW_DIR / f"raw_{timestamp}.json"
+    with open(raw_file, "w", encoding="utf-8") as f:
+        json.dump(all_items, f, ensure_ascii=False, indent=2)
+
+    print(f"  采集到 {len(all_items)} 条原始数据")
+    print(f"  保存到 {raw_file}")
+
+    return all_items
+
+
+# ── Step 2: 分析（Analyze） ──────────────────────────────────────────────
+
+ANALYZE_PROMPT_TEMPLATE = """请分析以下 AI 技术内容，返回 JSON 格式的分析结果。
+
+内容信息：
+- 标题：{title}
+- 来源：{source}
+- 描述：{description}
+
+请返回以下格式的 JSON（不要包含 markdown 代码块标记）：
+{{
+  "summary": "2-3 句话的技术摘要，说明核心内容和价值",
+  "score": 7,
+  "tags": ["tag1", "tag2"],
+  "audience": "intermediate"
+}}
+
+评分标准（1-10）：
+- 9-10: 突破性创新
+- 7-8: 优秀技术分享
+- 5-6: 普通有用信息
+- 3-4: 内容较浅
+- 1-2: 低质量
+
+可用标签：agent, rag, mcp, llm, fine-tuning, prompt-engineering, multi-agent,
+tool-use, evaluation, deployment, security, reasoning, code-generation, vision, audio
+
+audience 可选值：beginner, intermediate, advanced"""
+
+
+def step_analyze(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """
+    Step 2: 调用 LLM 对每条内容进行分析。
+
+    Args:
+        items: 原始数据列表
+
+    Returns:
+        带分析结果的数据列表
+    """
+    print(f"\n{'='*60}")
+    print(f"🔍 Step 2: 分析（{len(items)} 条内容）")
+    print(f"{'='*60}")
+
+    provider = create_provider()
+    analyzed: list[dict[str, Any]] = []
+    total_cost = 0.0
+
+    try:
+        for i, item in enumerate(items):
+            print(f"  [{i+1}/{len(items)}] 分析: {item['title'][:50]}...")
+
+            prompt = ANALYZE_PROMPT_TEMPLATE.format(
+                title=item["title"],
+                source=item["source"],
+                description=item.get("raw_description", "无描述"),
+            )
+
+            try:
+                response = chat_with_retry(
+                    provider,
+                    messages=[
+                        {"role": "system", "content": "你是一个 AI 技术分析专家。请严格按要求返回 JSON。"},
+                        {"role": "user", "content": prompt},
+                    ],
+                    temperature=0.3,
+                    max_tokens=500,
+                )
+
+                cost = estimate_cost(provider.model, response.usage)
+                total_cost += cost
+
+                # 解析 LLM 返回的 JSON
+                content = response.content.strip()
+                # 去除可能的 markdown 代码块标记
+                content = re.sub(r"^```json\s*", "", content)
+                content = re.sub(r"\s*```$", "", content)
+
+                analysis = json.loads(content)
+
+                # 合并原始数据和分析结果
+                enriched = {**item, **analysis}
+                enriched["status"] = "review"
+                enriched["analyzed_at"] = datetime.now(timezone.utc).isoformat()
+                analyzed.append(enriched)
+
+            except (json.JSONDecodeError, KeyError) as e:
+                logger.warning("分析结果解析失败: %s — %s", item["title"], e)
+                # 解析失败时使用默认值
+                enriched = {
+                    **item,
+                    "summary": item.get("raw_description", "")[:200],
+                    "score": 5,
+                    "tags": ["llm"],
+                    "audience": "intermediate",
+                    "status": "draft",
+                    "analyzed_at": datetime.now(timezone.utc).isoformat(),
+                }
+                analyzed.append(enriched)
+
+    finally:
+        provider.close()
+
+    print(f"  分析完成: {len(analyzed)} 条")
+    print(f"  估算总成本: ${total_cost:.6f}")
+
+    return analyzed
+
+
+# ── Step 3: 整理（Organize） ─────────────────────────────────────────────
+
+def step_organize(items: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """
+    Step 3: 去重、格式化、校验。
+
+    Args:
+        items: 带分析结果的数据列表
+
+    Returns:
+        整理后的数据列表
+    """
+    print(f"\n{'='*60}")
+    print(f"📋 Step 3: 整理（{len(items)} 条内容）")
+    print(f"{'='*60}")
+
+    # 去重：按 source_url 去重
+    seen_urls: set[str] = set()
+    unique: list[dict[str, Any]] = []
+
+    # 先读取已有文章的 URL
+    if ARTICLES_DIR.exists():
+        for f in ARTICLES_DIR.glob("*.json"):
+            try:
+                with open(f, "r", encoding="utf-8") as fh:
+                    existing = json.load(fh)
+                    if "source_url" in existing:
+                        seen_urls.add(existing["source_url"])
+            except (json.JSONDecodeError, IOError):
+                pass
+
+    dedup_count = 0
+    for item in items:
+        url = item.get("source_url", "")
+        if url in seen_urls:
+            dedup_count += 1
+            continue
+        seen_urls.add(url)
+        unique.append(item)
+
+    # 格式标准化
+    organized: list[dict[str, Any]] = []
+    for item in unique:
+        article = {
+            "id": item.get("id", "unknown-000"),
+            "title": item.get("title", ""),
+            "source": item.get("source", "unknown"),
+            "source_url": item.get("source_url", ""),
+            "author": item.get("author", "unknown"),
+            "published_at": item.get("published_at", ""),
+            "collected_at": item.get("collected_at", ""),
+            "summary": item.get("summary", ""),
+            "score": max(1, min(10, item.get("score", 5))),
+            "tags": item.get("tags", []),
+            "audience": item.get("audience", "intermediate"),
+            "status": item.get("status", "draft"),
+            "updated_at": datetime.now(timezone.utc).isoformat(),
+        }
+        organized.append(article)
+
+    print(f"  去重: 移除 {dedup_count} 条重复")
+    print(f"  整理后: {len(organized)} 条")
+
+    return organized
+
+
+# ── Step 4: 保存（Save） ────────────────────────────────────────────────
+
+def step_save(items: list[dict[str, Any]], dry_run: bool = False) -> list[Path]:
+    """
+    Step 4: 将文章保存为独立 JSON 文件。
+
+    Args:
+        items: 整理后的文章列表
+        dry_run: 仅模拟，不实际写入
+
+    Returns:
+        已保存的文件路径列表
+    """
+    print(f"\n{'='*60}")
+    print(f"💾 Step 4: 保存（{len(items)} 条内容，dry_run={dry_run}）")
+    print(f"{'='*60}")
+
+    ARTICLES_DIR.mkdir(parents=True, exist_ok=True)
+    saved_files: list[Path] = []
+
+    for item in items:
+        filename = f"{item['id']}.json"
+        filepath = ARTICLES_DIR / filename
+
+        if dry_run:
+            print(f"  [DRY RUN] 将保存: {filepath}")
+        else:
+            with open(filepath, "w", encoding="utf-8") as f:
+                json.dump(item, f, ensure_ascii=False, indent=2)
+            print(f"  已保存: {filepath}")
+
+        saved_files.append(filepath)
+
+    print(f"\n  共 {'模拟' if dry_run else ''}保存 {len(saved_files)} 个文件")
+    return saved_files
+
+
+# ── 主流程 ───────────────────────────────────────────────────────────────
+
+def run_pipeline(
+    sources: list[str],
+    limit: int = 20,
+    dry_run: bool = False,
+    steps: list[int] | None = None,
+) -> dict[str, Any]:
+    """
+    运行完整的四步流水线。
+
+    Args:
+        sources: 数据源列表
+        limit: 每个源的最大采集数
+        dry_run: 仅模拟运行
+        steps: 要执行的步骤列表（1-4），默认全部执行
+
+    Returns:
+        运行统计信息
+    """
+    run_steps = set(steps) if steps else {1, 2, 3, 4}
+
+    start_time = datetime.now()
+    print(f"\n{'#'*60}")
+    print(f"# AI 知识库流水线 — {start_time.strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"# 数据源: {', '.join(sources)} | 限制: {limit} | DryRun: {dry_run}")
+    print(f"# 执行步骤: {sorted(run_steps)}")
+    print(f"{'#'*60}")
+
+    raw_items: list[dict] = []
+    analyzed_items: list[dict] = []
+    organized_items: list[dict] = []
+    saved_files: list[str] = []
+
+    # Step 1: 采集
+    if 1 in run_steps:
+        raw_items = step_collect(sources, limit)
+        if not raw_items:
+            print("\n⚠️  没有采集到任何数据，流水线结束。")
+            return {"collected": 0, "analyzed": 0, "saved": 0}
+
+    # Step 2: 分析
+    if 2 in run_steps and raw_items:
+        analyzed_items = step_analyze(raw_items)
+
+    # Step 3: 整理
+    if 3 in run_steps and analyzed_items:
+        organized_items = step_organize(analyzed_items)
+
+    # Step 4: 保存
+    if 4 in run_steps and organized_items:
+        saved_files = step_save(organized_items, dry_run=dry_run)
+
+    # 统计
+    elapsed = (datetime.now() - start_time).total_seconds()
+    stats = {
+        "collected": len(raw_items),
+        "analyzed": len(analyzed_items),
+        "organized": len(organized_items),
+        "saved": len(saved_files),
+        "elapsed_seconds": round(elapsed, 1),
+        "dry_run": dry_run,
+    }
+
+    print(f"\n{'#'*60}")
+    print(f"# 流水线完成！耗时 {elapsed:.1f} 秒")
+    print(f"# 采集: {stats['collected']} → 分析: {stats['analyzed']} "
+          f"→ 整理: {stats['organized']} → 保存: {stats['saved']}")
+    print(f"{'#'*60}\n")
+
+    return stats
+
+
+# ── CLI 入口 ─────────────────────────────────────────────────────────────
+
+def main() -> None:
+    parser = argparse.ArgumentParser(
+        description="AI 知识库采集流水线",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+示例:
+    python3 pipeline/pipeline.py --sources github,rss --limit 20
+    python3 pipeline/pipeline.py --sources github --limit 5 --dry-run
+    python3 pipeline/pipeline.py --sources rss --limit 10
+        """,
+    )
     parser.add_argument(
         "--sources",
         type=str,
         default="github,rss",
-        help="Comma-separated sources: github,rss (default: github,rss)",
+        help="数据源，逗号分隔（默认: github,rss）",
     )
     parser.add_argument(
         "--limit",
         type=int,
-        default=10,
-        help="Number of items to collect per source (default: 10)",
+        default=20,
+        help="每个源的最大采集数量（默认: 20）",
     )
     parser.add_argument(
         "--dry-run",
         action="store_true",
-        help="Run without saving files or calling LLM",
+        help="仅模拟运行，不实际保存文件",
     )
     parser.add_argument(
         "--verbose",
         action="store_true",
-        help="Enable verbose logging",
+        help="显示详细日志",
     )
     parser.add_argument(
-        "--collect-only",
-        action="store_true",
-        help="Only collect data, skip analysis and organization",
+        "--step",
+        type=int,
+        action="append",
+        help="指定执行的步骤（1-4），可多次使用，如 --step 1 --step 2",
     )
-    return parser.parse_args()
-
-
-class CollectStep:
-    """Step 1: Collect AI-related content from various sources."""
-
-    GITHUB_API = "https://api.github.com"
-    RSS_FEEDS = [
-        "https://hnrss.org/frontpage",
-        "https://feeds.feedburner.com/oreilly/radar",
-    ]
-
-    def __init__(self, limit: int, dry_run: bool, verbose: bool):
-        self.limit = limit
-        self.dry_run = dry_run
-        self.verbose = verbose
-        self._client: httpx.Client | None = None
-
-    @property
-    def client(self) -> httpx.Client:
-        if self._client is None:
-            self._client = httpx.Client(timeout=30.0)
-        return self._client
-
-    def run(self, sources: list[str]) -> list[dict[str, Any]]:
-        items = []
-        if "github" in sources:
-            items.extend(self._collect_github())
-        if "rss" in sources:
-            items.extend(self._collect_rss())
-        logger.info("Collected %d items total", len(items))
-        return items
-
-    def _collect_github(self) -> list[dict[str, Any]]:
-        query = "AI OR machine-learning OR LLM OR GPT OR neural-network"
-        url = f"{self.GITHUB_API}/search/repositories"
-        params = {
-            "q": query,
-            "sort": "stars",
-            "order": "desc",
-            "per_page": min(self.limit, 100),
-        }
-        headers = {"Accept": "application/vnd.github.v3+json"}
-
-        try:
-            if self.dry_run:
-                logger.info("[DRY RUN] Would fetch GitHub: %s %s", url, params)
-                return []
-            response = self.client.get(url, params=params, headers=headers)
-            response.raise_for_status()
-            data = response.json()
-            items = []
-            for repo in data.get("items", [])[: self.limit]:
-                items.append({
-                    "id": f"github-{repo['id']}",
-                    "title": repo.get("name", ""),
-                    "description": repo.get("description") or "",
-                    "url": repo.get("html_url", ""),
-                    "source": "github",
-                    "source_url": repo.get("html_url", ""),
-                    "stars": repo.get("stargazers_count", 0),
-                    "language": repo.get("language") or "unknown",
-                    "collected_at": datetime.now(timezone.utc).isoformat(),
-                })
-            logger.info("Collected %d GitHub repos", len(items))
-            return items
-        except httpx.HTTPStatusError as e:
-            logger.error("GitHub API error: %s", e)
-            return []
-
-    def _collect_rss(self) -> list[dict[str, Any]]:
-        items = []
-        for feed_url in self.RSS_FEEDS:
-            try:
-                if self.dry_run:
-                    logger.info("[DRY RUN] Would fetch RSS: %s", feed_url)
-                    continue
-                response = self.client.get(feed_url)
-                response.raise_for_status()
-                feed_items = self._parse_rss(response.text, feed_url)
-                items.extend(feed_items)
-            except Exception as e:
-                logger.error("RSS fetch error for %s: %s", feed_url, e)
-        logger.info("Collected %d RSS items", len(items))
-        return items
-
-    def _parse_rss(self, xml_content: str, source_url: str) -> list[dict[str, Any]]:
-        items = []
-        item_pattern = re.compile(r"<item>(.*?)</item>", re.DOTALL | re.IGNORECASE)
-        title_pattern = re.compile(r"<title>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?</title>", re.DOTALL | re.IGNORECASE)
-        link_pattern = re.compile(r"<link>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?</link>", re.DOTALL | re.IGNORECASE)
-        desc_pattern = re.compile(r"<description>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?</description>", re.DOTALL | re.IGNORECASE)
-        pubdate_pattern = re.compile(r"<pubDate>(.*?)</pubDate>", re.DOTALL | re.IGNORECASE)
-
-        for match in item_pattern.finditer(xml_content):
-            item_xml = match.group(1)
-            title = self._extract_first(title_pattern, item_xml)
-            link = self._extract_first(link_pattern, item_xml)
-            description = self._extract_first(desc_pattern, item_xml)
-            pubdate = self._extract_first(pubdate_pattern, item_xml)
-
-            if not title or not link:
-                continue
-
-            description = re.sub(r"<[^>]+>", "", description or "").strip()
-            description = re.sub(r"\s+", " ", description)
-
-            items.append({
-                "id": f"rss-{hash(link)}",
-                "title": title.strip(),
-                "description": description[:500] if description else "",
-                "url": link.strip(),
-                "source": "rss",
-                "source_url": link.strip(),
-                "published_at": pubdate.strip() if pubdate else None,
-                "collected_at": datetime.now(timezone.utc).isoformat(),
-            })
-        return items[: self.limit]
-
-    def _extract_first(self, pattern: re.Pattern, text: str) -> str | None:
-        match = pattern.search(text)
-        return match.group(1).strip() if match else None
-
-    def save_raw(self, items: list[dict[str, Any]], source: str) -> Path | None:
-        if self.dry_run:
-            return None
-        RAW_DIR.mkdir(parents=True, exist_ok=True)
-        date_str = datetime.now().strftime("%Y-%m-%d")
-        filepath = RAW_DIR / f"{source}-{date_str}.json"
-        with open(filepath, "w", encoding="utf-8") as f:
-            json.dump({"source": source, "collected_at": datetime.now(timezone.utc).isoformat(), "items": items}, f, ensure_ascii=False, indent=2)
-        logger.info("Saved raw data to %s", filepath)
-        return filepath
-
-
-class AnalyzeStep:
-    """Step 2: Analyze content with LLM - summary, score, tags."""
-
-    SYSTEM_PROMPT = """You are an AI content analyzer. Analyze the provided content and respond with a JSON object containing:
-- summary: A concise Chinese summary (2-3 sentences)
-- relevance_score: A float between 0.0 and 1.0 indicating AI/ML relevance
-- tags: Array of lowercase tags (English, hyphenated)
-
-Be critical and rate relevance_score honestly. Only rate >= 0.6 if truly AI/ML/LLM related."""
-
-    USER_TEMPLATE = """Analyze this content:
-
-Title: {title}
-Description: {description}
-URL: {url}
-
-Respond with JSON only, no other text."""
-
-    def __init__(self, dry_run: bool, verbose: bool):
-        self.dry_run = dry_run
-        self.verbose = verbose
-
-    def run(self, items: list[dict[str, Any]]) -> list[dict[str, Any]]:
-        analyzed = []
-        for item in items:
-            result = self._analyze_item(item)
-            if result:
-                analyzed.append(result)
-            if self.verbose and result:
-                logger.info("Analyzed: %s (score: %.2f)", item.get("title", ""), result.get("relevance_score", 0))
-        logger.info("Analyzed %d items", len(analyzed))
-        return analyzed
-
-    def _analyze_item(self, item: dict[str, Any]) -> dict[str, Any] | None:
-        if self.dry_run:
-            return {
-                **item,
-                "summary": "[DRY RUN] Summary would be generated here",
-                "relevance_score": 0.75,
-                "tags": ["dry-run", "example"],
-                "analyzed_at": datetime.now(timezone.utc).isoformat(),
-            }
-
-        title = item.get("title", "")
-        description = item.get("description", "") or item.get("text", "")
-        url = item.get("url", "") or item.get("source_url", "")
-
-        try:
-            response = chat_with_retry(
-                messages=[
-                    {"role": "system", "content": self.SYSTEM_PROMPT},
-                    {"role": "user", "content": self.USER_TEMPLATE.format(title=title, description=description, url=url)},
-                ],
-                max_retries=3,
-            )
-            content = response.content.strip()
-            json_match = re.search(r"\{[\s\S]*\}", content)
-            if json_match:
-                content = json_match.group(0)
-            else:
-                content = re.sub(r"^```json\s*", "", content)
-                content = re.sub(r"\s*```$", "", content)
-            analysis = json.loads(content)
-            return {
-                **item,
-                "summary": analysis.get("summary", ""),
-                "relevance_score": float(analysis.get("relevance_score", 0)),
-                "tags": analysis.get("tags", []),
-                "analyzed_at": datetime.now(timezone.utc).isoformat(),
-            }
-        except json.JSONDecodeError as e:
-            logger.error("Failed to parse LLM response for %s: %s | Response: %s", title, e, response.content[:500] if 'response' in dir() else 'N/A')
-        except Exception as e:
-            logger.error("Analysis error for %s: %s", title, e)
-        return None
-
-
-class OrganizeStep:
-    """Step 3: Deduplicate, standardize format, validate."""
-
-    MIN_SCORE = 0.6
-
-    def __init__(self, dry_run: bool, verbose: bool):
-        self.dry_run = dry_run
-        self.verbose = verbose
-        self._seen_urls: set[str] = set()
-        self._seen_ids: set[str] = set()
-
-    def run(self, items: list[dict[str, Any]]) -> list[dict[str, Any]]:
-        organized = []
-        for item in items:
-            processed = self._process_item(item)
-            if processed:
-                organized.append(processed)
-        logger.info("Organized %d items (passed validation)", len(organized))
-        return organized
-
-    def _process_item(self, item: dict[str, Any]) -> dict[str, Any] | None:
-        item_id = item.get("id", "")
-        url = item.get("url") or item.get("source_url", "")
-
-        if item_id in self._seen_ids or url in self._seen_urls:
-            if self.verbose:
-                logger.info("Duplicate skipped: %s", item.get("title", ""))
-            return None
-
-        score = item.get("relevance_score", 0)
-        if score < self.MIN_SCORE:
-            if self.verbose:
-                logger.info("Low score rejected: %s (%.2f)", item.get("title", ""), score)
-            return None
-
-        self._seen_ids.add(item_id)
-        self._seen_urls.add(url)
-
-        slug = self._generate_slug(item.get("title", item_id))
-        date_str = datetime.now().strftime("%Y-%m-%d")
-
-        return {
-            "id": f"kb-{date_str}-{slug}",
-            "title": item.get("title", ""),
-            "source": item.get("source", "unknown"),
-            "source_url": url,
-            "url": url,
-            "summary": item.get("summary", ""),
-            "tags": item.get("tags", []),
-            "relevance_score": score,
-            "status": "active",
-            "collected_at": item.get("collected_at", ""),
-            "analyzed_at": item.get("analyzed_at", ""),
-            "organized_at": datetime.now(timezone.utc).isoformat(),
-        }
-
-    def _generate_slug(self, title: str) -> str:
-        slug = re.sub(r"[^\w\s-]", "", title.lower())
-        slug = re.sub(r"[-\s]+", "-", slug)
-        return slug[:50].strip("-")
-
-
-class SaveStep:
-    """Step 4: Save articles as individual JSON files."""
-
-    def __init__(self, dry_run: bool, verbose: bool):
-        self.dry_run = dry_run
-        self.verbose = verbose
-
-    def run(self, items: list[dict[str, Any]]) -> list[Path]:
-        ARTICLES_DIR.mkdir(parents=True, exist_ok=True)
-        saved = []
-        for item in items:
-            filepath = self._save_article(item)
-            if filepath:
-                saved.append(filepath)
-        self._update_index(saved)
-        logger.info("Saved %d articles", len(saved))
-        return saved
-
-    def _save_article(self, item: dict[str, Any]) -> Path | None:
-        if self.dry_run:
-            logger.info("[DRY RUN] Would save: %s", item.get("id", ""))
-            return None
-
-        article_id = item.get("id", "")
-        filepath = ARTICLES_DIR / f"{article_id}.json"
-
-        with open(filepath, "w", encoding="utf-8") as f:
-            json.dump(item, f, ensure_ascii=False, indent=2)
-
-        if self.verbose:
-            logger.info("Saved: %s", filepath.name)
-        return filepath
-
-    def _update_index(self, saved: list[Path]):
-        if self.dry_run or not saved:
-            return
-
-        index_path = ARTICLES_DIR / "index.json"
-        index_data = []
-        if index_path.exists():
-            try:
-                with open(index_path, "r", encoding="utf-8") as f:
-                    index_data = json.load(f)
-            except (json.JSONDecodeError, IOError):
-                index_data = []
-
-        existing_ids = {item.get("id") for item in index_data}
-        for filepath in saved:
-            article_id = filepath.stem
-            if article_id not in existing_ids:
-                index_data.append({
-                    "id": article_id,
-                    "file": filepath.name,
-                    "saved_at": datetime.now(timezone.utc).isoformat(),
-                })
-
-        index_data.sort(key=lambda x: x.get("saved_at", ""), reverse=True)
-        with open(index_path, "w", encoding="utf-8") as f:
-            json.dump(index_data, f, ensure_ascii=False, indent=2)
-
-
-def run_pipeline(
-    sources: list[str],
-    limit: int,
-    dry_run: bool,
-    verbose: bool,
-    collect_only: bool = False,
-) -> None:
-    if verbose:
-        logging.getLogger().setLevel(logging.DEBUG)
-        logger.debug("Starting pipeline with sources=%s, limit=%d, dry_run=%s, collect_only=%s", sources, limit, dry_run, collect_only)
-
-    collect = CollectStep(limit=limit, dry_run=dry_run, verbose=verbose)
-
-    logger.info("=== Step 1: Collect ===")
-    items = collect.run(sources)
-    if not items:
-        logger.warning("No items collected, pipeline stopped")
-        return
-
-    raw_source = sources[0] if sources else "mixed"
-    collect.save_raw(items, raw_source)
-
-    if collect_only:
-        logger.info("=== Collect only mode, skipping analyze/organize/save ===")
-        return
-
-    analyze = AnalyzeStep(dry_run=dry_run, verbose=verbose)
-    organize = OrganizeStep(dry_run=dry_run, verbose=verbose)
-    save = SaveStep(dry_run=dry_run, verbose=verbose)
-
-    logger.info("=== Step 2: Analyze ===")
-    analyzed = analyze.run(items)
-    if not analyzed:
-        logger.warning("No items analyzed, pipeline stopped")
-        return
-
-    logger.info("=== Step 3: Organize ===")
-    organized = organize.run(analyzed)
-    if not organized:
-        logger.warning("No items passed organization, pipeline stopped")
-        return
-
-    logger.info("=== Step 4: Save ===")
-    saved = save.run(organized)
-
-    logger.info("=== Pipeline Complete ===")
-    logger.info("Collected: %d, Analyzed: %d, Organized: %d, Saved: %d", len(items), len(analyzed), len(organized), len(saved))
-
-
-def main():
-    args = parse_args()
-    sources = [s.strip() for s in args.sources.split(",") if s.strip()]
-    run_pipeline(sources, args.limit, args.dry_run, args.verbose, args.collect_only)
+    parser.add_argument(
+        "--provider",
+        type=str,
+        default=None,
+        help="LLM 提供商（deepseek/qwen/openai），覆盖环境变量 LLM_PROVIDER",
+    )
+
+    args = parser.parse_args()
+
+    # --provider 设置环境变量，让 model_client 自动使用
+    if args.provider:
+        os.environ["LLM_PROVIDER"] = args.provider
+
+    logging.basicConfig(
+        level=logging.DEBUG if args.verbose else logging.INFO,
+        format="%(asctime)s %(levelname)s %(name)s: %(message)s",
+        datefmt="%H:%M:%S",
+    )
+
+    sources = [s.strip() for s in args.sources.split(",")]
+    run_pipeline(
+        sources=sources,
+        limit=args.limit,
+        dry_run=args.dry_run,
+        steps=args.step,
+    )
 
 
 if __name__ == "__main__":
