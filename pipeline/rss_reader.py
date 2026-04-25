@@ -1,6 +1,20 @@
-"""RSS feed reader for AI Knowledge Base pipeline."""
+"""
+pipeline/rss_reader.py — RSS 数据源采集模块
 
-import json
+支持从任意 RSS 源采集内容，配置文件见 pipeline/rss_sources.yaml。
+
+用法:
+    # 作为模块被 pipeline.py 导入
+    from pipeline.rss_reader import collect_rss
+    items = collect_rss(limit=10)
+
+    # 独立运行（调试）
+    python3 -m pipeline.rss_reader
+    python3 -m pipeline.rss_reader --limit 5
+"""
+
+from __future__ import annotations
+
 import logging
 import re
 from datetime import datetime, timezone
@@ -12,101 +26,104 @@ import yaml
 
 logger = logging.getLogger(__name__)
 
+# RSS 配置文件与 pipeline.py 共享同一份
 RSS_CONFIG = Path(__file__).parent / "rss_sources.yaml"
 
 
-def load_rss_sources() -> list[dict[str, Any]]:
-    """Load RSS sources from YAML config."""
+def collect_rss(limit: int = 10) -> list[dict[str, Any]]:
+    """
+    从配置的 RSS 源采集内容。
+
+    Args:
+        limit: 最大采集数量（所有源合计）
+
+    Returns:
+        原始数据列表，每条包含 id/title/source/source_url/... 字段
+    """
     if not RSS_CONFIG.exists():
-        logger.warning("RSS config not found: %s", RSS_CONFIG)
+        logger.warning("RSS 配置文件不存在: %s", RSS_CONFIG)
         return []
 
     with open(RSS_CONFIG, "r", encoding="utf-8") as f:
         config = yaml.safe_load(f)
 
-    return [s for s in config.get("sources", []) if s.get("enabled", False)]
+    sources = [s for s in config.get("sources", []) if s.get("enabled", True)]
+    results: list[dict[str, Any]] = []
+    count = 0
 
-
-def fetch_rss_feed(url: str, limit: int) -> list[dict[str, Any]]:
-    """Fetch and parse a single RSS feed."""
-    items = []
-
-    try:
-        with httpx.Client(timeout=30.0) as client:
-            response = client.get(url)
-            response.raise_for_status()
-            xml_content = response.text
-
-        item_pattern = re.compile(r"<item>(.*?)</item>", re.DOTALL | re.IGNORECASE)
-        title_pattern = re.compile(r"<title>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?</title>", re.DOTALL | re.IGNORECASE)
-        link_pattern = re.compile(r"<link>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?</link>", re.DOTALL | re.IGNORECASE)
-        desc_pattern = re.compile(r"<description>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?</description>", re.DOTALL | re.IGNORECASE)
-        pubdate_pattern = re.compile(r"<pubDate>(.*?)</pubDate>", re.DOTALL | re.IGNORECASE)
-
-        for match in item_pattern.finditer(xml_content):
-            item_xml = match.group(1)
-            title = _extract_first(title_pattern, item_xml)
-            link = _extract_first(link_pattern, item_xml)
-            description = _extract_first(desc_pattern, item_xml)
-            pubdate = _extract_first(pubdate_pattern, item_xml)
-
-            if not title or not link:
-                continue
-
-            description = re.sub(r"<[^>]+>", "", description or "").strip()
-            description = re.sub(r"\s+", " ", description)
-
-            items.append({
-                "id": f"rss-{abs(hash(link)) % (10**10)}",
-                "title": title.strip(),
-                "source": "rss",
-                "source_url": link.strip(),
-                "raw_description": description[:500] if description else "",
-                "published_at": pubdate.strip() if pubdate else "",
-                "collected_at": datetime.now(timezone.utc).isoformat(),
-            })
-
-            if len(items) >= limit:
+    with httpx.Client(timeout=20.0) as client:
+        for source in sources:
+            if count >= limit:
                 break
 
-    except httpx.HTTPError as e:
-        logger.error("RSS fetch error for %s: %s", url, e)
-    except Exception as e:
-        logger.error("RSS parse error for %s: %s", url, e)
+            try:
+                resp = client.get(source["url"])
+                resp.raise_for_status()
+                feed_text = resp.text
 
-    return items
+                # 简易 RSS 解析：提取 <item> 中的 <title> 和 <link>
+                items = re.findall(
+                    r"<item[^>]*>.*?<title[^>]*>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?</title>.*?"
+                    r"<link[^>]*>(.*?)</link>.*?</item>",
+                    feed_text,
+                    re.DOTALL,
+                )
+
+                for title, link in items:
+                    if count >= limit:
+                        break
+                    title = title.strip()
+                    link = link.strip()
+                    if not title or not link:
+                        continue
+
+                    now = datetime.now(timezone.utc).isoformat()
+                    count += 1
+                    results.append({
+                        "id": f"rss-{datetime.now().strftime('%Y%m%d')}-{count:03d}",
+                        "title": title,
+                        "source": f"rss:{source['name']}",
+                        "source_url": link,
+                        "author": source.get("name", "unknown"),
+                        "published_at": now,
+                        "raw_description": "",
+                        "category": source.get("category", "general"),
+                        "collected_at": now,
+                    })
+
+                logger.info("RSS [%s] 采集: %d 条", source["name"], len(items))
+
+            except httpx.HTTPError as e:
+                logger.warning("RSS 源 [%s] 获取失败: %s", source["name"], e)
+
+    logger.info("RSS 采集完成: 共 %d 条", len(results))
+    return results
 
 
-def _extract_first(pattern: re.Pattern, text: str) -> str | None:
-    """Extract first match from text."""
-    match = pattern.search(text)
-    return match.group(1).strip() if match else None
+# ── 独立调试入口 ────────────────────────────────────────────────────────────
 
+if __name__ == "__main__":
+    import argparse
+    import json
 
-def collect_rss(limit: int = 10) -> list[dict[str, Any]]:
-    """
-    Collect items from configured RSS feeds.
+    logging.basicConfig(
+        level=logging.INFO,
+        format="%(asctime)s [%(levelname)s] %(message)s",
+    )
 
-    Args:
-        limit: Maximum items per feed
+    parser = argparse.ArgumentParser(description="RSS 数据源采集调试入口")
+    parser.add_argument("--limit", type=int, default=10, help="最大采集条数")
+    parser.add_argument("--output", type=str, default="", help="保存到 JSON 文件（可选）")
+    args = parser.parse_args()
 
-    Returns:
-        List of RSS items
-    """
-    sources = load_rss_sources()
-    if not sources:
-        logger.warning("No RSS sources enabled")
-        return []
+    items = collect_rss(limit=args.limit)
+    print(f"\n采集到 {len(items)} 条 RSS 条目")
+    for i, item in enumerate(items[:5], 1):
+        print(f"  {i}. [{item['source']}] {item['title'][:60]}")
+    if len(items) > 5:
+        print(f"  ... 还有 {len(items) - 5} 条")
 
-    all_items: list[dict[str, Any]] = []
-
-    for source in sources:
-        url = source.get("url", "")
-        name = source.get("name", url)
-        logger.info("Fetching RSS: %s", name)
-        items = fetch_rss_feed(url, limit)
-        all_items.extend(items)
-        logger.info("  -> Got %d items from %s", len(items), name)
-
-    logger.info("RSS collection total: %d items", len(all_items))
-    return all_items
+    if args.output:
+        with open(args.output, "w", encoding="utf-8") as f:
+            json.dump(items, f, ensure_ascii=False, indent=2)
+        print(f"\n已保存到: {args.output}")
