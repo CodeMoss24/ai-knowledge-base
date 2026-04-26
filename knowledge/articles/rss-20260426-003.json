@@ -1,0 +1,19 @@
+{
+  "id": "rss-20260426-003",
+  "title": "There Will Be a Scientific Theory of Deep Learning",
+  "source": "rss:Hacker News Best (AI)",
+  "source_url": "https://arxiv.org/abs/2604.21691",
+  "author": "Hacker News Best (AI)",
+  "published_at": "2026-04-26T09:09:24.177392+00:00",
+  "collected_at": "2026-04-26T09:09:24.177392+00:00",
+  "summary": "这篇文章讨论了深度学习领域建立科学理论体系的重要性和可能性，涉及对神经网络学习机制的深层理解、泛化能力理论解释以及架构与性能关系的数学建模等核心问题。这类理论研究对推动 AI 技术从经验驱动向科学驱动转变具有重要价值。",
+  "score": 7,
+  "tags": [
+    "llm",
+    "reasoning",
+    "evaluation"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-26T09:18:31.967726+00:00"
+}

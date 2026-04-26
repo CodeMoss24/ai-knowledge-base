@@ -1,0 +1,18 @@
+{
+  "id": "rss-20260426-005",
+  "title": "Transformers are Inherently Succinct",
+  "source": "rss:Lobsters AI/ML",
+  "source_url": "https://arxiv.org/abs/2510.19315",
+  "author": "Lobsters AI/ML",
+  "published_at": "2026-04-26T09:09:24.220914+00:00",
+  "collected_at": "2026-04-26T09:09:24.220914+00:00",
+  "summary": "本文探讨 Transformer 架构本身的固有特性——简洁性（Inherently Succinct）。文章从理论层面分析 Transformer 如何通过自注意力机制和参数共享等方式实现高效的表示学习，揭示了 Transformer 在表达能力与模型复杂度之间取得的平衡。这一分析有助于深入理解大语言模型为何能在保持简洁结构的同时展现强大能力。",
+  "score": 7,
+  "tags": [
+    "llm",
+    "reasoning"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-26T09:18:31.967733+00:00"
+}

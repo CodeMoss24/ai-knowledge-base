@@ -1,0 +1,21 @@
+{
+  "id": "github-20260426-020",
+  "title": "ComposioHQ/composio",
+  "source": "github",
+  "source_url": "https://github.com/ComposioHQ/composio",
+  "author": "ComposioHQ",
+  "published_at": "2026-04-25T12:43:06Z",
+  "collected_at": "2026-04-26T09:09:21.648648+00:00",
+  "summary": "Composio是一个企业级AI Agent开发平台，提供超过1000个工具集、工具搜索、上下文管理、身份认证和沙箱执行环境等完整功能链，帮助开发者快速构建能够将用户意图转化为具体行动的AI代理应用，显著降低Agent开发的技术门槛。",
+  "score": 8,
+  "tags": [
+    "agent",
+    "tool-use",
+    "mcp",
+    "deployment",
+    "security"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-26T09:18:31.967710+00:00"
+}
