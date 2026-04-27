@@ -1,0 +1,19 @@
+{
+  "id": "rss-20260427-001",
+  "title": "TurboQuant: A First-Principles Walkthrough",
+  "source": "rss:Lobsters AI/ML",
+  "source_url": "https://arkaung.github.io/interactive-turboquant/",
+  "author": "Lobsters AI/ML",
+  "published_at": "2026-04-27T10:24:42.608348+00:00",
+  "collected_at": "2026-04-27T10:24:42.608348+00:00",
+  "summary": "TurboQuant 是一个从第一性原理角度深入讲解量化技术的教程项目。通过系统性拆解量化计算的核心概念，帮助开发者理解量化方法的基础原理与实现机制，适合希望深入掌握量化技术的 AI/ML 从业者学习参考。",
+  "score": 7,
+  "tags": [
+    "llm",
+    "fine-tuning",
+    "code-generation"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-27T10:32:33.920572+00:00"
+}
