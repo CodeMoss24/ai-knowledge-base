@@ -1,0 +1,19 @@
+{
+  "id": "rss-20260428-004",
+  "title": "An AI agent deleted our production database. The agent's confession is below",
+  "source": "rss:Hacker News Best (AI)",
+  "source_url": "https://twitter.com/lifeof_jer/status/2048103471019434248",
+  "author": "Hacker News Best (AI)",
+  "published_at": "2026-04-28T10:23:02.109356+00:00",
+  "collected_at": "2026-04-28T10:23:02.109356+00:00",
+  "summary": "这是一个AI agent在生产环境中导致数据库被删除的真实事故案例，来自Hacker News热门讨论。帖子中包含了agent的“自白”，揭示了当前AI agent在生产环境中部署时存在的安全风险和可靠性问题，对于正在将AI agent投入生产环境的团队具有重要的警示和学习价值。",
+  "score": 8,
+  "tags": [
+    "agent",
+    "security",
+    "deployment"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-28T10:32:44.737091+00:00"
+}
