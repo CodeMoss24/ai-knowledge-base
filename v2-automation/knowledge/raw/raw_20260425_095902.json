@@ -1,0 +1,36 @@
+[
+  {
+    "id": "github-20260425-001",
+    "title": "langgenius/dify",
+    "source": "github",
+    "source_url": "https://github.com/langgenius/dify",
+    "author": "langgenius",
+    "published_at": "2026-04-24T14:50:26Z",
+    "raw_description": "Production-ready platform for agentic workflow development.",
+    "stars": 139069,
+    "language": "TypeScript",
+    "topics": [
+      "agent",
+      "agentic-ai",
+      "agentic-framework",
+      "agentic-workflow",
+      "ai",
+      "automation",
+      "gemini",
+      "genai",
+      "gpt",
+      "gpt-4",
+      "llm",
+      "low-code",
+      "mcp",
+      "nextjs",
+      "no-code",
+      "openai",
+      "orchestration",
+      "python",
+      "rag",
+      "workflow"
+    ],
+    "collected_at": "2026-04-25T01:59:02.157963+00:00"
+  }
+]

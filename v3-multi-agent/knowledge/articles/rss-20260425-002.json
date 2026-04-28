@@ -1,0 +1,19 @@
+{
+  "id": "rss-20260425-002",
+  "title": "Reversing SynthID",
+  "source": "rss:Lobsters AI/ML",
+  "source_url": "https://hackerfactor.com/blog/index.php?/archives/1092-Reversing-SynthID.html",
+  "author": "Lobsters AI/ML",
+  "published_at": "2026-04-25T05:43:11.227625+00:00",
+  "collected_at": "2026-04-25T05:43:11.227625+00:00",
+  "summary": "该内容分析了 Google DeepMind 开发的 SynthID AI 水印技术，探讨其工作原理和可能的逆向方法。SynthID 是一种用于检测 AI 生成的音频和图像内容的技术，通过在生成过程中嵌入不可察觉的信号来实现内容溯源。对于安全研究人员和 AI 检测技术开发者来说，了解水印系统的实现机制有助于评估其有效性和局限性。",
+  "score": 7,
+  "tags": [
+    "security",
+    "audio",
+    "evaluation"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-25T05:44:35.094237+00:00"
+}
