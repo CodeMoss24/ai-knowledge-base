@@ -1,0 +1,18 @@
+{
+  "id": "rss-20260429-005",
+  "title": "Triton language for Huawei Ascend",
+  "source": "rss:Lobsters AI/ML",
+  "source_url": "https://github.com/triton-lang/triton-ascend",
+  "author": "Lobsters AI/ML",
+  "published_at": "2026-04-29T10:12:32.721053+00:00",
+  "collected_at": "2026-04-29T10:12:32.721053+00:00",
+  "summary": "Triton 是 OpenAI 开发的 GPU 编程语言，主要用于编写高效的深度学习 kernels。该标题表明开发者正在为华为 Ascend 系列 AI 加速器适配 Triton 语言支持，这将使开发者能够使用 Triton 编写可在 Ascend 硬件上运行的代码，提升跨平台开发效率。",
+  "score": 7,
+  "tags": [
+    "deployment",
+    "code-generation"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-29T10:21:22.294462+00:00"
+}

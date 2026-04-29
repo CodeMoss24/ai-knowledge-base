@@ -1,0 +1,18 @@
+{
+  "id": "rss-20260429-006",
+  "title": "Introducing talkie: a 13B vintage language model from 1930",
+  "source": "rss:Lobsters AI/ML",
+  "source_url": "https://talkie-lm.com/introducing-talkie",
+  "author": "Lobsters AI/ML",
+  "published_at": "2026-04-29T10:12:32.721084+00:00",
+  "collected_at": "2026-04-29T10:12:32.721084+00:00",
+  "summary": "talkie 是一个 13B 参数规模的语言模型项目，虽然标题采用复古幽默风格（1930 年代「talkie」指早期有声电影），但从 Lobsters AI/ML 社区来源看，这应是一个有实际工程价值的模型分享，适合对语言模型实践感兴趣的开发者关注。",
+  "score": 7,
+  "tags": [
+    "llm",
+    "fine-tuning"
+  ],
+  "audience": "intermediate",
+  "status": "review",
+  "updated_at": "2026-04-29T10:21:22.294465+00:00"
+}
