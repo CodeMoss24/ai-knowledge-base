@@ -21,7 +21,7 @@ def collect_node(state: KBState) -> dict:
     query = "AI OR machine-learning OR LLM OR agent AI"
     sort = "stars"
     order = "desc"
-    per_page = 30
+    per_page = 5
 
     api_url = (
         "https://api.github.com/search/repositories"
@@ -142,12 +142,14 @@ def organize_node(state: KBState) -> dict:
             "highlights": item.get("highlights", []),
         })
 
+    iteration = iteration + 1
+
     if iteration > 0 and review_feedback:
         print(f"[organize_node] 检测到审核反馈，进行修正 (iteration={iteration})...")
         articles = _correct_with_feedback(articles, review_feedback, state.get("cost_tracker", {}))
 
     print(f"[organize_node] 整理完成，保留 {len(articles)} 条数据")
-    return {"articles": articles}
+    return {"articles": articles, "iteration": iteration}
 
 
 def _correct_with_feedback(articles: list[dict], feedback: str, cost_tracker: dict) -> list[dict]:
@@ -186,22 +188,13 @@ def _correct_with_feedback(articles: list[dict], feedback: str, cost_tracker: di
 
 
 def review_node(state: KBState) -> dict:
-    """审核节点：四维度评分，iteration >= 2 强制通过"""
+    """审核节点：四维度评分"""
     print("[review_node] 开始审核...")
 
     articles = state.get("articles", [])
-    iteration = state.get("iteration", 0)
 
     if not articles:
         print("[review_node] 无待审核数据")
-        return {
-            "review_passed": True,
-            "review_feedback": "",
-            "cost_tracker": state.get("cost_tracker", {}),
-        }
-
-    if iteration >= 2:
-        print("[review_node] iteration >= 2，强制通过")
         return {
             "review_passed": True,
             "review_feedback": "",
@@ -216,28 +209,28 @@ def review_node(state: KBState) -> dict:
 
     prompt = f"""请审核以下知识条目，从四个维度进行评分：
 
-1. 摘要质量（summary_quality）：摘要是否详尽、准确、有价值
-2. 标签准确（tag_accuracy）：标签是否准确反映内容
-3. 分类合理（classification）：分类是否合理，条目归属是否正确
-4. 一致性（consistency）：整体信息是否一致、无矛盾
+    1. 摘要质量（summary_quality）：摘要是否详尽、准确、有价值
+    2. 标签准确（tag_accuracy）：标签是否准确反映内容
+    3. 分类合理（classification）：分类是否合理，条目归属是否正确
+    4. 一致性（consistency）：整体信息是否一致、无矛盾
 
-知识条目：
-{json.dumps(articles, ensure_ascii=False, indent=2)}
+    知识条目：
+    {json.dumps(articles, ensure_ascii=False, indent=2)}
 
-请返回以下 JSON 格式的审核结果：
-{{
-    "passed": true/false（综合评分 >= 0.7 视为通过）,
-    "overall_score": 0.0-1.0（综合评分）,
-    "feedback": "审核意见（如果未通过，说明问题和改进建议）",
-    "scores": {{
-        "summary_quality": 0.0-1.0,
-        "tag_accuracy": 0.0-1.0,
-        "classification": 0.0-1.0,
-        "consistency": 0.0-1.0
+    请返回以下 JSON 格式的审核结果：
+    {{
+        "passed": true/false（综合评分 >= 0.7 视为通过）,
+        "overall_score": 0.0-1.0（综合评分）,
+        "feedback": "审核意见（如果未通过，说明问题和改进建议）",
+        "scores": {{
+            "summary_quality": 0.0-1.0,
+            "tag_accuracy": 0.0-1.0,
+            "classification": 0.0-1.0,
+            "consistency": 0.0-1.0
+        }}
     }}
-}}
 
-只返回 JSON 对象，不要包含任何解释性文字。"""
+    只返回 JSON 对象，不要包含任何解释性文字。"""
 
     try:
         parsed, usage = chat_json(prompt, system=system_prompt, temperature=0.3, max_tokens=2000)
