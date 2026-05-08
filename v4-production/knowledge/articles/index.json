@@ -1,0 +1,902 @@
+[
+  {
+    "id": "2026-04-11-000",
+    "title": "langgenius/dify",
+    "category": "framework",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-04-11-001",
+    "title": "langchain-ai/langchain",
+    "category": "framework",
+    "relevance_score": 0.95
+  },
+  {
+    "id": "2026-04-11-002",
+    "title": "firecrawl/firecrawl",
+    "category": "tool",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-11-003",
+    "title": "browser-use/browser-use",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-11-004",
+    "title": "infiniflow/ragflow",
+    "category": "rag",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-04-11-005",
+    "title": "OpenHands/OpenHands",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-11-006",
+    "title": "hiyouga/LlamaFactory",
+    "category": "framework",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-04-11-007",
+    "title": "bytedance/deer-flow",
+    "category": "agent",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-04-11-008",
+    "title": "NousResearch/hermes-agent",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-11-009",
+    "title": "mem0ai/mem0",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-24-000",
+    "title": "langgenius/dify",
+    "category": "agent",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-04-24-001",
+    "title": "langchain-ai/langchain",
+    "category": "framework",
+    "relevance_score": 0.95
+  },
+  {
+    "id": "2026-04-24-002",
+    "title": "NousResearch/hermes-agent",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-24-003",
+    "title": "Shubhamsaboo/awesome-llm-apps",
+    "category": "agent",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-04-24-004",
+    "title": "browser-use/browser-use",
+    "category": "tool",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-24-005",
+    "title": "infiniflow/ragflow",
+    "category": "rag",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-04-24-006",
+    "title": "OpenHands/OpenHands",
+    "category": "tool",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-24-007",
+    "title": "hiyouga/LlamaFactory",
+    "category": "framework",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-04-24-008",
+    "title": "bytedance/deer-flow",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-24-009",
+    "title": "mem0ai/mem0",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-25-000",
+    "title": "langgenius/dify",
+    "category": "agent",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-04-25-001",
+    "title": "langchain-ai/langchain",
+    "category": "framework",
+    "relevance_score": 0.95
+  },
+  {
+    "id": "2026-04-25-002",
+    "title": "NousResearch/hermes-agent",
+    "category": "agent",
+    "relevance_score": 0.75
+  },
+  {
+    "id": "2026-04-25-003",
+    "title": "Shubhamsaboo/awesome-llm-apps",
+    "category": "agent",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-04-25-004",
+    "title": "browser-use/browser-use",
+    "category": "tool",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-25-005",
+    "title": "infiniflow/ragflow",
+    "category": "rag",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-04-25-006",
+    "title": "OpenHands/OpenHands",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-25-007",
+    "title": "hiyouga/LlamaFactory",
+    "category": "framework",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-04-25-008",
+    "title": "bytedance/deer-flow",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-25-009",
+    "title": "mem0ai/mem0",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-26-000",
+    "title": "langgenius/dify",
+    "category": "framework",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-04-26-001",
+    "title": "langchain-ai/langchain",
+    "category": "framework",
+    "relevance_score": 0.95
+  },
+  {
+    "id": "2026-04-26-002",
+    "title": "NousResearch/hermes-agent",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-26-003",
+    "title": "browser-use/browser-use",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-26-004",
+    "title": "OpenHands/OpenHands",
+    "category": "tool",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-26-005",
+    "title": "hiyouga/LlamaFactory",
+    "category": "framework",
+    "relevance_score": 0.95
+  },
+  {
+    "id": "2026-04-26-006",
+    "title": "bytedance/deer-flow",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-26-007",
+    "title": "mem0ai/mem0",
+    "category": "framework",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-26-008",
+    "title": "jeecgboot/JeecgBoot",
+    "category": "framework",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-26-009",
+    "title": "CherryHQ/cherry-studio",
+    "category": "tool",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-27-000",
+    "title": "langgenius/dify",
+    "category": "agent",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-04-27-001",
+    "title": "langchain-ai/langchain",
+    "category": "framework",
+    "relevance_score": 0.95
+  },
+  {
+    "id": "2026-04-27-002",
+    "title": "NousResearch/hermes-agent",
+    "category": "agent",
+    "relevance_score": 0.7
+  },
+  {
+    "id": "2026-04-27-003",
+    "title": "browser-use/browser-use",
+    "category": "tool",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-27-004",
+    "title": "OpenHands/OpenHands",
+    "category": "tool",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-27-005",
+    "title": "hiyouga/LlamaFactory",
+    "category": "framework",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-04-27-006",
+    "title": "bytedance/deer-flow",
+    "category": "agent",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-04-27-007",
+    "title": "mem0ai/mem0",
+    "category": "framework",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-27-008",
+    "title": "jeecgboot/JeecgBoot",
+    "category": "framework",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-27-009",
+    "title": "CherryHQ/cherry-studio",
+    "category": "tool",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-28-000",
+    "title": "langgenius/dify",
+    "category": "framework",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-04-28-001",
+    "title": "langchain-ai/langchain",
+    "category": "framework",
+    "relevance_score": 0.95
+  },
+  {
+    "id": "2026-04-28-002",
+    "title": "NousResearch/hermes-agent",
+    "category": "agent",
+    "relevance_score": 0.7
+  },
+  {
+    "id": "2026-04-28-003",
+    "title": "Shubhamsaboo/awesome-llm-apps",
+    "category": "agent",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-04-28-004",
+    "title": "browser-use/browser-use",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-28-005",
+    "title": "OpenHands/OpenHands",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-28-006",
+    "title": "hiyouga/LlamaFactory",
+    "category": "framework",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-04-28-007",
+    "title": "bytedance/deer-flow",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-28-008",
+    "title": "mem0ai/mem0",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-28-009",
+    "title": "jeecgboot/JeecgBoot",
+    "category": "framework",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-29-000",
+    "title": "langgenius/dify",
+    "category": "agent",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-04-29-001",
+    "title": "langchain-ai/langchain",
+    "category": "framework",
+    "relevance_score": 0.95
+  },
+  {
+    "id": "2026-04-29-002",
+    "title": "NousResearch/hermes-agent",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-29-003",
+    "title": "Shubhamsaboo/awesome-llm-apps",
+    "category": "agent",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-04-29-004",
+    "title": "browser-use/browser-use",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-29-005",
+    "title": "OpenHands/OpenHands",
+    "category": "tool",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-29-006",
+    "title": "hiyouga/LlamaFactory",
+    "category": "framework",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-04-29-007",
+    "title": "bytedance/deer-flow",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-29-008",
+    "title": "mem0ai/mem0",
+    "category": "framework",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-29-009",
+    "title": "jeecgboot/JeecgBoot",
+    "category": "framework",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-04-30-000",
+    "title": "langgenius/dify",
+    "category": "agent",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-04-30-001",
+    "title": "langchain-ai/langchain",
+    "category": "framework",
+    "relevance_score": 0.95
+  },
+  {
+    "id": "2026-04-30-002",
+    "title": "NousResearch/hermes-agent",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-30-003",
+    "title": "Shubhamsaboo/awesome-llm-apps",
+    "category": "agent",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-04-30-004",
+    "title": "browser-use/browser-use",
+    "category": "tool",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-30-005",
+    "title": "OpenHands/OpenHands",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-30-006",
+    "title": "hiyouga/LlamaFactory",
+    "category": "framework",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-04-30-007",
+    "title": "bytedance/deer-flow",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-30-008",
+    "title": "mem0ai/mem0",
+    "category": "framework",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-04-30-009",
+    "title": "jeecgboot/JeecgBoot",
+    "category": "framework",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-01-000",
+    "title": "langgenius/dify",
+    "category": "agent",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-05-01-001",
+    "title": "langchain-ai/langchain",
+    "category": "framework",
+    "relevance_score": 0.95
+  },
+  {
+    "id": "2026-05-01-002",
+    "title": "NousResearch/hermes-agent",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-01-003",
+    "title": "Shubhamsaboo/awesome-llm-apps",
+    "category": "tool",
+    "relevance_score": 0.95
+  },
+  {
+    "id": "2026-05-01-004",
+    "title": "browser-use/browser-use",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-01-005",
+    "title": "OpenHands/OpenHands",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-01-006",
+    "title": "hiyouga/LlamaFactory",
+    "category": "framework",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-05-01-007",
+    "title": "bytedance/deer-flow",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-01-008",
+    "title": "mem0ai/mem0",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-01-009",
+    "title": "jeecgboot/JeecgBoot",
+    "category": "framework",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-02-000",
+    "title": "langgenius/dify",
+    "category": "framework",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-05-02-001",
+    "title": "langchain-ai/langchain",
+    "category": "framework",
+    "relevance_score": 0.95
+  },
+  {
+    "id": "2026-05-02-002",
+    "title": "NousResearch/hermes-agent",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-02-003",
+    "title": "Shubhamsaboo/awesome-llm-apps",
+    "category": "tool",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-05-02-004",
+    "title": "browser-use/browser-use",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-02-005",
+    "title": "OpenHands/OpenHands",
+    "category": "tool",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-02-006",
+    "title": "hiyouga/LlamaFactory",
+    "category": "framework",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-05-02-007",
+    "title": "bytedance/deer-flow",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-02-008",
+    "title": "mem0ai/mem0",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-02-009",
+    "title": "jeecgboot/JeecgBoot",
+    "category": "framework",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-03-000",
+    "title": "langgenius/dify",
+    "category": "agent",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-05-03-001",
+    "title": "langchain-ai/langchain",
+    "category": "framework",
+    "relevance_score": 0.95
+  },
+  {
+    "id": "2026-05-03-002",
+    "title": "NousResearch/hermes-agent",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-03-003",
+    "title": "Shubhamsaboo/awesome-llm-apps",
+    "category": "tool",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-05-03-004",
+    "title": "browser-use/browser-use",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-03-005",
+    "title": "OpenHands/OpenHands",
+    "category": "tool",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-03-006",
+    "title": "hiyouga/LlamaFactory",
+    "category": "framework",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-05-03-007",
+    "title": "bytedance/deer-flow",
+    "category": "agent",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-05-03-008",
+    "title": "mem0ai/mem0",
+    "category": "framework",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-03-009",
+    "title": "jeecgboot/JeecgBoot",
+    "category": "framework",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-04-000",
+    "title": "langgenius/dify",
+    "category": "agent",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-05-04-001",
+    "title": "langchain-ai/langchain",
+    "category": "framework",
+    "relevance_score": 0.95
+  },
+  {
+    "id": "2026-05-04-002",
+    "title": "NousResearch/hermes-agent",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-04-003",
+    "title": "Shubhamsaboo/awesome-llm-apps",
+    "category": "agent",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-05-04-004",
+    "title": "browser-use/browser-use",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-04-005",
+    "title": "OpenHands/OpenHands",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-04-006",
+    "title": "hiyouga/LlamaFactory",
+    "category": "framework",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-05-04-007",
+    "title": "bytedance/deer-flow",
+    "category": "agent",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-05-04-008",
+    "title": "mem0ai/mem0",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-04-009",
+    "title": "jeecgboot/JeecgBoot",
+    "category": "framework",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-06-000",
+    "title": "langgenius/dify",
+    "category": "agent",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-05-06-001",
+    "title": "langchain-ai/langchain",
+    "category": "framework",
+    "relevance_score": 0.95
+  },
+  {
+    "id": "2026-05-06-002",
+    "title": "NousResearch/hermes-agent",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-06-003",
+    "title": "Shubhamsaboo/awesome-llm-apps",
+    "category": "tool",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-05-06-004",
+    "title": "browser-use/browser-use",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-06-005",
+    "title": "OpenHands/OpenHands",
+    "category": "tool",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-06-006",
+    "title": "hiyouga/LlamaFactory",
+    "category": "framework",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-05-06-007",
+    "title": "bytedance/deer-flow",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-06-008",
+    "title": "mem0ai/mem0",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-06-009",
+    "title": "jeecgboot/JeecgBoot",
+    "category": "framework",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-07-000",
+    "title": "langgenius/dify",
+    "category": "agent",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-05-07-001",
+    "title": "langchain-ai/langchain",
+    "category": "framework",
+    "relevance_score": 0.95
+  },
+  {
+    "id": "2026-05-07-002",
+    "title": "NousResearch/hermes-agent",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-07-003",
+    "title": "Shubhamsaboo/awesome-llm-apps",
+    "category": "tool",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-05-07-004",
+    "title": "browser-use/browser-use",
+    "category": "tool",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-07-005",
+    "title": "infiniflow/ragflow",
+    "category": "rag",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-05-07-006",
+    "title": "OpenHands/OpenHands",
+    "category": "tool",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-07-007",
+    "title": "hiyouga/LlamaFactory",
+    "category": "framework",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-05-07-008",
+    "title": "bytedance/deer-flow",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-07-009",
+    "title": "mem0ai/mem0",
+    "category": "agent",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-05-08-000",
+    "title": "langgenius/dify",
+    "category": "framework",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-05-08-001",
+    "title": "NousResearch/hermes-agent",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-08-002",
+    "title": "langchain-ai/langchain",
+    "category": "framework",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-05-08-003",
+    "title": "Shubhamsaboo/awesome-llm-apps",
+    "category": "tool",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-08-004",
+    "title": "browser-use/browser-use",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-08-005",
+    "title": "infiniflow/ragflow",
+    "category": "rag",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-05-08-006",
+    "title": "OpenHands/OpenHands",
+    "category": "tool",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-08-007",
+    "title": "hiyouga/LlamaFactory",
+    "category": "framework",
+    "relevance_score": 0.9
+  },
+  {
+    "id": "2026-05-08-008",
+    "title": "bytedance/deer-flow",
+    "category": "agent",
+    "relevance_score": 0.85
+  },
+  {
+    "id": "2026-05-08-009",
+    "title": "mem0ai/mem0",
+    "category": "framework",
+    "relevance_score": 0.85
+  }
+]
