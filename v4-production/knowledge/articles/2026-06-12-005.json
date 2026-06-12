@@ -1,0 +1,18 @@
+{
+  "id": "2026-06-12-005",
+  "title": "OpenHands/OpenHands",
+  "source": "github",
+  "url": "https://github.com/OpenHands/OpenHands",
+  "collected_at": "2026-06-12T00:36:06.695457+00:00",
+  "summary": "OpenHands 是一个 AI 驱动的软件开发平台，通过大语言模型智能体实现代码编写、测试、调试与部署的自动化。项目提供可视化交互界面，支持多种主流 LLM，在安全的 Docker 沙箱环境中执行文件操作、Shell 命令和浏览器交互。其架构允许自定义代理行为和技能，旨在将 AI 转化为具备全栈能力的自主软件工程师，加速开发迭代并降低协作门槛。",
+  "tags": [
+    "AI Agent",
+    "软件开发自动化",
+    "LLM",
+    "代码生成",
+    "智能体框架"
+  ],
+  "relevance_score": 0.95,
+  "category": "agent",
+  "key_insight": "OpenHands 将 LLM 的能力从代码补全提升为完整的软件开发智能体，通过沙盒化执行与可扩展架构，实现了从需求到部署的端到端自动化。"
+}

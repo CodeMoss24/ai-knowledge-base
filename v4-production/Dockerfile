@@ -22,6 +22,11 @@ RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
 # ============================================================
 FROM python:3.12-slim
 
+# 安装 cron（pipeline 容器依赖 cron 定时执行）
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends cron && \
+    rm -rf /var/lib/apt/lists/*
+
 LABEL maintainer="AI Knowledge Base Team"
 LABEL version="4.0"
 LABEL description="AI 知识库 V4 生产版 — 采集、分析、分发、交互"
@@ -47,7 +52,6 @@ RUN mkdir -p /app/knowledge/raw /app/knowledge/articles /app/data
 # 非 root 用户运行
 RUN groupadd -r appuser && useradd -r -g appuser appuser && \
     chown -R appuser:appuser /app
-USER appuser
 
 # 健康检查
 HEALTHCHECK --interval=60s --timeout=10s --start-period=30s --retries=3 \
